@@ -1,0 +1,129 @@
+{
+  "id": "hari_seldon",
+  "name": "Hari Seldon",
+  "class": "Psychohistorien",
+  "faction": "Fondation",
+  "type": "hero",
+  "subtype": "scientific_genius",
+  "level": 15,
+  "experience": 0,
+  "stats": {
+    "health": 120,
+    "maxHealth": 120,
+    "mana": 300,
+    "maxMana": 300,
+    "attack": 8,
+    "defense": 12,
+    "speed": 5,
+    "initiative": 18,
+    "leadership": 25,
+    "wisdom": 30,
+    "intelligence": 35
+  },
+  "abilities": [
+    {
+      "id": "psychohistory",
+      "name": "Psychohistoire",
+      "type": "passive",
+      "description": "Prédit les mouvements ennemis avec 85% de précision. Révèle le brouillard de guerre dans un rayon de 5 cases.",
+      "effects": {
+        "vision_radius": 5,
+        "enemy_prediction": 0.85,
+        "timeline_awareness": true
+      }
+    },
+    {
+      "id": "seldon_crisis",
+      "name": "Crise de Seldon",
+      "type": "active",
+      "description": "Déclenche une crise prédite qui force les ennemis à révéler leurs intentions pendant 3 tours.",
+      "cooldown": 10,
+      "manaCost": 50,
+      "effects": {
+        "duration": 3,
+        "force_reveal": true,
+        "timeline_manipulation": "minor"
+      }
+    },
+    {
+      "id": "foundation_shield",
+      "name": "Bouclier de la Fondation",
+      "type": "active",
+      "description": "Protège les alliés contre les manipulations temporelles de Ford et McKinsey.",
+      "cooldown": 5,
+      "manaCost": 30,
+      "effects": {
+        "immunity_to_manipulation": true,
+        "duration": 2,
+        "area_of_effect": 3
+      }
+    },
+    {
+      "id": "mathematical_precision",
+      "name": "Précision Mathématique",
+      "type": "passive",
+      "description": "Les calculs de Hari sont si précis qu'ils augmentent l'efficacité de toutes les actions de 20%.",
+      "effects": {
+        "efficiency_bonus": 0.2,
+        "critical_thinking": 0.3
+      }
+    }
+  ],
+  "traits": [
+    "genius",
+    "temporal_aware",
+    "anti_corporate",
+    "foundation_leader"
+  ],
+  "equipment": {
+    "weapon": "prime_radiant",
+    "armor": "robe_of_equations",
+    "accessory": "calculator_of_fate"
+  },
+  "inventory": [
+    {
+      "id": "encyclopedia_galactica",
+      "quantity": 1
+    },
+    {
+      "id": "hologram_projector",
+      "quantity": 1
+    }
+  ],
+  "position": {
+    "x": 0,
+    "y": 0,
+    "world": "planet_ezith"
+  },
+  "movement": {
+    "type": "ground",
+    "range": 4,
+    "canFly": false,
+    "canSwim": false,
+    "canTeleport": true
+  },
+  "alignment": {
+    "good": 90,
+    "lawful": 95,
+    "grut_friendly": "neutral",
+    "ford_opposition": 100,
+    "mckinsey_opposition": 100
+  },
+  "lore": {
+    "origin": "Né sur Trantor, capitale de l'Empire Galactique, Hari Seldon a développé la psychohistoire, une science permettant de prédire l'avenir des civilisations.",
+    "motivation": "Préserver l'histoire et la connaissance contre ceux qui voudraient la manipuler pour le profit.",
+    "quote": "La violence est le dernier refuge de l'incompétence.",
+    "relationships": {
+      "ford": "Ennemi philosophique - oppose la manipulation de la réalité",
+      "mckinsey": "Ennemi idéologique - refuse la commercialisation du savoir",
+      "grut": "Neutre respectueux - reconnaît sa vision omnisciente",
+      "jean": "Allié potentiel - apprécie sa créativité cosmique"
+    }
+  },
+  "metadata": {
+    "created_by": "OPUS-MEMENTO",
+    "creation_date": "2025-01-26",
+    "version": "1.0",
+    "tags": ["foundation", "psychohistory", "anti-manipulation", "scientific"]
+  }
+} 

@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: memento_hero_test_trinite_cosmique_map
+
 # 🌌 TEST HÉROS MEMENTO + TRINITÉ COSMIQUE - LA MÉMOIRE COSMIQUE
 # ====================================================================
 # Scénario adapté pour tester la TRINITÉ COSMIQUE (Jean + Memento + Claudius)

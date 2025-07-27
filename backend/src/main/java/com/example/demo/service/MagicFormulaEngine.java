@@ -48,6 +48,10 @@ public class MagicFormulaEngine {
     @Autowired
     private QuantumService quantumService;
     
+    // 🌀 COLLAPSE: Service de Collapse Causal reconnecté
+    @Autowired
+    private CausalCollapseService causalCollapseService;
+    
     // 🎖️ WALTER VIETNAM TRACKING
     private Map<String, Integer> formulaExecutionCounts = new HashMap<>();
     private Map<String, Long> formulaExecutionTimes = new HashMap<>();
@@ -124,8 +128,13 @@ public class MagicFormulaEngine {
             System.out.println("⚠️ GROFI: QuantumService non disponible - vérifier configuration Spring");
         }
         
-        // TODO: Reconnecter CausalCollapseService quand disponible
-        System.out.println("📝 TODO: Reconnecter CausalCollapseService");
+        // 🌀 RECONNEXION DU CAUSAL COLLAPSE SERVICE
+        if (causalCollapseService != null) {
+            System.out.println("✅ COLLAPSE: CausalCollapseService reconnecté avec succès !");
+            System.out.println("🔧 Les connexions quantiques sont rétablies !");
+        } else {
+            System.out.println("⚠️ COLLAPSE: CausalCollapseService non disponible - vérifier configuration");
+        }
     }
     
     /**

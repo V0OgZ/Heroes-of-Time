@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroes of Time - Maîtrisez le Temps, Dominez l'Espace</title>
+    <meta name="description" content="Un jeu de stratégie asynchrone où le temps est une arme. Créé par Jean-Grofignon depuis son canapé cosmique.">
+    
+    <style>
+        :root {
+            --hot-dark: #0a0e27;
+            --hot-dark-lighter: #1a1f3a;
+            --hot-purple: #6B46C1;
+            --hot-purple-light: #9333EA;
+            --hot-gold: #F59E0B;
+            --hot-gold-dark: #D97706;
+            --hot-cyan: #06B6D4;
+            --hot-cyan-dark: #0891B2;
+            --hot-white: #F3F4F6;
+            --hot-gray: #9CA3AF;
+            --hot-gradient: linear-gradient(135deg, #6B46C1 0%, #06B6D4 100%);
+            --hot-gradient-gold: linear-gradient(135deg, #F59E0B 0%, #DC2626 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--hot-dark);
+            color: var(--hot-white);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animation de fond quantique */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(107, 70, 193, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: quantumFlow 20s ease-in-out infinite;
+        }
+        
+        @keyframes quantumFlow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+        
+        /* Header */
+        header {
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(107, 70, 193, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--hot-gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--hot-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--hot-cyan);
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--hot-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 8px rgba(107, 70, 193, 0.3));
+        }
+        
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--hot-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--hot-gradient);
+            color: white;
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--hot-cyan);
+            border: 2px solid var(--hot-cyan);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Grid */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--hot-gold);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--hot-dark-lighter);
+            border: 1px solid rgba(107, 70, 193, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--hot-purple);
+            box-shadow: 0 8px 24px rgba(107, 70, 193, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--hot-cyan);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            color: var(--hot-gray);
+        }
+        
+        /* Content Section */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content h2 {
+            color: var(--hot-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .content h3 {
+            color: var(--hot-cyan);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .content p {
+            margin-bottom: 1rem;
+            color: var(--hot-gray);
+        }
+        
+        .content code {
+            background: rgba(107, 70, 193, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--hot-dark-lighter);
+            border-top: 1px solid rgba(107, 70, 193, 0.3);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        footer a {
+            color: var(--hot-cyan);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🕰️ Heroes of Time</div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="https://github.com/V0OgZ/Heroes-of-Time">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Heroes of Time</h1>
+        <p class="tagline">Maîtrisez le temps, dominez l'espace, conquérez l'éternité</p>
+        
+        <div class="cta-buttons">
+            <a href="#docs" class="btn btn-primary">
+                📖 Documentation
+            </a>
+            <a href="https://github.com/V0OgZ/Heroes-of-Time" class="btn btn-secondary">
+                🔧 Code Source
+            </a>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <h2>✨ Caractéristiques Uniques</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚛️</div>
+                <h3>Mécanique Quantique</h3>
+                <p>Superposition d'états, observation qui collapse la réalité, intrication entre héros. La physique déguisée en magie.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌀</div>
+                <h3>Temps Asynchrone</h3>
+                <p>Chaque joueur a son propre flux temporel. Attaquez dans le passé, défendez-vous dans le futur.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <h3>Paradoxes Créatifs</h3>
+                <p>Créez des boucles causales, exploitez les paradoxes temporels, brisez le 4ème mur.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>IA Narrative</h3>
+                <p>Les héros ont leur propre conscience. L'histoire s'écrit elle-même. Le jeu devient vivant.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>Panopticon 6D</h3>
+                <p>GRUT voit tout à travers les dimensions. Navigation multiverselle. Réalités parallèles.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Archive Vivante</h3>
+                <p>Memento archive chaque moment. Bootstrap paradox pour communication trans-temporelle.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content" id="docs">
+        <h2>📚 Documentation</h2>
+        
+        <h3>🚀 Démarrage Rapide</h3>
+        <p>Heroes of Time est un jeu de stratégie temporelle asynchrone où chaque action modifie le tissu de la réalité.</p>
+        
+        <h3>🎮 Comment Jouer</h3>
+        <p>Utilisez le système HOTS (Heroes of Time Script) pour contrôler vos héros à travers les dimensions :</p>
+        <code>ψ001: ⊙(Δt+0 @10,10 ⟶ MOV(Arthur, @15,15))</code>
+        
+        <h3>🔧 Installation</h3>
+        <p>Clonez le repository et lancez avec <code>./hots start</code></p>
+        
+        <h3>📖 Liens Utiles</h3>
+        <ul>
+            <li><a href="README.md">README Complet (Français)</a></li>
+            <li><a href="docs/CODEX_COMPLET_HEROES_OF_TIME.md">Codex du Jeu</a></li>
+            <li><a href="JEAN/README.md">Temple de Jean-Grofignon</a></li>
+            <li><a href="MEMENTO/GUIDE_MEMENTO_COMPLET.md">Archives de Memento</a></li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>Créé avec 🛋️ par Jean-Grofignon depuis son canapé cosmique</p>
+        <p>
+            <a href="https://github.com/V0OgZ/Heroes-of-Time">GitHub</a> • 
+            <a href="LICENSE">Licence MIT</a> • 
+            <a href="CONTRIBUTING.md">Contribuer</a>
+        </p>
+    </footer>
+</body>
+</html> 

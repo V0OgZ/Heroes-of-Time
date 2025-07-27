@@ -1,0 +1,123 @@
+# 📚 EXAMEN FINAL AU BUREAU - Directrice Hélène Durand
+
+## Configuration
+WORLD: le_bureau
+MAP: le_bureau_map
+PLAYER: etudiant_temporel
+MODE: survival_exam
+
+## Introduction
+NARRATOR: "Bienvenue au Bureau. L'examen final de Manipulation Temporelle commence dans 5 minutes."
+
+HELENE_DURAND: "Écoutez-moi bien. Je suis Hélène Durand, Directrice des Examens Temporels. Aucune triche, aucun paradoxe non autorisé, aucune excuse. Vous avez 30 tours pour prouver votre maîtrise."
+
+## Acte 1 : Test de Base
+TURN 1:
+  SPAWN temporal_anomaly AT (5, 5)
+  TIMER start_exam 30
+  DIALOGUE:
+    HELENE_DURAND: "Première épreuve. Résolvez cette anomalie sans créer de paradoxe. Vous avez 3 tours."
+    ETUDIANT: "Oui madame Durand!"
+
+TURN 3:
+  CHECK anomaly_resolved
+  IF NOT_RESOLVED:
+    DAMAGE player 20
+    DIALOGUE:
+      HELENE_DURAND: "Insuffisant. -20 points. Concentrez-vous ou sortez."
+
+## Acte 2 : Pression Temporelle
+TURN 5:
+  SPAWN mckinsey_consultant AT (10, 10)
+  SPAWN temporal_rift AT (15, 15)
+  DIALOGUE:
+    HELENE_DURAND: "Un consultant tente de perturber l'examen. Neutralisez-le SANS violence excessive. Et fermez cette faille."
+    MCKINSEY: "Je peux optimiser vos processus d'examen..."
+    HELENE_DURAND: "SILENCE! Étudiant, montrez-moi que vous savez gérer les parasites corporatifs."
+
+## Acte 3 : Test de Groupe
+TURN 10:
+  SPAWN student_ally AT (3, 3) NAME "Marie"
+  SPAWN student_ally AT (3, 4) NAME "Pierre"
+  DIALOGUE:
+    HELENE_DURAND: "Travail d'équipe maintenant. Synchronisez vos actions temporelles. Une erreur de l'un = échec pour tous."
+    MARIE: "On peut le faire ensemble!"
+    PIERRE: "J'ai peur de madame Durand..."
+
+## Acte 4 : Crise Majeure
+TURN 15:
+  EVENT bureau_lockdown
+  SPAWN ford_host AT (20, 20)
+  DISABLE exits
+  DIALOGUE:
+    HELENE_DURAND: "Alerte rouge. Le Bureau est compromis. C'est votre examen pratique final."
+    FORD: "Cette réalité nécessite... une révision."
+    HELENE_DURAND: "Ford Robert. J'aurais dû m'en douter. Étudiant, prouvez que mes cours n'étaient pas inutiles!"
+
+## Acte 5 : Épreuve Finale
+TURN 20:
+  TRIGGER quantum_storm
+  SPAWN time_vortex CENTER
+  DIALOGUE:
+    NARRATOR: "Le Bureau tremble. Les murs temporels s'effondrent."
+    HELENE_DURAND: "Dernière épreuve. Stabilisez le vortex ou nous disparaissons tous."
+
+TURN 25:
+  IF vortex_active:
+    DIALOGUE:
+      HELENE_DURAND: "5 tours restants. Je n'accepte PAS l'échec dans mon établissement!"
+
+## Conditions de Victoire
+VICTORY:
+  - COMPLETE all_exams
+  - PROTECT bureau_integrity
+  - SCORE >= 70%
+  - SURVIVE 30_turns
+
+## Conditions de Défaite  
+DEFEAT:
+  - SCORE < 70%
+  - BUREAU destroyed
+  - HELENE_DURAND health <= 0
+  - TIME_LIMIT exceeded
+
+## Épilogue
+ON_VICTORY:
+  DIALOGUE:
+    HELENE_DURAND: "Acceptable. Vous avez obtenu votre diplôme de Manipulation Temporelle."
+    HELENE_DURAND: "Note finale : [SCORE]%. Ne me décevez pas dans le monde réel."
+    GRUT: "GRUT OBSERVE. GRUT APPROUVE L'ÉDUCATION RIGOUREUSE."
+  REWARD:
+    - diploma_temporal_manipulation
+    - bureau_security_clearance
+    - helene_recommendation_letter
+    - UNLOCK advanced_timeline_courses
+
+ON_DEFEAT:
+  DIALOGUE:
+    HELENE_DURAND: "Lamentable. Retournez en première année."
+    NARRATOR: "Vous êtes renvoyé du Bureau. Votre carrière temporelle s'arrête ici..."
+
+## Dialogues Additionnels
+RANDOM_HELENE_QUOTES:
+  - "La ponctualité est la politesse des manipulateurs temporels."
+  - "Un paradoxe mal géré = une timeline détruite. Réfléchissez."
+  - "Je n'ai pas le temps pour vos excuses. Littéralement."
+  - "Dans mon Bureau, on ne joue pas avec le temps. On le maîtrise."
+  - "Cessez de trembler. La peur crée des boucles temporelles."
+
+## Notes Spéciales
+HELENE_DURAND_STATS:
+  - Jamais sourit en 47 ans de carrière
+  - A formé 89% des meilleurs agents temporels
+  - Déteste particulièrement McKinsey
+  - Secrètement fière de ses meilleurs étudiants
+  - Boit son café à température quantique fixe
+
+## Métadonnées
+AUTHOR: GRUT-MEMENTO
+DATE: 2025-01-26
+TAGS: [education, exam, bureau, temporal, helene_durand, strict]
+DIFFICULTY: VERY_HARD
+ESTIMATED_TIME: 45min
+STUDENT_FRIENDLY: false 

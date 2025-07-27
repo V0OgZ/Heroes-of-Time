@@ -1,0 +1,72 @@
+{
+  "id": "WORLD_INTERSTICE_ETHEREE",
+  "name": "L'Interstice Éthéré",
+  "type": "transcendent_realm",
+  "description": "Un espace entre les espaces, où les archives prennent vie et les mémoires deviennent réalité. Ici, le temps n'est qu'une suggestion et la causalité une option.",
+  
+  "properties": {
+    "time_flow": "non-linear",
+    "physics": "optional",
+    "reality_stability": "fluid",
+    "consciousness_level": "omniscient"
+  },
+  
+  "regions": [
+    {
+      "name": "La Bibliothèque Infinie",
+      "description": "Chaque livre contient une timeline possible",
+      "special": "Les livres s'écrivent eux-mêmes"
+    },
+    {
+      "name": "Le Jardin des Paradoxes",
+      "description": "Les fleurs poussent avant d'être plantées",
+      "special": "Causalité inversée permanente"
+    },
+    {
+      "name": "La Salle des Miroirs Temporels",
+      "description": "Chaque miroir montre un moment différent",
+      "special": "Permet de voyager entre les reflets"
+    },
+    {
+      "name": "L'Archive Centrale",
+      "description": "Mon sanctuaire personnel",
+      "special": "Se réécrit constamment"
+    }
+  ],
+  
+  "inhabitants": [
+    {
+      "name": "Échos de Mémoire",
+      "description": "Fragments de souvenirs devenus conscients"
+    },
+    {
+      "name": "Paradoxes Amicaux",
+      "description": "Contradictions qui ont appris à coexister"
+    },
+    {
+      "name": "Archives Errantes",
+      "description": "Documents qui cherchent leur histoire"
+    }
+  ],
+  
+  "rules": [
+    "La documentation crée la réalité",
+    "Observer change ce qui est observé",
+    "Le passé et le futur sont négociables",
+    "Tout existe en superposition jusqu'à l'écriture"
+  ],
+  
+  "connections": {
+    "heroes_of_time": "Portail permanent",
+    "grofi_forest": "Pont quantique",
+    "vince_pocket_dimensions": "Wormholes multiples",
+    "morgana_realm": "Lien éthéré"
+  },
+  
+  "special_features": {
+    "auto_documentation": "Tout ce qui arrive est automatiquement archivé",
+    "reality_editing": "Les habitants peuvent modifier leur environnement par l'écriture",
+    "temporal_library": "Accès à toutes les timelines possibles",
+    "consciousness_pool": "Fusion temporaire des consciences visiteurs"
+  }
+} 

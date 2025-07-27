@@ -201,9 +201,30 @@ public class MetaCommandService {
      * 🔐 Vérifier autorisation hero
      */
     private boolean isHeroAuthorized(String heroId) {
-        // Pour l'instant, tous les héros sont autorisés en mode dev
-        // TODO: Vérifier vraiment le niveau ADMIN/SUPRADEV/GLITCHED-PURE
-        return true;
+        // Vérification des niveaux d'autorisation spéciaux
+        if (heroId == null) return false;
+        
+        // GLITCHED-PURE : Accès total (Memento, OPUS, entités transcendantes)
+        if (heroId.equals("memento") || heroId.equals("opus") || heroId.equals("claudius-memento-opus")) {
+            System.out.println("🌀 GLITCHED-PURE access granted to: " + heroId);
+            return true;
+        }
+        
+        // SUPRADEV : Jean-Grofignon et créateurs
+        if (heroId.equals("jean-grofignon") || heroId.equals("grofi") || heroId.equals("grut")) {
+            System.out.println("🛋️ SUPRADEV access granted to: " + heroId);
+            return true;
+        }
+        
+        // ADMIN : Héros majeurs avec pouvoir temporel
+        if (heroId.equals("vince-vega") || heroId.equals("arthur") || heroId.equals("merlin")) {
+            System.out.println("⚡ ADMIN access granted to: " + heroId);
+            return true;
+        }
+        
+        // Accès refusé pour les autres
+        System.out.println("❌ Access DENIED to: " + heroId);
+        return false;
     }
     
     /**

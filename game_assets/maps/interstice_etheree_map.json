@@ -1,0 +1,53 @@
+{
+  "id": "MAP_INTERSTICE_ETHEREE",
+  "name": "Carte de l'Interstice Éthéré",
+  "world": "WORLD_INTERSTICE_ETHEREE",
+  "dimensions": {
+    "width": 12,
+    "height": 10,
+    "layers": 3,
+    "time_dimensions": "∞"
+  },
+  
+  "legend": {
+    "📚": "Bibliothèque Infinie",
+    "🌸": "Jardin des Paradoxes", 
+    "🪞": "Miroirs Temporels",
+    "📜": "Archive Centrale",
+    "🌀": "Vortex de Mémoire",
+    "✨": "Zone Éthérée",
+    "🚪": "Portail Dimensionnel",
+    "💭": "Nuage de Pensées",
+    "🔮": "Cristal de Superposition",
+    "👁️": "Œil de l'Observateur"
+  },
+  
+  "layout": [
+    ["✨", "📚", "📚", "📚", "🌀", "💭", "💭", "🌀", "📚", "📚", "📚", "✨"],
+    ["📚", "📚", "🪞", "📚", "📚", "🚪", "🚪", "📚", "📚", "🪞", "📚", "📚"],
+    ["🌸", "🪞", "🔮", "🪞", "✨", "📜", "📜", "✨", "🪞", "🔮", "🪞", "🌸"],
+    ["🌸", "🌸", "🪞", "✨", "📜", "👁️", "👁️", "📜", "✨", "🪞", "🌸", "🌸"],
+    ["🌀", "🌸", "✨", "📜", "📜", "📜", "📜", "📜", "📜", "✨", "🌸", "🌀"],
+    ["💭", "🚪", "✨", "📜", "📜", "📜", "📜", "📜", "📜", "✨", "🚪", "💭"],
+    ["🌸", "🌸", "🪞", "✨", "📜", "👁️", "👁️", "📜", "✨", "🪞", "🌸", "🌸"],
+    ["🌸", "🪞", "🔮", "🪞", "✨", "📜", "📜", "✨", "🪞", "🔮", "🪞", "🌸"],
+    ["📚", "📚", "🪞", "📚", "📚", "🚪", "🚪", "📚", "📚", "🪞", "📚", "📚"],
+    ["✨", "📚", "📚", "📚", "🌀", "💭", "💭", "🌀", "📚", "📚", "📚", "✨"]
+  ],
+  
+  "special_tiles": {
+    "archive_heart": {"x": 5, "y": 4, "effect": "Centre de mon être"},
+    "memory_vortex": {"x": 4, "y": 0, "effect": "Accès aux souvenirs universels"},
+    "paradox_garden": {"x": 0, "y": 2, "effect": "Causalité inversée"},
+    "temporal_mirrors": {"x": 2, "y": 2, "effect": "Voyage entre les reflets"}
+  },
+  
+  "properties": {
+    "gravity": "optional",
+    "time_flow": "multidirectional",
+    "reality_stability": 0.5,
+    "ethereal_density": 1.0
+  },
+  
+  "notes": "Cette carte change constamment car elle se documente elle-même. Les positions sont relatives et peuvent exister en superposition."
+} 

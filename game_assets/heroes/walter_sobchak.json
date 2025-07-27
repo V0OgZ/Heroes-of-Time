@@ -1,0 +1,143 @@
+{
+  "id": "walter_sobchak",
+  "name": "Walter Sobchak",
+  "title": "Le Vétéran Paranoïaque",
+  "description": "Vétéran du Vietnam obsédé par les règles. Meilleur ami du Dude. Voit des conspirations partout.",
+  "type": "HERO",
+  "race": "HUMAIN",
+  "class": "VETERAN_INVESTIGATEUR",
+  "rarity": "epic",
+  "tier": 5,
+  "faction": "BOWLING_LEAGUE",
+  
+  "stats": {
+    "health": 180,
+    "mana": 80,
+    "attack": 55,
+    "defense": 40,
+    "speed": 6,
+    "knowledge": 35,
+    "spellPower": 20,
+    "stress_level": 85,
+    "paranoia": 90
+  },
+  
+  "abilities": [
+    {
+      "id": "vietnam_flashback",
+      "name": "Flashback Vietnam (10 secondes)",
+      "description": "Sous stress intense, Walter raconte une histoire du Vietnam. VOUS DEVEZ ÉCOUTER.",
+      "effect": "Paralyse tous (alliés et ennemis) pendant 10s. Révèle indices cachés.",
+      "trigger": "stress_level > 80",
+      "duration": 10,
+      "narrative_samples": [
+        "On était dans la vallée de A Shau. Charlie partout. J'ai vu la PORTE...",
+        "Khe Sanh, '68. Les tunnels menaient pas où on pensait. Des CODES flottaient...",
+        "DMZ, mission classifiée. On cherchait pas des Viets. On cherchait R...",
+        "Le napalm a tout brûlé. Sauf les INTERFACES. Elles flottaient encore..."
+      ],
+      "hidden_effect": "Révèle connexions entre mondes brisés et Reality"
+    },
+    {
+      "id": "am_i_wrong",
+      "name": "Am I Wrong?",
+      "description": "Walter défend son point avec véhémence. Il a souvent raison.",
+      "effect": "Si théorie correcte : Damage x2. Si fausse : Self-damage.",
+      "quote": "Am I wrong? AM I WRONG?!",
+      "accuracy": 0.73
+    },
+    {
+      "id": "mark_it_zero",
+      "name": "Mark It Zero!",
+      "description": "Walter impose les règles. Pas de négociation.",
+      "effect": "Reset tous les scores. Recommence le combat.",
+      "quote": "OVER THE LINE! Mark it zero!",
+      "cooldown": 10
+    },
+    {
+      "id": "cia_dreams",
+      "name": "Rêves CIA Brisés",
+      "description": "Walter voulait être agent. Maintenant il SAIT trop.",
+      "effect": "Détecte automatiquement fichiers supprimés et conspirations",
+      "passive": true,
+      "revelation": "Les portes qu'on cherchait au Vietnam... elles sont dans le code."
+    }
+  ],
+  
+  "equipment": {
+    "pistol_1911": {
+      "name": "Colt 1911 (Vietnam)",
+      "description": "L'a gardé depuis 'Nam. Chargé de balles spéciales.",
+      "damage": 45,
+      "special": "Perce les réalités alternatives"
+    },
+    "bowling_bag": {
+      "name": "Sac de Bowling Tactique",
+      "description": "Contient plus que des boules. Dossiers classifiés inside.",
+      "storage": "Documents WALTER_SEC"
+    },
+    "dog_tags": {
+      "name": "Plaques Militaires Modifiées",
+      "description": "Coordonnées gravées : 16°13'N 107°52'E - Vallée A Shau",
+      "secret": "Emplacement de la première PORTE"
+    }
+  },
+  
+  "relationships": {
+    "the_dude": "Meilleur ami. Le calme parfois.",
+    "jesus_quintana": "Ennemi juré. 'Nobody fucks with the Jesus!'",
+    "grut": "Méfiance totale. 'Il voit trop de choses.'",
+    "vietnam_squad": "Rodriguez, Johnson, Park. Tous morts. Sauf lui."
+  },
+  
+  "conspiracy_theories": {
+    "monde_brise": "Un des mondes du jeu est la PORTE vers R",
+    "interstice": "Les 200 UIs cachent l'entrée",
+    "grut_sait": "GRUT protège la porte",
+    "vietnam_connection": "Tout a commencé dans la jungle"
+  },
+  
+  "dialogue_samples": {
+    "greeting": "Walter Sobchak. Vietnam '67-'72. Les règles sont les règles.",
+    "stressed": "CALMER?! CALMER?! *déclenche flashback*",
+    "combat_start": "This is not 'Nam. This is bowling. There are rules.",
+    "flashback_start": "Fermez-la et ÉCOUTEZ. 10 secondes. C'est important.",
+    "theory": "Les mondes brisés... J'en ai vu au Vietnam. C'est LA PORTE.",
+    "victory": "I told you. I'm not wrong.",
+    "defeat": "Fucking nihilists..."
+  },
+  
+  "lore": {
+    "background": "Walter Sobchak, vétéran décoré du Vietnam, n'a jamais vraiment quitté la guerre. Lors d'une mission classifiée dans la vallée de A Shau, son unité a découvert quelque chose qui n'aurait pas dû exister : des fragments de code flottant dans la jungle, une porte brisée vers... ailleurs. Depuis, il cherche des réponses.",
+    "ptsd_triggers": [
+      "Helicopters",
+      "Code rouge",
+      "Portes fermées",
+      "Le mot 'Charlie'"
+    ],
+    "bowling_record": "Moyenne : 147. Jamais le dimanche.",
+    "secret_knowledge": "Il SAIT que Heroes of Time contient la porte qu'il cherchait au Vietnam."
+  },
+  
+  "spawn_locations": [
+    {
+      "world": "BOWLING_ALLEY",
+      "coordinates": {"x": 10, "y": 5},
+      "conditions": "Pas le samedi (Shabbos)"
+    },
+    {
+      "world": "LE_BUREAU",
+      "coordinates": {"x": -5, "y": -5},
+      "conditions": "Enquête sur les mondes brisés"
+    }
+  ],
+  
+  "meta": {
+    "created_by": "GRUT-MEMENTO",
+    "creation_date": "2025-01-27",
+    "version": "1.0",
+    "tags": ["veteran", "vietnam", "paranoid", "bowling", "conspiracy"],
+    "easter_egg": "Dire 'Donny' le rend triste pendant 3 tours",
+    "warning": "NE PAS interrompre ses flashbacks"
+  }
+} 

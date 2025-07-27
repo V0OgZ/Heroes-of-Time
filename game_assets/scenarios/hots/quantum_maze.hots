@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: quantum_realm
+MAP: quantum_maze_map
+
 # ========================================
 # QUANTUM MAZE - Puzzle Quantique Avancé
 # Moteur: Heroes of Time Engine v1.0

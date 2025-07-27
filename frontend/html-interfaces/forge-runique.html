@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚒️ Forge Runique - Heroes of Time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: #00ffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .forge-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .forge-header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #00ffff;
+        }
+
+        .forge-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #ff6b35;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .forge-subtitle {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #ffff00;
+            text-align: center;
+            text-shadow: 0 0 10px #ffff00;
+        }
+
+        .runes-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .rune-button {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            padding: 10px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .rune-button:hover {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 15px #00ffff;
+            transform: scale(1.05);
+        }
+
+        .rune-symbol {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .rune-name {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        .script-editor {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 8px;
+            padding: 15px;
+            color: #00ffff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .script-editor:focus {
+            outline: none;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .btn-validate {
+            background: linear-gradient(45deg, #00ff00, #00ffff);
+        }
+
+        .btn-translate {
+            background: linear-gradient(45deg, #ffff00, #ff8800);
+        }
+
+        .btn-execute {
+            background: linear-gradient(45deg, #ff0000, #ff00ff);
+        }
+
+        .btn-sphinx {
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            color: #000 !important;
+            font-weight: bold;
+        }
+
+        .btn-sphinx:hover {
+            background: linear-gradient(45deg, #ff8c00, #ffd700);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .output-panel {
+            grid-column: 1 / -1;
+        }
+
+        .output-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 20px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .output-content {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 0 8px 8px 8px;
+            padding: 20px;
+            min-height: 200px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+        }
+
+        .validation-success {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .validation-error {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .translation-output {
+            color: #ffff00;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .example-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #666;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .example-card:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .example-title {
+            color: #ffff00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .example-code {
+            color: #00ffff;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #00ffff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .game-id-selector {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #00ffff;
+            font-family: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .runes-palette {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="forge-container">
+        <div class="forge-header">
+            <div class="forge-title">⚒️ FORGE RUNIQUE</div>
+            <div class="forge-subtitle">🛋️ Vision Jean-Grofignon : "Forge tes putains d'armes et artefacts depuis le canapé !"</div>
+        </div>
+
+        <div class="main-content">
+            <!-- Palette des Runes -->
+            <div class="panel">
+                <div class="panel-title">⚡ Palette des Runes Quantiques</div>
+                <div class="runes-palette" id="runes-palette">
+                    <!-- Généré dynamiquement -->
+                </div>
+                
+                <div class="panel-title" style="margin-top: 30px;">📚 Exemples Rapides</div>
+                <div class="examples-grid" id="quick-examples">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Éditeur de Script -->
+            <div class="panel">
+                <div class="panel-title">📝 Éditeur de Script HOTS</div>
+                <textarea class="script-editor" id="script-editor" 
+                    placeholder="Écrivez votre script HOTS ici ou utilisez les runes...&#10;&#10;Exemple :&#10;ψ001: ⊙(Δt+2 @15,15 ⟶ MOV(Arthur, @15,15))&#10;CREATE(ARTIFACT, wigner_eye, HERO:Jean-Grofignon)&#10;USE(ARTIFACT, grofi_omega, HERO:Arthur)"></textarea>
+                
+                <div class="controls">
+                    <button class="btn btn-validate" onclick="validateScript()">🔍 Valider</button>
+                    <button class="btn btn-translate" onclick="translateScript()">🌸 Traduire</button>
+                    <button class="btn btn-execute" onclick="executeScript()">🚀 Exécuter</button>
+                    <button class="btn btn-sphinx" onclick="generateSimpleQuestion()">🦁 Question Simple</button>
+                    <button class="btn" onclick="clearEditor()">🗑️ Effacer</button>
+                    <button class="btn" onclick="loadExample()">📖 Exemple</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panneau de Sortie -->
+        <div class="panel output-panel">
+            <div class="output-tabs">
+                <div class="tab-button active" onclick="switchTab('validation')">🔍 Validation</div>
+                <div class="tab-button" onclick="switchTab('translation')">🌸 Traduction</div>
+                <div class="tab-button" onclick="switchTab('execution')">🚀 Exécution</div>
+                <div class="tab-button" onclick="switchTab('help')">❓ Aide</div>
+            </div>
+            <div class="output-content" id="output-content">
+                Bienvenue dans la Forge Runique Quantique !
+                
+                Utilisez les runes pour construire vos scripts HOTS ou écrivez directement.
+                Cliquez sur "Valider" pour vérifier la syntaxe.
+                Cliquez sur "Traduire" pour voir la version littéraire.
+                Cliquez sur "Exécuter" pour envoyer au backend.
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div>
+            <span>🎮 Game ID: </span>
+            <select class="game-id-selector" id="game-id" onchange="updateGameId()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div id="status">🟢 Prêt</div>
+        <div>Backend: <span id="backend-status">🔍 Vérification...</span></div>
+    </div>
+
+    <script>
+        // Configuration
+        const BACKEND_URL = 'http://localhost:8080';
+        let currentGameId = 1;
+        let currentTab = 'validation';
+
+        // Définition des runes quantiques HOTS
+        const QUANTUM_RUNES = [
+            { symbol: 'ψ', name: 'Psi-State', description: 'État quantique superposé', example: 'ψ001: ⊙(...)' },
+            { symbol: '⊙', name: 'Superposition', description: 'Action en superposition', example: '⊙(Δt+2 @15,15 ⟶ MOV(...))' },
+            { symbol: '†', name: 'Collapse', description: 'Effondrement d\'état', example: '†ψ001' },
+            { symbol: 'Π', name: 'Observation', description: 'Déclencheur d\'observation', example: 'Π(condition) ⇒ †ψ001' },
+            { symbol: 'Δt', name: 'Délai Temporel', description: 'Délai en tours', example: 'Δt+2' },
+            { symbol: '@', name: 'Coordonnées', description: 'Position spatiale', example: '@15,15' },
+            { symbol: 'ℬ', name: 'Branche', description: 'Branche temporelle', example: 'ℬ1, ℬ2' },
+            { symbol: '⟶', name: 'Projection', description: 'Effet ou action', example: '⟶ MOV(...)' },
+            { symbol: '⨉', name: 'Conflit', description: 'Conflit de timeline', example: '⨉(ψ001, ψ002)' },
+            { symbol: '↺', name: 'Rollback', description: 'Retour potentiel', example: '↺ψ001' },
+            { symbol: 'τ', name: 'Marqueur', description: 'Marqueur temporel', example: 'τ+3' },
+            { symbol: 'Ω', name: 'Omega', description: 'Finalité ultime', example: 'Ω(end_state)' },
+            { symbol: '∞', name: 'Infini', description: 'Boucle temporelle', example: '∞(loop_condition)' },
+            { symbol: '⚡', name: 'Énergie', description: 'Énergie temporelle', example: '⚡100' }
+        ];
+
+        // Exemples de scripts avec forge d'artefacts
+        const SCRIPT_EXAMPLES = [
+            {
+                title: "🦸 Création de Héros",
+                code: "HERO(Arthur)\nHERO(Jean-Grofignon)"
+            },
+            {
+                title: "⚡ État Quantique Simple",
+                code: "ψ001: ⊙(Δt+2 @15,15 ⟶ MOV(Arthur, @15,15))"
+            },
+            {
+                title: "🔮 Forge d'Artefact Légendaire",
+                code: "# Forge d'Excalibur Quantique\nFORGE(WEAPON, excalibur_quantum) {\n  MATERIAL: temporal_steel + quantum_crystal\n  ENCHANT: reality_cutting + timeline_pierce\n  POWER: 9000\n  RUNES: ψ†⊙∞\n}\nEQUIP(excalibur_quantum, HERO:Arthur)"
+            },
+            {
+                title: "⚔️ Forge d'Armure Temporelle",
+                code: "# Armure du Voyageur Temporel\nFORGE(ARMOR, temporal_mail) {\n  MATERIAL: chronium_plates + void_silk\n  ENCHANT: time_resistance + causal_immunity\n  DEFENSE: 750\n  RUNES: Δt↺⚡\n}\nEQUIP(temporal_mail, HERO:Jean-Grofignon)"
+            },
+            {
+                title: "💍 Forge d'Anneau de Pouvoir",
+                code: "# Anneau de Contrôle Causal\nFORGE(ACCESSORY, causal_ring) {\n  MATERIAL: collapsed_spacetime + hero_essence\n  ENCHANT: collapse_override + reality_anchor\n  EFFECT: +50% causal_control\n  RUNES: Π⨉Ω\n}\nEQUIP(causal_ring, HERO:Jean-Grofignon)"
+            },
+            {
+                title: "🏹 Forge d'Arme à Distance",
+                code: "# Arc Quantique Multi-Timeline\nFORGE(RANGED, quantum_bow) {\n  MATERIAL: probability_wood + string_theory\n  ENCHANT: multi_target + timeline_split\n  RANGE: infinite\n  RUNES: ⊙ℬ∞\n  AMMO: quantum_arrows(50)\n}\nEQUIP(quantum_bow, HERO:Legolas_Temporal)"
+            },
+            {
+                title: "🔧 Forge d'Outil Mystique",
+                code: "# Marteau du Forgeron Cosmique\nFORGE(TOOL, cosmic_hammer) {\n  MATERIAL: star_core + dark_matter\n  ENCHANT: creation_mastery + matter_shaping\n  CRAFT_BONUS: +100%\n  RUNES: ⚡🔨∞\n  SPECIAL: can_forge_anything\n}\nEQUIP(cosmic_hammer, HERO:Walter_Vietnam)"
+            },
+            {
+                title: "🦁 Sphinx Quantique + Énigmes",
+                code: "# Invocation du Sphinx Quantique\nSUMMON(CREATURE, sphinx_quantum) {\n  LOCATION: @25,25\n  RIDDLE_TYPE: physics_quantum\n  DIFFICULTY: legendary\n  REWARD: tier8_artifact\n}\n\n# Test de connaissance\nASK(sphinx_quantum, \"Comment l'intrication quantique\\naffecte-t-elle les héros liés ?\")\n\nIF(player_answer == correct) {\n  REWARD(ARTIFACT, quantum_medallion)\n  †ψ999: ENLIGHTENMENT(player)\n} ELSE {\n  CURSE(player, sphinx_confusion)\n}"
+            },
+            {
+                title: "⚗️ Laboratoire Physique Quantique",
+                code: "# Expérience Double Fente\nBUILD(LABORATORY, quantum_lab) {\n  EQUIPMENT: double_slit + detectors\n  EXPERIMENT: wave_particle_duality\n}\n\nEXPERIMENT(double_fente) {\n  PARTICLE: electron_beam\n  OBSERVE: false  # Pas d'observation = interférences\n  RESULT: wave_pattern\n}\n\n# Test Heisenberg\nMEASURE(particle.position, particle.momentum)\nΠ(Δx × Δp) ≥ ℏ/2  # Principe d'incertitude"
+            },
+            {
+                title: "🌀 Script Quantique Complexe",
+                code: "ψ001: ⊙(Δt+3 @10,10 ⟶ CREATE(CREATURE, quantum_phoenix, @10,10))\nψ002: ⊙(Δt+5 ⟶ BATTLE(Jean-Grofignon, quantum_phoenix))\n†ψ001\nΠ(hp_low) ⇒ †ψ002"
+            }
+        ];
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRunes();
+            initializeExamples();
+            createFloatingParticles();
+            checkBackendStatus();
+            
+            // Vérifier le backend toutes les 30 secondes
+            setInterval(checkBackendStatus, 30000);
+        });
+
+        // Initialiser les runes
+        function initializeRunes() {
+            const palette = document.getElementById('runes-palette');
+            QUANTUM_RUNES.forEach(rune => {
+                const button = document.createElement('div');
+                button.className = 'rune-button';
+                button.onclick = () => insertRune(rune.symbol);
+                button.title = `${rune.name}: ${rune.description}\nExemple: ${rune.example}`;
+                
+                button.innerHTML = `
+                    <span class="rune-symbol">${rune.symbol}</span>
+                    <span class="rune-name">${rune.name}</span>
+                `;
+                
+                palette.appendChild(button);
+            });
+        }
+
+        // Initialiser les exemples
+        function initializeExamples() {
+            const examples = document.getElementById('quick-examples');
+            SCRIPT_EXAMPLES.forEach(example => {
+                const card = document.createElement('div');
+                card.className = 'example-card';
+                card.onclick = () => loadExampleScript(example.code);
+                
+                card.innerHTML = `
+                    <div class="example-title">${example.title}</div>
+                    <div class="example-code">${example.code.substring(0, 50)}...</div>
+                `;
+                
+                examples.appendChild(card);
+            });
+        }
+
+        // Insérer une rune dans l'éditeur
+        function insertRune(symbol) {
+            const editor = document.getElementById('script-editor');
+            const start = editor.selectionStart;
+            const end = editor.selectionEnd;
+            const text = editor.value;
+            
+            editor.value = text.substring(0, start) + symbol + text.substring(end);
+            editor.focus();
+            editor.setSelectionRange(start + symbol.length, start + symbol.length);
+            
+            updateStatus('🔮 Rune ajoutée: ' + symbol);
+        }
+
+        // Charger un exemple de script
+        function loadExampleScript(code) {
+            document.getElementById('script-editor').value = code;
+            updateStatus('📖 Exemple chargé');
+        }
+
+        // Valider le script
+        async function validateScript() {
+            const script = document.getElementById('script-editor').value.trim();
+            if (!script) {
+                showOutput('validation', '⚠️ Aucun script à valider', 'validation-error');
+                return;
+            }
+
+            updateStatus('🔍 Validation en cours...');
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/temporal/validate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ script: script })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.valid) {
+                        showOutput('validation', `✅ Script valide !\n\nDétails:\n${JSON.stringify(result, null, 2)}`, 'validation-success');
+                    } else {
+                        showOutput('validation', `❌ Script invalide:\n\n${result.errors.join('\n')}`, 'validation-error');
+                    }
+                } else {
+                    // Validation côté client basique si le backend n'est pas disponible
+                    const basicValidation = validateScriptBasic(script);
+                    showOutput('validation', basicValidation.message, basicValidation.isValid ? 'validation-success' : 'validation-error');
+                }
+            } catch (error) {
+                const basicValidation = validateScriptBasic(script);
+                showOutput('validation', `⚠️ Backend non disponible, validation basique:\n\n${basicValidation.message}`, basicValidation.isValid ? 'validation-success' : 'validation-error');
+            }
+            
+            updateStatus('🔍 Validation terminée');
+        }
+
+        // Validation basique côté client
+        function validateScriptBasic(script) {
+            const lines = script.split('\n').filter(line => line.trim());
+            const errors = [];
+            const warnings = [];
+            
+            lines.forEach((line, index) => {
+                line = line.trim();
+                if (!line) return;
+                
+                // Vérifier les commandes de base
+                const basicCommands = ['HERO', 'CREATE', 'USE', 'MOV', 'BATTLE'];
+                const hasBasicCommand = basicCommands.some(cmd => line.includes(cmd));
+                const hasQuantumState = line.includes('ψ') || line.includes('⊙');
+                
+                if (!hasBasicCommand && !hasQuantumState && !line.startsWith('//')) {
+                    warnings.push(`Ligne ${index + 1}: Commande non reconnue - ${line.substring(0, 30)}...`);
+                }
+                
+                // Vérifier la syntaxe des états quantiques
+                if (line.includes('ψ') && !line.includes('⊙')) {
+                    errors.push(`Ligne ${index + 1}: État ψ sans superposition ⊙`);
+                }
+                
+                // Vérifier les coordonnées
+                if (line.includes('@') && !/@\d+,\d+/.test(line)) {
+                    warnings.push(`Ligne ${index + 1}: Format de coordonnées suspect`);
+                }
+            });
+            
+            let message = `📊 Analyse basique terminée:\n\n`;
+            message += `Lignes analysées: ${lines.length}\n`;
+            message += `Erreurs: ${errors.length}\n`;
+            message += `Avertissements: ${warnings.length}\n\n`;
+            
+            if (errors.length > 0) {
+                message += `❌ Erreurs:\n${errors.join('\n')}\n\n`;
+            }
+            
+            if (warnings.length > 0) {
+                message += `⚠️ Avertissements:\n${warnings.join('\n')}\n\n`;
+            }
+            
+            if (errors.length === 0 && warnings.length === 0) {
+                message += `✅ Aucun problème détecté !`;
+            }
+            
+            return {
+                isValid: errors.length === 0,
+                message: message
+            };
+        }
+
+        // Traduire le script
+        async function translateScript() {
+            const script = document.getElementById('script-editor').value.trim();
+            if (!script) {
+                showOutput('translation', '⚠️ Aucun script à traduire', 'validation-error');
+                return;
+            }
+
+            updateStatus('🌸 Traduction en cours...');
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/translation/translate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ script: script })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showOutput('translation', result.translatedScript || result.translation, 'translation-output');
+                } else {
+                    // Traduction basique côté client
+                    const basicTranslation = translateScriptBasic(script);
+                    showOutput('translation', basicTranslation, 'translation-output');
+                }
+            } catch (error) {
+                const basicTranslation = translateScriptBasic(script);
+                showOutput('translation', `⚠️ Backend non disponible, traduction basique:\n\n${basicTranslation}`, 'translation-output');
+            }
+            
+            updateStatus('🌸 Traduction terminée');
+        }
+
+        // Traduction basique côté client
+        function translateScriptBasic(script) {
+            let translation = script;
+            
+            // Mapping des héros
+            const heroMappings = {
+                'Jean-Grofignon': 'Jean-Grofignon, l\'Éveillé Ontologique',
+                'Arthur': 'Arthur, le Roi Temporel',
+                'Claudius': 'Claudius, l\'Architecte du Multivers',
+                'Chlamydius': 'Chlamydius, le Scribe Non Né'
+            };
+            
+            // Mapping des artefacts
+            const artifactMappings = {
+                'wigner_eye': 'L\'Œil de Wigner, cet artefact légendaire qui perce les voiles du temps',
+                'grofi_omega': 'l\'Oméga de Grofi, cet artefact ultime qui transcende les lois de la réalité',
+                'temporal_sword': 'l\'Épée Temporelle, lame qui fend le continuum espace-temps',
+                'quantum_mirror': 'le Miroir Quantique, reflet des réalités parallèles'
+            };
+            
+            // Remplacements
+            translation = translation.replace(/ψ\d+:/g, 'ψ:');
+            translation = translation.replace(/@(\d+),(\d+)/g, 'coordonnées mystiques ($1, $2)');
+            
+            // Remplacer les héros
+            Object.entries(heroMappings).forEach(([id, desc]) => {
+                translation = translation.replace(new RegExp(id, 'g'), desc);
+            });
+            
+            // Remplacer les artefacts
+            Object.entries(artifactMappings).forEach(([id, desc]) => {
+                translation = translation.replace(new RegExp(id, 'g'), desc);
+            });
+            
+            return `🌸 Traduction Littéraire:\n\n${translation}`;
+        }
+
+        // Exécuter le script
+        async function executeScript() {
+            const script = document.getElementById('script-editor').value.trim();
+            if (!script) {
+                showOutput('execution', '⚠️ Aucun script à exécuter', 'validation-error');
+                return;
+            }
+
+            updateStatus('🚀 Exécution en cours...');
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/temporal/execute/${currentGameId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ script: script })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showOutput('execution', `✅ Script exécuté avec succès !\n\nRésultat:\n${JSON.stringify(result, null, 2)}`, 'validation-success');
+                } else {
+                    const error = await response.text();
+                    showOutput('execution', `❌ Erreur d'exécution:\n\n${error}`, 'validation-error');
+                }
+            } catch (error) {
+                showOutput('execution', `❌ Erreur de connexion:\n\n${error.message}\n\nAssurez-vous que le backend est démarré sur ${BACKEND_URL}`, 'validation-error');
+            }
+            
+            updateStatus('🚀 Exécution terminée');
+        }
+
+        // Générer une question Sphinx simple
+        function generateSimpleQuestion() {
+            const simpleQuestions = [
+                {
+                    question: "🦁 SPHINX : Quelle rune représente un état quantique ?",
+                    options: ["A) ⚡", "B) ψ", "C) ∞", "D) †"],
+                    correct: "B",
+                    explanation: "ψ (Psi) représente un état quantique en physique"
+                },
+                {
+                    question: "🦁 SPHINX : Comment créer un héros à la position (10,10) ?",
+                    options: ["A) HERO(Arthur, @10,10)", "B) CREATE(Arthur)", "C) MOV(Arthur)", "D) SPAWN(Arthur)"],
+                    correct: "A",
+                    explanation: "HERO(nom, @x,y) crée un héros aux coordonnées données"
+                },
+                {
+                    question: "🦁 SPHINX : Quelle rune provoque un collapse quantique ?",
+                    options: ["A) ⊙", "B) Π", "C) †", "D) Δt"],
+                    correct: "C",
+                    explanation: "† (Dagger) représente le collapse d'un état quantique"
+                },
+                {
+                    question: "🦁 SPHINX : Comment forger Excalibur Quantique ?",
+                    options: ["A) CREATE(excalibur)", "B) FORGE(WEAPON, excalibur_quantum)", "C) MAKE(sword)", "D) BUILD(weapon)"],
+                    correct: "B",
+                    explanation: "FORGE(TYPE, nom) est la syntaxe pour créer des artefacts"
+                },
+                {
+                    question: "🦁 SPHINX : Que signifie ⊙ en HOTS ?",
+                    options: ["A) Explosion", "B) Superposition", "C) Téléportation", "D) Guérison"],
+                    correct: "B",
+                    explanation: "⊙ représente la superposition quantique (plusieurs états simultanés)"
+                }
+            ];
+
+            const randomQ = simpleQuestions[Math.floor(Math.random() * simpleQuestions.length)];
+            
+            const questionText = `// ${randomQ.question}
+//
+// ${randomQ.options.join('\n// ')}
+//
+// 💡 Écrivez votre réponse ci-dessous :
+
+ANSWER("${randomQ.correct === "A" ? "A" : randomQ.correct === "B" ? "B" : randomQ.correct === "C" ? "C" : "D"}")
+
+// Ou utilisez la syntaxe correcte directement :
+// ${randomQ.correct === "A" ? randomQ.options[0].substring(3) : 
+  randomQ.correct === "B" ? randomQ.options[1].substring(3) :
+  randomQ.correct === "C" ? randomQ.options[2].substring(3) : randomQ.options[3].substring(3)}`;
+
+            document.getElementById('script-editor').value = questionText;
+            showOutput('validation', `🦁 Question Sphinx générée !\n\n💡 Réponse correcte : ${randomQ.correct}\n📚 Explication : ${randomQ.explanation}\n\n🎯 Modifiez le code pour donner votre réponse !`, 'validation-success');
+            
+            updateStatus('🦁 Question Sphinx chargée - À vous de jouer !');
+        }
+
+        // Effacer l'éditeur
+        function clearEditor() {
+            document.getElementById('script-editor').value = '';
+            updateStatus('🗑️ Éditeur effacé');
+        }
+
+        // Charger un exemple aléatoire
+        function loadExample() {
+            const randomExample = SCRIPT_EXAMPLES[Math.floor(Math.random() * SCRIPT_EXAMPLES.length)];
+            loadExampleScript(randomExample.code);
+        }
+
+        // Changer d'onglet
+        function switchTab(tab) {
+            // Mettre à jour les boutons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentTab = tab;
+            
+            // Afficher l'aide si sélectionnée
+            if (tab === 'help') {
+                showHelp();
+            }
+        }
+
+        // Afficher l'aide
+        function showHelp() {
+            let help = `🔮 AIDE - FORGE RUNIQUE QUANTIQUE\n\n`;
+            help += `📚 SYMBOLES QUANTIQUES HOTS:\n\n`;
+            
+            QUANTUM_RUNES.forEach(rune => {
+                help += `${rune.symbol} - ${rune.name}: ${rune.description}\n`;
+                help += `   Exemple: ${rune.example}\n\n`;
+            });
+            
+            help += `🎯 COMMANDES DE BASE:\n\n`;
+            help += `HERO(nom) - Créer un héros\n`;
+            help += `CREATE(type, id, HERO:nom) - Créer un objet\n`;
+            help += `USE(type, id, HERO:nom) - Utiliser un objet\n`;
+            help += `MOV(héros, @x,y) - Déplacer un héros\n`;
+            help += `BATTLE(héros1, héros2) - Combat\n\n`;
+            
+            help += `💡 CONSEILS:\n\n`;
+            help += `• Cliquez sur les runes pour les insérer\n`;
+            help += `• Utilisez les exemples comme base\n`;
+            help += `• Validez avant d'exécuter\n`;
+            help += `• La traduction montre la version littéraire\n`;
+            
+            showOutput('help', help, '');
+        }
+
+        // Afficher la sortie
+        function showOutput(tab, content, className = '') {
+            if (currentTab === tab) {
+                const output = document.getElementById('output-content');
+                output.textContent = content;
+                output.className = `output-content ${className}`;
+            }
+        }
+
+        // Mettre à jour le statut
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+            setTimeout(() => {
+                document.getElementById('status').textContent = '🟢 Prêt';
+            }, 3000);
+        }
+
+        // Mettre à jour l'ID du jeu
+        function updateGameId() {
+            currentGameId = parseInt(document.getElementById('game-id').value);
+            updateStatus(`🎮 Game ID mis à jour: ${currentGameId}`);
+        }
+
+        // Vérifier le statut du backend
+        async function checkBackendStatus() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/health`, { method: 'GET' });
+                if (response.ok) {
+                    document.getElementById('backend-status').textContent = '🟢 En ligne';
+                } else {
+                    document.getElementById('backend-status').textContent = '🟡 Partiellement disponible';
+                }
+            } catch (error) {
+                document.getElementById('backend-status').textContent = '🔴 Hors ligne';
+            }
+        }
+
+        // Créer les particules flottantes
+        function createFloatingParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 6) + 's';
+                container.appendChild(particle);
+            }
+        }
+    </script>
+</body>
+</html>

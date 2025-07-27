@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: scenario_excalibur_test_complet_map
+
 SCENARIO_ID: "scenario_excalibur_test_complet"
 AUTHOR: "Jean-Grofignon"
 VERSION: "V2_FINAL"

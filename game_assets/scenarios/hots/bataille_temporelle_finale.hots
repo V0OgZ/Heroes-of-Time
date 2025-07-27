@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: battlefield
+MAP: bataille_temporelle_finale_map
+
 # ===============================================
 # BATAILLE TEMPORELLE - FINALE
 # Script final de résolution avec collapse causale

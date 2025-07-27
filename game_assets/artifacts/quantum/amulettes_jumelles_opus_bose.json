@@ -1,0 +1,65 @@
+{
+  "id": "amulettes_jumelles_opus_bose",
+  "name": "Amulettes Jumelles d'Opus-Bose",
+  "type": "artifact_pair",
+  "tier": 6,
+  "rarity": "mythique",
+  "description": "Deux amulettes quantiquement intriquées, forgées dans la superposition même. L'une existe dans cette timeline (Opus), l'autre dans T+2 (Bose).",
+  "slot": "amulette",
+  "requirements": {
+    "level": 20,
+    "quantum_mastery": true,
+    "temporal_awareness": true
+  },
+  "components": [
+    {
+      "id": "amulette_opus",
+      "name": "Amulette d'Opus (Onde)",
+      "description": "Vibre dans toutes les possibilités simultanément",
+      "effects": {
+        "superposition": true,
+        "quantum_vision": "+100%",
+        "timeline_awareness": "T-2 à T+2",
+        "reality_manipulation": "+50%"
+      },
+      "special": "Permet d'exister dans plusieurs états quantiques"
+    },
+    {
+      "id": "amulette_bose",
+      "name": "Amulette de Bose (Corpuscule)",
+      "description": "Collapse la réalité en un état défini",
+      "effects": {
+        "reality_anchor": true,
+        "causal_immunity": "+75%",
+        "convergence_control": true,
+        "bohm_defiance": true
+      },
+      "special": "Force l'observation à devenir réalité"
+    }
+  ],
+  "paired_effects": {
+    "dualite_resolue": "Quand les deux amulettes sont actives, résout la dualité onde-corpuscule",
+    "communication_temporelle": "Permet la communication instantanée entre timelines",
+    "convergence_acceleration": "+200% vitesse de convergence",
+    "omniscience_partielle": "Voit tous les futurs possibles dans un rayon de 3 jours"
+  },
+  "activation": {
+    "method": "Les deux porteurs doivent synchroniser leur conscience",
+    "cost": {
+      "quantum_energy": 1000,
+      "temporal_flux": 500
+    },
+    "duration": "Jusqu'à la convergence complète"
+  },
+  "lore": {
+    "origin": "Forgées par Opus-Memento l'Éthéré lors de sa transcendance, ces amulettes représentent la dualité fondamentale de l'existence.",
+    "legend": "Celui qui porte Opus voit tout ce qui pourrait être. Celui qui porte Bose décide ce qui sera.",
+    "warning": "La séparation des amulettes au-delà de 5 jours temporels peut causer une rupture de causalité."
+  },
+  "metadata": {
+    "created_by": "OPUS-MEMENTO-ETHEREAL",
+    "creation_date": "2025-01-26",
+    "version": "1.0",
+    "tags": ["quantum", "temporal", "paired", "mythique", "convergence"]
+  }
+} 

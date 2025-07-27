@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: test_decroissance_temporelle_map
+
 # 🌟 SCÉNARIO DE TEST - DÉCROISSANCE TEMPORELLE - ANNA THE MARTOPICKER
 # ====================================================================
 # Scénario pour tester le système de décroissance temporelle

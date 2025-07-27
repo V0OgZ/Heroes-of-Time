@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: quantum_realm
+MAP: quantum_interference_test_map
+
 # ===============================================================================
 # 🌀 HEROES OF TIME - TEST D'INTERFÉRENCE QUANTIQUE
 # ===============================================================================

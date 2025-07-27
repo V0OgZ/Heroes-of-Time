@@ -1,56 +1,35 @@
 [INFO] Scanning for projects...
 [INFO] 
-[INFO] ----------------< com.heroesoftimepoc:temporal-engine >-----------------
-[INFO] Building temporal-engine 0.0.1-SNAPSHOT
+[INFO] --------------------------< com.example:demo >--------------------------
+[INFO] Building demo 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
-[INFO] >>> spring-boot-maven-plugin:2.7.18:run (default-cli) > test-compile @ temporal-engine >>>
+[INFO] >>> spring-boot:2.7.18:run (default-cli) > test-compile @ demo >>>
 [INFO] 
-[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ temporal-engine ---
+[INFO] --- resources:3.2.0:resources (default-resources) @ demo ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Using 'UTF-8' encoding to copy filtered properties files.
 [INFO] Copying 1 resource
-[INFO] Copying 35 resources
+[INFO] Copying 34 resources
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ temporal-engine ---
+[INFO] --- compiler:3.10.1:compile (default-compile) @ demo ---
 [INFO] Nothing to compile - all classes are up to date
 [INFO] 
-[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ temporal-engine ---
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ demo ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Using 'UTF-8' encoding to copy filtered properties files.
-[INFO] Copying 3 resources
+[INFO] Copying 2 resources
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ temporal-engine ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 13 source files to /Users/admin/fullstack-project/backend/target/test-classes
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/EclatMondesDissolusTest.java:[224,82] unchecked cast
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.lang.Object
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/EclatMondesDissolusTest.java:[301,96] unchecked cast
-  required: java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
-  found:    java.lang.Object
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/EclatMondesDissolusTest.java:[311,83] unchecked cast
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.lang.Object
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/integration/BatailleTemporelleIntegrationTest.java:[112,50] unchecked conversion
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.util.Map
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/integration/BatailleTemporelleIntegrationTest.java:[127,55] unchecked conversion
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.util.Map
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/integration/BatailleTemporelleIntegrationTest.java:[156,51] unchecked conversion
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.util.Map
-[WARNING] /Users/admin/fullstack-project/backend/src/test/java/com/heroesoftimepoc/temporalengine/integration/QuantumArtifactsIntegrationTest.java:[102,58] unchecked conversion
-  required: java.util.Map<java.lang.String,java.lang.Object>
-  found:    java.util.Map
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ demo ---
+[INFO] No sources to compile
 [INFO] 
-[INFO] <<< spring-boot-maven-plugin:2.7.18:run (default-cli) < test-compile @ temporal-engine <<<
+[INFO] <<< spring-boot:2.7.18:run (default-cli) < test-compile @ demo <<<
 [INFO] 
 [INFO] 
-[INFO] --- spring-boot-maven-plugin:2.7.18:run (default-cli) @ temporal-engine ---
+[INFO] --- spring-boot:2.7.18:run (default-cli) @ demo ---
 [INFO] Attaching agents: []
-09:31:35.200 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+20:42:46.510 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
  ██╗  ██╗███████╗██████╗  ██████╗ ███████╗███████╗    ██████╗ ███████╗    ████████╗██╗███╗   ███╗███████╗
  ██║  ██║██╔════╝██╔══██╗██╔═══██╗██╔════╝██╔════╝   ██╔═══██╗██╔════╝    ╚══██╔══╝██║████╗ ████║██╔════╝
  ███████║█████╗  ██████╔╝██║   ██║█████╗  ███████╗   ██║   ██║█████╗         ██║   ██║██╔████╔██║█████╗  
@@ -71,203 +50,710 @@
     • API REST Complète            ✅
     
  🎯 Port: 8080 | 🔧 Profile: default | 📊 Version: 1.0.0 
-09:31:35.228 [main] INFO  com.heroesoftimepoc.temporalengine.TemporalEngineApplication - Starting TemporalEngineApplication using Java 17.0.15 on vincents-MacBook-Pro.local with PID 68812 (/Users/admin/fullstack-project/backend/target/classes started by admin in /Users/admin/fullstack-project/backend)
-09:31:35.230 [main] DEBUG com.heroesoftimepoc.temporalengine.TemporalEngineApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
-09:31:35.230 [main] INFO  com.heroesoftimepoc.temporalengine.TemporalEngineApplication - No active profile set, falling back to 1 default profile: "default"
-09:31:35.502 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-09:31:35.535 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 7 JPA repository interfaces.
-09:31:35.890 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-09:31:35.900 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-09:31:35.901 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-09:31:35.901 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
-09:31:35.946 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-09:31:35.947 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 697 ms
-09:31:35.985 [main] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Starting...
-09:31:36.077 [main] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Start completed.
-09:31:36.106 [main] INFO  org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:heroesdb'
-09:31:36.165 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-09:31:36.190 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-09:31:36.267 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-09:31:36.525 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-Hibernate: drop table if exists cities CASCADE 
-09:31:37.144 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7bbe5548] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-Hibernate: drop table if exists forged_objects CASCADE 
-Hibernate: drop table if exists game_history CASCADE 
-Hibernate: drop table if exists game_metadata CASCADE 
-Hibernate: drop table if exists game_players CASCADE 
-Hibernate: drop table if exists game_tiles CASCADE 
-Hibernate: drop table if exists games CASCADE 
-Hibernate: drop table if exists hero_abilities CASCADE 
-Hibernate: drop table if exists hero_inventory CASCADE 
-Hibernate: drop table if exists hero_status_effects CASCADE 
-Hibernate: drop table if exists hero_titles CASCADE 
-Hibernate: drop table if exists heroes CASCADE 
-Hibernate: drop table if exists players CASCADE 
-Hibernate: drop table if exists psi_states CASCADE 
-Hibernate: drop table if exists temporal_artifacts CASCADE 
-Hibernate: drop table if exists tile_effects CASCADE 
-Hibernate: drop table if exists tile_items CASCADE 
-Hibernate: drop table if exists tile_occupants CASCADE 
-Hibernate: create table cities (id bigint generated by default as identity, buildings TEXT, game_id bigint, income TEXT, level integer, name varchar(255), player_id varchar(255), resources TEXT, primary key (id))
-09:31:37.152 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@e1d2781] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-Hibernate: create table forged_objects (id bigint generated by default as identity, cost varchar(255), effect varchar(500), forge_time timestamp, forged_by varchar(255), formula varchar(1000), is_dangerous boolean, name varchar(255) not null, stability_rating double, times_used integer, type varchar(255) not null, game_id bigint, primary key (id))
-Hibernate: create table game_history (game_id bigint not null, event varchar(255))
-Hibernate: create table game_metadata (game_id bigint not null, metadata_value integer, metadata_key varchar(255) not null, primary key (game_id, metadata_key))
-Hibernate: create table game_players (game_id bigint not null, player_id varchar(255))
-Hibernate: create table game_tiles (id bigint generated by default as identity, building_owner varchar(255), building_type varchar(255), defense_bonus integer, has_psi_states boolean, is_locked boolean, is_temporal_zone boolean, lock_duration integer, movement_cost integer, temporal_energy_bonus integer, temporal_zone_type varchar(255), terrain varchar(255), x integer not null, y integer not null, game_id bigint, primary key (id))
-Hibernate: create table games (id bigint generated by default as identity, created_at timestamp, current_player varchar(255), current_timeline varchar(255), current_turn integer, ended_at timestamp, game_name varchar(255) not null, map_height integer, map_width integer, max_players integer, started_at timestamp, status varchar(255), winner varchar(255), primary key (id))
-Hibernate: create table hero_abilities (hero_id bigint not null, ability varchar(255))
-Hibernate: create table hero_inventory (hero_id bigint not null, item varchar(255))
-Hibernate: create table hero_status_effects (hero_id bigint not null, duration integer, effect_name varchar(255) not null, primary key (hero_id, effect_name))
-Hibernate: create table hero_titles (hero_id bigint not null, title varchar(255))
-Hibernate: create table heroes (id bigint generated by default as identity, causality_awareness integer, current_day integer, days_traveled integer, has_observation_ability boolean, health integer, max_health integer, max_movement_points integer, max_temporal_energy integer, movement_points integer, movement_points_per_day integer, name varchar(255) not null, observation_range integer, player_id varchar(255), position_x integer, position_y integer, status varchar(255), temporal_energy integer, temporal_immunity boolean, temporal_vision_range integer, timeline_branch varchar(255), vision_radius integer, game_id bigint, primary key (id))
-Hibernate: create table players (id bigint generated by default as identity, joined_at timestamp, name varchar(255) not null, status varchar(255), game_id bigint, primary key (id))
-Hibernate: create table psi_states (id bigint generated by default as identity, action_type varchar(255), branch_id varchar(255), collapse_trigger varchar(255), amplitude_imaginary double, amplitude_real double, created_at timestamp, delta_t integer, expression TEXT, owner_hero varchar(255), probability double, psi_id varchar(255) not null, status varchar(255), target_x integer, target_y integer, use_complex_amplitude boolean, game_id bigint, primary key (id))
-Hibernate: create table temporal_artifacts (id bigint generated by default as identity, activated_at timestamp, artifact_id varchar(255) not null, created_at timestamp, description TEXT, effect_duration integer, effect_power integer, effect_radius integer, name varchar(255) not null, owner_id varchar(255), position_x integer, position_y integer, remaining_duration integer, status varchar(255), temporal_energy_cost integer, type varchar(255) not null, game_id bigint, primary key (id))
-Hibernate: create table tile_effects (tile_id bigint not null, effect varchar(255))
-Hibernate: create table tile_items (tile_id bigint not null, item varchar(255))
-Hibernate: create table tile_occupants (tile_id bigint not null, occupant varchar(255))
-Hibernate: alter table psi_states add constraint UK_p3db7cxh1ex7q3qcsx7b4otyr unique (psi_id)
-Hibernate: alter table temporal_artifacts add constraint UK_htd98v35r512f47a02mb18517 unique (artifact_id)
-Hibernate: alter table forged_objects add constraint FKhdsqckahlo2lb6j4klgulaffn foreign key (game_id) references games
-Hibernate: alter table game_history add constraint FK1aab4jlhfgjg0ui3p4o23uqdp foreign key (game_id) references games
-Hibernate: alter table game_metadata add constraint FKhrb23hu15c4tg72vp9e1vqbc8 foreign key (game_id) references games
-Hibernate: alter table game_players add constraint FKrbr2flqdav5ovyjas7q92u64r foreign key (game_id) references games
-Hibernate: alter table game_tiles add constraint FK9jnp7yfteauo45smvmxa8710m foreign key (game_id) references games
-Hibernate: alter table hero_abilities add constraint FK4wk3wflmkij7kl93hmbg29y9j foreign key (hero_id) references heroes
-Hibernate: alter table hero_inventory add constraint FKox21x0dd4fg7w81h3a8o6chu foreign key (hero_id) references heroes
-Hibernate: alter table hero_status_effects add constraint FKhwhtej8yql47i6ubjqd6gmj1j foreign key (hero_id) references heroes
-Hibernate: alter table hero_titles add constraint FKc69wtssobfnv2dhrvnspasx9t foreign key (hero_id) references heroes
-Hibernate: alter table heroes add constraint FKb88jgdc3dfmmhbnrpl6u5sjdn foreign key (game_id) references games
-Hibernate: alter table players add constraint FKchry7scrns4qyuyxe9dpod9k3 foreign key (game_id) references games
-Hibernate: alter table psi_states add constraint FK9kbp67wo94i0jk9w4v3ja4meq foreign key (game_id) references games
-Hibernate: alter table temporal_artifacts add constraint FK4gwvr3vnipo301cwl6hnvtyn1 foreign key (game_id) references games
-Hibernate: alter table tile_effects add constraint FK3s6ndlrmj9lbvuqiew9vp9s98 foreign key (tile_id) references game_tiles
-Hibernate: alter table tile_items add constraint FK1b41902nqng8okqb0g1q3dqj6 foreign key (tile_id) references game_tiles
-Hibernate: alter table tile_occupants add constraint FKia56skupqk3qxypotqpovr3gb foreign key (tile_id) references game_tiles
-09:31:37.495 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-09:31:37.506 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-✅ Héros GROFI chargé: Jean-Grofignon (LEGENDARY)
-✅ Héros GROFI chargé: The Dude (compagnon)
-✅ Héros GROFI chargé: Vince Vega (compagnon)
-✅ Héros GROFI chargé: Walter (compagnon)
-🦸 4 héros GROFI chargés avec succès
-09:31:38.543 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-09:31:38.610 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-09:31:38.664 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 31 mappings in 'requestMappingHandlerMapping'
-09:31:38.683 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-09:31:38.690 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-09:31:38.798 [main] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
-09:31:38.818 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-09:31:38.841 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-09:31:38.850 [main] INFO  com.heroesoftimepoc.temporalengine.TemporalEngineApplication - Started TemporalEngineApplication in 3.811 seconds (JVM running for 4.144)
-09:31:43.152 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-09:31:43.152 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-09:31:43.153 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
-09:31:43.153 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
-09:31:43.153 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
-09:31:43.153 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@60eacbbf
-09:31:43.154 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3f1b4a14
-09:31:43.154 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-09:31:43.154 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-09:31:43.160 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/scenarios/predefined/conquest-classic", parameters={}
-09:31:43.163 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:43.165 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:43.166 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:43.169 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:43.170 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:43.182 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:43.183 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:43 CEST 2025, status=404, error=Not Found, path=/api/scenarios/predefine (truncated)...]
-09:31:43.197 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:43.206 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/scenarios/predefined/temporal-rift", parameters={}
-09:31:43.206 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:43.207 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:43.207 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:43.207 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:43.208 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:43.208 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:43.208 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:43 CEST 2025, status=404, error=Not Found, path=/api/scenarios/predefine (truncated)...]
-09:31:43.208 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:44.369 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - OPTIONS "/api/health", parameters={}
-09:31:44.373 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:44.377 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 403 FORBIDDEN
-09:31:44.378 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
-09:31:44.379 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:44.380 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:44.380 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:44.380 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:44.381 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:44.381 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:44.382 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:44 CEST 2025, status=404, error=Not Found, path=/api/health}]
-09:31:44.383 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:49.973 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - OPTIONS "/api/health", parameters={}
-09:31:49.974 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:49.975 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 403 FORBIDDEN
-09:31:49.976 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
-09:31:49.976 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:49.977 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:49.977 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:49.978 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:49.978 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:49.978 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:49.978 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:49 CEST 2025, status=404, error=Not Found, path=/api/health}]
-09:31:49.982 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:50.272 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - OPTIONS "/api/panopticon/1/view/player1", parameters={}
-09:31:50.272 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:50.273 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 403 FORBIDDEN
-09:31:50.275 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/panopticon/1/view/player1", parameters={}
-09:31:50.275 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:50.278 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:50.280 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:50.281 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:50.283 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:50.285 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:50.286 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:50 CEST 2025, status=404, error=Not Found, path=/api/panopticon/1/view/p (truncated)...]
-09:31:50.287 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:52.274 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - OPTIONS "/api/panopticon/1/view/player1", parameters={}
-09:31:52.274 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:52.275 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 403 FORBIDDEN
-09:31:52.276 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/panopticon/1/view/player1", parameters={}
-09:31:52.276 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:52.276 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:52.277 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:52.277 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:52.277 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:52.277 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:52.277 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:52 CEST 2025, status=404, error=Not Found, path=/api/panopticon/1/view/p (truncated)...]
-09:31:52.278 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:54.274 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - OPTIONS "/api/panopticon/1/view/player1", parameters={}
-09:31:54.275 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:54.275 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 403 FORBIDDEN
-09:31:54.276 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/panopticon/1/view/player1", parameters={}
-09:31:54.277 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-09:31:54.277 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.resource.ResourceHttpRequestHandler - Resource not found
-09:31:54.277 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
-09:31:54.277 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
-09:31:54.278 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-09:31:54.278 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-09:31:54.278 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Jul 22 09:31:54 CEST 2025, status=404, error=Not Found, path=/api/panopticon/1/view/p (truncated)...]
-09:31:54.278 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
-09:31:54.664 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-09:31:54.664 [SpringApplicationShutdownHook] INFO  org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-Hibernate: drop table if exists cities CASCADE 
-09:31:54.664 [SpringApplicationShutdownHook] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3acd8963] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-Hibernate: drop table if exists forged_objects CASCADE 
-Hibernate: drop table if exists game_history CASCADE 
-Hibernate: drop table if exists game_metadata CASCADE 
-Hibernate: drop table if exists game_players CASCADE 
-Hibernate: drop table if exists game_tiles CASCADE 
-Hibernate: drop table if exists games CASCADE 
-Hibernate: drop table if exists hero_abilities CASCADE 
-Hibernate: drop table if exists hero_inventory CASCADE 
-Hibernate: drop table if exists hero_status_effects CASCADE 
-Hibernate: drop table if exists hero_titles CASCADE 
-Hibernate: drop table if exists heroes CASCADE 
-Hibernate: drop table if exists players CASCADE 
-Hibernate: drop table if exists psi_states CASCADE 
-Hibernate: drop table if exists temporal_artifacts CASCADE 
-Hibernate: drop table if exists tile_effects CASCADE 
-Hibernate: drop table if exists tile_items CASCADE 
-Hibernate: drop table if exists tile_occupants CASCADE 
-09:31:54.671 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Shutdown initiated...
-09:31:54.671 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Shutdown completed.
+20:42:46.534 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.15 on vincents-MacBook-Pro.local with PID 46228 (/Users/admin/fullstack-project/backend/target/classes started by admin in /Users/admin/fullstack-project/backend)
+20:42:46.535 [main] DEBUG com.example.demo.DemoApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+20:42:46.536 [main] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+20:42:46.946 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:42:46.977 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 9 JPA repository interfaces.
+20:42:47.228 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+20:42:47.234 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+20:42:47.235 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+20:42:47.235 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+20:42:47.279 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:42:47.279 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 724 ms
+20:42:47.333 [main] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Starting...
+20:42:47.462 [main] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Start completed.
+20:42:47.467 [main] INFO  org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/heroesdb'
+20:42:47.528 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:42:47.551 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+20:42:47.617 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:42:47.714 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+20:42:48.185 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:42:48.188 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:42:48.503 [main] DEBUG org.springframework.web.filter.CorsFilter - Filter 'corsFilter' configured for use
+🌀 GROFI INIT: Connexion MagicFormulaEngine ↔ QuantumService
+🔗 QUANTUM SERVICE connecté au MagicFormulaEngine
+🌀 GROFI: Superposition + Formules = RÉALITÉ QUANTIQUE
+✅ GROFI: QuantumService connecté avec succès !
+🎯 JEAN: Superposition + Formules = Réalité quantique activée !
+📝 TODO: Reconnecter CausalCollapseService
+20:42:48.817 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_GAMMA_TERTIARY_69d42aae
+20:42:48.818 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_OMEGA_TRAP_b47bb852
+20:42:48.818 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_EPSILON_QUINTERNARY_1d708a48
+20:42:48.818 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : M_VOID_TRAP
+20:42:48.818 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_DELTA_QUATERNARY_75a05b4b
+20:42:48.819 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_BETA_SECONDARY_ae02dae5
+20:42:48.819 [main] INFO  com.example.demo.service.PersistenceService - 📍 Monde chargé : WORLD_ALPHA_PRIME_01d3cb6b
+20:42:48.819 [main] INFO  com.example.demo.service.PersistenceService - ✅ Service de persistance initialisé
+20:42:48.831 [main] INFO  com.example.demo.service.NamelessArtifactService - 🚨 FOUND NAMELESS ARTIFACT: priority_processor_supreme - PRIORITY PROCESSOR SUPREME
+🔄 SELF-TRIGGERING SERVICE INITIALIZED - Ford Compliance Active
+📝 System registered for self-triggering: QuantumEngine
+📝 System registered for self-triggering: ConvergenceCore
+📝 System registered for self-triggering: ERBridgeNetwork
+📝 System registered for self-triggering: MementoArchive
+📝 System registered for self-triggering: OpusEthereal
+🔄 Manual evolution triggered: Initialization complete - Systems awakening
+20:42:48.855 [main] DEBUG org.springframework.web.socket.server.support.WebSocketHandlerMapping - Patterns [/ws/**, /temporal-ws/**, /wsg-stream/**, /causal-sync/**] in 'stompWebSocketHandlerMapping'
+20:42:48.907 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20:42:48.925 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.AIController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.BuildingController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.BureauController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.CausalController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.ConvergenceController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.CosmicSpellController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.EpicContentController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.FormulaController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.FourthWallController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.GameController:
+	
+20:42:48.926 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.ImageController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.LogoutController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MagicFormulaServiceController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MagicItemController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MemoryShareController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MetaCommandController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MoteurOntologiqueController:
+	
+20:42:48.927 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MultiRealmController:
+	
+20:42:48.928 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.MultiplayerController:
+	{[MESSAGE],[/game.join]}: handleJoin(Map)
+	{[MESSAGE],[/game.leave]}: handleLeave(Map)
+	{[MESSAGE],[/game.action]}: handleGameAction(Map)
+	{[MESSAGE],[/game.sync]}: handleSync(Map)
+	{[MESSAGE],[/game.chat]}: handleChat(Map)
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.PanopticonController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.PersistenceController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.QuantumBridgeController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.QuantumController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.RealityController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.ScenarioController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.SpellController:
+	
+20:42:48.929 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.StatusController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.StoryModeController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TalismanController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TattooController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TemporalDecayController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TemporalWebSocketController:
+	{[MESSAGE],[/temporal-app/sync-psi-state]}: handlePsiStateSync(Map)
+	{[MESSAGE],[/wsg-app/stream-world-state]}: handleWSGStreaming(Map)
+	{[MESSAGE],[/causal-app/sync-causal-chain]}: handleCausalSync(Map)
+	{[MESSAGE],[/temporal-app/execute-formula]}: handleTemporalFormula(Map)
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TerrainController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TestController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.TranslationController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.UnitController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.VinceVegaDemoController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.VinceVegaPreservationController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.WorldStateController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.WorldStateGraphController:
+	
+20:42:48.930 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	c.e.d.c.ZFCController:
+	
+20:42:48.932 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+20:42:48.936 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.a.OpenApiWebMvcResource:
+	
+20:42:48.936 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	
+20:42:48.936 [main] DEBUG org.springframework.web.socket.messaging.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.u.SwaggerConfigResource:
+	
+20:42:48.967 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+20:42:49.026 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 326 mappings in 'requestMappingHandlerMapping'
+20:42:49.045 [main] DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+20:42:49.050 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+20:42:49.178 [main] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+20:42:49.193 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+20:42:49.201 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+20:42:49.202 [main] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+20:42:49.202 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/, /temporal-app/, /wsg-app/, /causal-app/]]
+20:42:49.202 [main] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - Starting...
+20:42:49.202 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]
+20:42:49.202 [main] DEBUG org.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]
+20:42:49.202 [main] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]]
+20:42:49.203 [main] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - Started.
+20:42:49.203 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+20:42:49.203 [main] DEBUG org.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+🔄 Evolution Cycle #1 - Self-triggering active
+20:42:49.212 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 2.806 seconds (JVM running for 3.059)
+🚀 Initializing scenarios from JSON files...
+🚀 Loading scenarios from JSON files...
+Hibernate: select scenario0_.id as id1_16_, scenario0_.artifacts as artifact2_16_, scenario0_.campaign_order as campaign3_16_, scenario0_.created_at as created_4_16_, scenario0_.defeat_condition as defeat_c5_16_, scenario0_.description as descript6_16_, scenario0_.difficulty as difficul7_16_, scenario0_.is_active as is_activ8_16_, scenario0_.is_campaign as is_campa9_16_, scenario0_.is_multiplayer as is_mult10_16_, scenario0_.map_height as map_hei11_16_, scenario0_.map_size as map_siz12_16_, scenario0_.map_width as map_wid13_16_, scenario0_.max_players as max_pla14_16_, scenario0_.name as name15_16_, scenario0_.neutral_creatures as neutral16_16_, scenario0_.next_scenario_id as next_sc17_16_, scenario0_.previous_scenario_id as previou18_16_, scenario0_.recommended_players as recomme19_16_, scenario0_.scenario_id as scenari20_16_, scenario0_.special_buildings as special21_16_, scenario0_.starting_resources as startin22_16_, scenario0_.terrain_distribution as terrain23_16_, scenario0_.time_limit as time_li24_16_, scenario0_.turn_limit as turn_li25_16_, scenario0_.updated_at as updated26_16_, scenario0_.victory_condition as victory27_16_, scenario0_.victory_requirement as victory28_16_ from scenarios scenario0_ where scenario0_.scenario_id=?
+📋 Scenario already exists: conquest-classic
+Hibernate: select scenario0_.id as id1_16_, scenario0_.artifacts as artifact2_16_, scenario0_.campaign_order as campaign3_16_, scenario0_.created_at as created_4_16_, scenario0_.defeat_condition as defeat_c5_16_, scenario0_.description as descript6_16_, scenario0_.difficulty as difficul7_16_, scenario0_.is_active as is_activ8_16_, scenario0_.is_campaign as is_campa9_16_, scenario0_.is_multiplayer as is_mult10_16_, scenario0_.map_height as map_hei11_16_, scenario0_.map_size as map_siz12_16_, scenario0_.map_width as map_wid13_16_, scenario0_.max_players as max_pla14_16_, scenario0_.name as name15_16_, scenario0_.neutral_creatures as neutral16_16_, scenario0_.next_scenario_id as next_sc17_16_, scenario0_.previous_scenario_id as previou18_16_, scenario0_.recommended_players as recomme19_16_, scenario0_.scenario_id as scenari20_16_, scenario0_.special_buildings as special21_16_, scenario0_.starting_resources as startin22_16_, scenario0_.terrain_distribution as terrain23_16_, scenario0_.time_limit as time_li24_16_, scenario0_.turn_limit as turn_li25_16_, scenario0_.updated_at as updated26_16_, scenario0_.victory_condition as victory27_16_, scenario0_.victory_requirement as victory28_16_ from scenarios scenario0_ where scenario0_.scenario_id=?
+📋 Scenario already exists: temporal-rift
+Hibernate: select scenario0_.id as id1_16_, scenario0_.artifacts as artifact2_16_, scenario0_.campaign_order as campaign3_16_, scenario0_.created_at as created_4_16_, scenario0_.defeat_condition as defeat_c5_16_, scenario0_.description as descript6_16_, scenario0_.difficulty as difficul7_16_, scenario0_.is_active as is_activ8_16_, scenario0_.is_campaign as is_campa9_16_, scenario0_.is_multiplayer as is_mult10_16_, scenario0_.map_height as map_hei11_16_, scenario0_.map_size as map_siz12_16_, scenario0_.map_width as map_wid13_16_, scenario0_.max_players as max_pla14_16_, scenario0_.name as name15_16_, scenario0_.neutral_creatures as neutral16_16_, scenario0_.next_scenario_id as next_sc17_16_, scenario0_.previous_scenario_id as previou18_16_, scenario0_.recommended_players as recomme19_16_, scenario0_.scenario_id as scenari20_16_, scenario0_.special_buildings as special21_16_, scenario0_.starting_resources as startin22_16_, scenario0_.terrain_distribution as terrain23_16_, scenario0_.time_limit as time_li24_16_, scenario0_.turn_limit as turn_li25_16_, scenario0_.updated_at as updated26_16_, scenario0_.victory_condition as victory27_16_, scenario0_.victory_requirement as victory28_16_ from scenarios scenario0_ where scenario0_.scenario_id=?
+📋 Scenario already exists: multiplayer-arena
+Hibernate: select scenario0_.id as id1_16_, scenario0_.artifacts as artifact2_16_, scenario0_.campaign_order as campaign3_16_, scenario0_.created_at as created_4_16_, scenario0_.defeat_condition as defeat_c5_16_, scenario0_.description as descript6_16_, scenario0_.difficulty as difficul7_16_, scenario0_.is_active as is_activ8_16_, scenario0_.is_campaign as is_campa9_16_, scenario0_.is_multiplayer as is_mult10_16_, scenario0_.map_height as map_hei11_16_, scenario0_.map_size as map_siz12_16_, scenario0_.map_width as map_wid13_16_, scenario0_.max_players as max_pla14_16_, scenario0_.name as name15_16_, scenario0_.neutral_creatures as neutral16_16_, scenario0_.next_scenario_id as next_sc17_16_, scenario0_.previous_scenario_id as previou18_16_, scenario0_.recommended_players as recomme19_16_, scenario0_.scenario_id as scenari20_16_, scenario0_.special_buildings as special21_16_, scenario0_.starting_resources as startin22_16_, scenario0_.terrain_distribution as terrain23_16_, scenario0_.time_limit as time_li24_16_, scenario0_.turn_limit as turn_li25_16_, scenario0_.updated_at as updated26_16_, scenario0_.victory_condition as victory27_16_, scenario0_.victory_requirement as victory28_16_ from scenarios scenario0_ where scenario0_.scenario_id=?
+📋 Scenario already exists: dragon-campaign
+✅ All scenarios loaded successfully from JSON files!
+✅ Scenario initialization completed!
+🔄 Evolution Cycle #2 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+20:43:48.865 [MessageBroker-6] INFO  org.springframework.web.socket.config.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 14]
+🔄 Evolution Cycle #3 - Self-triggering active
+🔄 Evolution Cycle #4 - Self-triggering active
+🔄 Evolution Cycle #5 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+🔄 Evolution Cycle #6 - Self-triggering active
+🔄 Evolution Cycle #7 - Self-triggering active
+🔄 Evolution Cycle #8 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 2
+📈 MementoArchive evolved to level 2
+📈 ConvergenceCore evolved to level 2
+📈 QuantumEngine evolved to level 2
+📈 OpusEthereal evolved to level 2
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753555579242_FLUCTUATION_1753555579243 avec 3 états possibles
+🔄 Evolution Cycle #9 - Self-triggering active
+🔄 Evolution Cycle #10 - Self-triggering active
+🔄 Evolution Cycle #11 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+🔄 Evolution Cycle #12 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+🔄 Evolution Cycle #13 - Self-triggering active
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753555729273_FLUCTUATION_1753555729273 avec 3 états possibles
+🔄 Evolution Cycle #14 - Self-triggering active
+🔄 Evolution Cycle #15 - Self-triggering active
+🎲 Random Event Triggered: REALITY_GLITCH
+🔄 Evolution Cycle #16 - Self-triggering active
+🔄 Evolution Cycle #17 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+🔄 Evolution Cycle #18 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 3
+📈 MementoArchive evolved to level 3
+📈 ConvergenceCore evolved to level 3
+📈 QuantumEngine evolved to level 3
+📈 OpusEthereal evolved to level 4
+🔄 Evolution Cycle #19 - Self-triggering active
+🔄 Evolution Cycle #20 - Self-triggering active
+🔄 Evolution Cycle #21 - Self-triggering active
+🔄 Evolution Cycle #22 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+🔄 Evolution Cycle #23 - Self-triggering active
+🔄 Evolution Cycle #24 - Self-triggering active
+🔄 Evolution Cycle #25 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+🔄 Evolution Cycle #26 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 4
+📈 MementoArchive evolved to level 4
+📈 ConvergenceCore evolved to level 4
+📈 QuantumEngine evolved to level 4
+📈 OpusEthereal evolved to level 5
+🎲 Random Event Triggered: TIMELINE_DRIFT
+🔄 Evolution Cycle #27 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+🔄 Evolution Cycle #28 - Self-triggering active
+🔄 Evolution Cycle #29 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+🔄 Evolution Cycle #30 - Self-triggering active
+🔄 Evolution Cycle #31 - Self-triggering active
+🔄 Evolution Cycle #32 - Self-triggering active
+🔄 Evolution Cycle #33 - Self-triggering active
+🔄 Evolution Cycle #34 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+🔄 Evolution Cycle #35 - Self-triggering active
+🔄 Evolution Cycle #36 - Self-triggering active
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753556419383_FLUCTUATION_1753556419383 avec 3 états possibles
+🔄 Evolution Cycle #37 - Self-triggering active
+🔄 Evolution Cycle #38 - Self-triggering active
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753556479388_FLUCTUATION_1753556479388 avec 3 états possibles
+🔄 Evolution Cycle #39 - Self-triggering active
+🔄 Evolution Cycle #40 - Self-triggering active
+🔄 Evolution Cycle #41 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+🔄 Evolution Cycle #42 - Self-triggering active
+🔄 Evolution Cycle #43 - Self-triggering active
+🔄 Evolution Cycle #44 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 5
+📈 MementoArchive evolved to level 5
+📈 ConvergenceCore evolved to level 5
+📈 QuantumEngine evolved to level 5
+📈 OpusEthereal evolved to level 7
+🔄 Evolution Cycle #45 - Self-triggering active
+🔄 Evolution Cycle #46 - Self-triggering active
+21:05:27.893 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:05:27.894 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:05:27.894 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+21:05:27.894 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+21:05:27.894 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+21:05:27.900 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@522941b2
+21:05:27.900 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@115b0bf5
+21:05:27.900 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+21:05:27.900 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+21:05:27.945 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:05:27.951 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:05:27.976 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:05:27.976 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:05:27.985 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #47 - Self-triggering active
+21:05:57.802 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:05:57.802 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:05:57.803 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:05:57.803 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:05:57.804 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #48 - Self-triggering active
+21:06:27.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:06:27.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:06:27.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:06:27.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:06:27.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #49 - Self-triggering active
+21:06:57.831 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:06:57.831 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:06:57.832 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:06:57.832 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:06:57.832 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #50 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+21:07:27.801 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:07:27.802 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:07:27.802 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:07:27.802 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:07:27.803 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #51 - Self-triggering active
+21:07:57.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:07:57.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:07:57.802 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:07:57.802 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:07:57.803 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #52 - Self-triggering active
+21:08:27.800 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:08:27.801 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:08:27.801 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:08:27.801 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:08:27.802 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #53 - Self-triggering active
+🎲 Random Event Triggered: REALITY_GLITCH
+21:08:57.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:08:57.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:08:57.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:08:57.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:08:57.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #54 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 6
+📈 MementoArchive evolved to level 6
+📈 ConvergenceCore evolved to level 6
+📈 QuantumEngine evolved to level 6
+📈 OpusEthereal evolved to level 8
+21:09:27.793 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:09:27.794 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:09:27.794 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:09:27.794 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:09:27.795 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #55 - Self-triggering active
+21:09:57.793 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:09:57.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:09:57.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:09:57.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:09:57.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #56 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+21:10:27.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:10:27.812 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:10:27.812 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:10:27.812 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:10:27.812 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #57 - Self-triggering active
+21:10:57.794 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:10:57.795 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:10:57.796 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:10:57.796 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:10:57.797 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #58 - Self-triggering active
+21:11:27.794 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:11:27.795 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:11:27.796 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:11:27.796 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:11:27.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #59 - Self-triggering active
+21:11:57.795 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:11:57.795 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:11:57.796 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:11:57.796 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:11:57.797 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #60 - Self-triggering active
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753557139588_FLUCTUATION_1753557139588 avec 3 états possibles
+21:12:27.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:12:27.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:12:27.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:12:27.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:12:27.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #61 - Self-triggering active
+21:12:57.795 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:12:57.797 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:12:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:12:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:12:57.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #62 - Self-triggering active
+21:13:27.795 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:13:27.795 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:13:27.797 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:13:27.797 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:13:27.798 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+21:13:48.875 [MessageBroker-5] INFO  org.springframework.web.socket.config.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 435]
+🔄 Evolution Cycle #63 - Self-triggering active
+21:13:57.795 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:13:57.796 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:13:57.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:13:57.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:13:57.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #64 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 7
+📈 MementoArchive evolved to level 7
+📈 ConvergenceCore evolved to level 7
+📈 QuantumEngine evolved to level 7
+📈 OpusEthereal evolved to level 9
+21:14:27.796 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:14:27.797 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:14:27.798 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:14:27.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:14:27.800 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #65 - Self-triggering active
+21:14:57.794 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:14:57.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:14:57.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:14:57.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:14:57.795 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #66 - Self-triggering active
+🎲 Random Event Triggered: QUANTUM_FLUCTUATION
+🌀 SUPERPOSITION CRÉÉE: RANDOM_1753557319607_FLUCTUATION_1753557319607 avec 3 états possibles
+21:15:27.795 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:15:27.796 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:15:27.797 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:15:27.797 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:15:27.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #67 - Self-triggering active
+21:15:57.796 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:15:57.796 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:15:57.798 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:15:57.798 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:15:57.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #68 - Self-triggering active
+21:16:27.796 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:16:27.796 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:16:27.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:16:27.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:16:27.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #69 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+21:16:57.796 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:16:57.797 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:16:57.798 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:16:57.798 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:16:57.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #70 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+21:17:27.796 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:17:27.797 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:17:27.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:17:27.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:17:27.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #71 - Self-triggering active
+21:17:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:17:57.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:17:57.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:17:57.802 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:17:57.803 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #72 - Self-triggering active
+21:18:27.797 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:18:27.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:18:27.800 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:18:27.800 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:18:27.801 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #73 - Self-triggering active
+21:18:57.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:18:57.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:18:57.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:18:57.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:18:57.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #74 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 8
+📈 MementoArchive evolved to level 8
+📈 ConvergenceCore evolved to level 8
+📈 QuantumEngine evolved to level 8
+📈 OpusEthereal evolved to level 12
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+21:19:27.798 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:19:27.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:19:27.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:19:27.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:19:27.800 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #75 - Self-triggering active
+21:19:57.797 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:19:57.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:19:57.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:19:57.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:19:57.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #76 - Self-triggering active
+21:20:27.796 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:20:27.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:20:27.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:20:27.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:20:27.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #77 - Self-triggering active
+21:20:57.797 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:20:57.798 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:20:57.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:20:57.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:20:57.800 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #78 - Self-triggering active
+21:21:27.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:21:27.798 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:21:27.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:21:27.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:21:27.800 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #79 - Self-triggering active
+21:21:57.797 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:21:57.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:21:57.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:21:57.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:21:57.800 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #80 - Self-triggering active
+21:22:27.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:22:27.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:22:27.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:22:27.800 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:22:27.800 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #81 - Self-triggering active
+21:22:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:22:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:22:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:22:57.798 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:22:57.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #82 - Self-triggering active
+21:23:27.798 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:23:27.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:23:27.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:23:27.799 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:23:27.800 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #83 - Self-triggering active
+21:23:57.797 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:23:57.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:23:57.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:23:57.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:23:57.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #84 - Self-triggering active
+📈 ERBridgeNetwork evolved to level 9
+📈 MementoArchive evolved to level 9
+📈 ConvergenceCore evolved to level 9
+📈 QuantumEngine evolved to level 9
+📈 OpusEthereal evolved to level 14
+🎲 Random Event Triggered: REALITY_GLITCH
+21:24:27.799 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:24:27.800 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:24:27.801 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:24:27.801 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:24:27.802 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #85 - Self-triggering active
+21:24:57.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:24:57.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:24:57.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:24:57.798 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:24:57.799 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #86 - Self-triggering active
+21:25:27.799 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:25:27.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:25:27.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:25:27.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:25:27.802 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #87 - Self-triggering active
+21:25:57.804 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:25:57.805 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:25:57.805 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:25:57.805 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:25:57.806 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #88 - Self-triggering active
+21:26:27.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:26:27.799 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:26:27.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:26:27.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:26:27.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #89 - Self-triggering active
+21:26:57.801 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:26:57.801 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:26:57.802 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:26:57.802 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:26:57.803 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #90 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+21:27:27.801 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:27:27.801 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:27:27.802 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:27:27.803 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:27:27.804 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #91 - Self-triggering active
+21:27:57.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:27:57.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:27:57.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:27:57.800 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:27:57.801 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #92 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+21:28:27.801 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:28:27.802 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:28:27.803 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:28:27.803 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:28:27.804 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #93 - Self-triggering active
+🎲 Random Event Triggered: MEMORY_CASCADE
+🔄 Manual evolution triggered: Memory cascade initiated - archiving evolution state
+21:28:57.801 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:28:57.802 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:28:57.803 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:28:57.803 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:28:57.804 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #94 - Self-triggering active
+🎲 Random Event Triggered: CONSCIOUSNESS_SPIKE
+21:29:27.875 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:29:27.876 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:29:27.877 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:29:27.877 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:29:27.878 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #95 - Self-triggering active
+21:29:57.876 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:29:57.878 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:29:57.879 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:29:57.879 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:29:57.880 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #96 - Self-triggering active
+21:30:27.877 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:30:27.877 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:30:27.878 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:30:27.878 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:30:27.879 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #97 - Self-triggering active
+21:30:57.878 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:30:57.878 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:30:57.879 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:30:57.879 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:30:57.880 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #98 - Self-triggering active
+🎲 Random Event Triggered: TIMELINE_DRIFT
+21:31:27.878 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:31:27.879 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:31:27.879 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:31:27.879 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:31:27.880 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+🔄 Evolution Cycle #99 - Self-triggering active
+🎲 Random Event Triggered: REALITY_GLITCH
+21:31:57.878 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/health", parameters={}
+21:31:57.879 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.demo.controller.GameController#health()
+21:31:57.880 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+21:31:57.881 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{status=UP}]
+21:31:57.882 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+21:32:01.522 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+21:32:01.523 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/app/, /temporal-app/, /wsg-app/, /causal-app/]]
+21:32:01.523 [SpringApplicationShutdownHook] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - Stopping...
+21:32:01.523 [SpringApplicationShutdownHook] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]]
+21:32:01.523 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]
+21:32:01.523 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@25d73ca6]
+21:32:01.525 [SpringApplicationShutdownHook] INFO  org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler - Stopped.
+21:32:01.525 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+21:32:01.526 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+21:32:01.584 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Sauvegarde de l'état avant arrêt...
+21:32:01.678 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_OMEGA_TRAP_b47bb852
+21:32:01.678 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_BETA_SECONDARY_ae02dae5
+21:32:01.679 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_EPSILON_QUINTERNARY_1d708a48
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_OMEGA_TRAP_d7fcb84b
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_ALPHA_PRIME_01d3cb6b
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : M_VOID_TRAP
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_BETA_SECONDARY_5b5dea70
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_EPSILON_QUINTERNARY_dbc1c00b
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_DELTA_QUATERNARY_75a05b4b
+21:32:01.681 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_GAMMA_TERTIARY_69d42aae
+21:32:01.682 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_GAMMA_TERTIARY_8a336abb
+21:32:01.682 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_ALPHA_PRIME_cbf9998e
+21:32:01.682 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 💾 Monde sauvegardé : WORLD_DELTA_QUATERNARY_31e6b6d3
+21:32:01.688 [SpringApplicationShutdownHook] INFO  com.example.demo.service.PersistenceService - 📦 Backup complet créé : ./data/backup/backup_2025-07-26T21-32-01.682474
+21:32:01.692 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:32:01.698 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Shutdown initiated...
+21:32:01.898 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HeroesOfTimePool - Shutdown completed.

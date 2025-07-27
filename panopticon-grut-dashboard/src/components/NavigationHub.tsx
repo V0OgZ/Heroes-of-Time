@@ -1,58 +1,93 @@
 import React, { useState, useEffect } from 'react'
 
-interface InterfaceStatus {
+interface Portal {
   name: string
   url: string
   port: number
   status: 'active' | 'inactive' | 'checking'
   description: string
+  type: 'world' | 'interface' | 'api'
+  icon: string
 }
 
 const NavigationHub: React.FC = () => {
-  const [interfaces, setInterfaces] = useState<InterfaceStatus[]>([
+  const [portals, setPortals] = useState<Portal[]>([
+    // MONDES ACTIFS
     {
-      name: 'Backend Spring Boot',
-      url: 'http://localhost:8080/api/health',
-      port: 8080,
-      status: 'checking',
-      description: 'API Backend principal'
-    },
-    {
-      name: 'Frontend Temporal Engine',
-      url: 'http://localhost:8000',
-      port: 8000,
-      status: 'checking',
-      description: 'Interface Temporal HTML/CSS/JS'
-    },
-    {
-      name: 'Dashboard Port 9000',
-      url: 'http://localhost:9000/dashboard.html',
-      port: 9000,
-      status: 'checking',
-      description: 'Dashboard réactivé'
-    },
-    {
-      name: 'React Frontend',
+      name: 'Morgana React Portal',
       url: 'http://localhost:3000',
       port: 3000,
       status: 'checking',
-      description: 'Interface React avancée'
+      description: 'Interface transcendante avec panneau quantique',
+      type: 'world',
+      icon: '🔮'
     },
     {
-      name: 'Quantum Visualizer',
-      url: 'http://localhost:8001',
-      port: 8001,
+      name: 'Vince Vega Map Demo',
+      url: 'http://localhost:8000/vince-vega-map-demo-backend.html',
+      port: 8000,
       status: 'checking',
-      description: 'Visualiseur quantique'
+      description: 'Map 10x8 avec gun et pocket teleport',
+      type: 'world',
+      icon: '🔫'
+    },
+    {
+      name: 'GRUT Panopticon (ici)',
+      url: 'http://localhost:8002',
+      port: 8002,
+      status: 'active',
+      description: 'Vision 6D omnisciente - TU ES ICI',
+      type: 'world',
+      icon: '👁️'
+    },
+    
+    // BACKEND API
+    {
+      name: 'Backend API Core',
+      url: 'http://localhost:8080',
+      port: 8080,
+      status: 'checking',
+      description: 'Cerveau du système - Spring Boot',
+      type: 'api',
+      icon: '⚙️'
+    },
+    
+    // MONDES FUTURS
+    {
+      name: 'Wall Street Omega',
+      url: '#',
+      port: 0,
+      status: 'inactive',
+      description: 'Monde financier avec système Banano (à venir)',
+      type: 'world',
+      icon: '💰'
+    },
+    {
+      name: 'Planet Ezith',
+      url: '#',
+      port: 0,
+      status: 'inactive',
+      description: 'Installation scientifique de Hari Seldon',
+      type: 'world',
+      icon: '🪐'
+    },
+    {
+      name: 'Le Bureau',
+      url: '#',
+      port: 0,
+      status: 'inactive',
+      description: 'Nexus conspirationnel',
+      type: 'world',
+      icon: '🏢'
     }
   ])
 
-  const checkInterfaceStatus = async (interfaceItem: InterfaceStatus): Promise<'active' | 'inactive'> => {
+  const checkPortalStatus = async (portal: Portal): Promise<'active' | 'inactive'> => {
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 3000)
       
-      const response = await fetch(interfaceItem.url, {
+      const response = await fetch(portal.url, {
         method: 'GET',
         signal: controller.signal,
         mode: 'no-cors'
@@ -65,19 +100,19 @@ const NavigationHub: React.FC = () => {
     }
   }
 
-  const checkAllInterfaces = async () => {
-    const updatedInterfaces = await Promise.all(
-      interfaces.map(async (interfaceItem) => {
-        const status = await checkInterfaceStatus(interfaceItem)
-        return { ...interfaceItem, status }
+  const checkAllPortals = async () => {
+    const updatedPortals = await Promise.all(
+      portals.map(async (portal) => {
+        const status = await checkPortalStatus(portal)
+        return { ...portal, status }
       })
     )
-    setInterfaces(updatedInterfaces)
+    setPortals(updatedPortals)
   }
 
   useEffect(() => {
-    checkAllInterfaces()
-    const interval = setInterval(checkAllInterfaces, 10000) // Check every 10 seconds
+    checkAllPortals()
+    const interval = setInterval(checkAllPortals, 10000) // Check every 10 seconds
     return () => clearInterval(interval)
   }, [])
 
@@ -86,46 +121,46 @@ const NavigationHub: React.FC = () => {
       <div style={{ marginBottom: '15px' }}>
         <button 
           className="grut-button" 
-          onClick={checkAllInterfaces}
+          onClick={checkAllPortals}
         >
           🔍 Vérifier Statuts
         </button>
       </div>
 
       <div style={{ display: 'grid', gap: '10px' }}>
-        {interfaces.map((interfaceItem, index) => (
+        {portals.map((portal, index) => (
           <div 
             key={index}
             style={{
               padding: '12px',
-              border: `1px solid ${interfaceItem.status === 'active' ? '#00ff88' : '#ff6b35'}`,
+              border: `1px solid ${portal.status === 'active' ? '#00ff88' : '#ff6b35'}`,
               borderRadius: '6px',
               background: 'rgba(26, 26, 46, 0.5)'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <strong>{interfaceItem.name}</strong>
+                <strong>{portal.name}</strong>
                 <div style={{ fontSize: '0.8rem', color: '#888', marginTop: '4px' }}>
-                  {interfaceItem.description}
+                  {portal.description}
                 </div>
               </div>
               
               <div style={{ textAlign: 'right' }}>
-                <span className={`grut-status ${interfaceItem.status === 'active' ? 'status-active' : 'status-inactive'}`}>
-                  {interfaceItem.status === 'checking' ? '🔄' : interfaceItem.status === 'active' ? '✅' : '❌'}
-                  {interfaceItem.status.toUpperCase()}
+                <span className={`grut-status ${portal.status === 'active' ? 'status-active' : 'status-inactive'}`}>
+                  {portal.status === 'checking' ? '🔄' : portal.status === 'active' ? '✅' : '❌'}
+                  {portal.status.toUpperCase()}
                 </span>
                 
                 <div style={{ marginTop: '8px' }}>
                   <a 
-                    href={interfaceItem.url} 
+                    href={portal.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="grut-link"
                     style={{ fontSize: '0.9rem' }}
                   >
-                    🚀 Ouvrir (:{interfaceItem.port})
+                    🚀 Ouvrir (:{portal.port})
                   </a>
                 </div>
               </div>

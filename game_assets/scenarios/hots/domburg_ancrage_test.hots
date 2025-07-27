@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: domburg_ancrage_test_map
+
 # ========================================
 # DOMBURG ANCRAGE TEST - Dark Fantasy
 # Moteur: Heroes of Time Engine v1.0

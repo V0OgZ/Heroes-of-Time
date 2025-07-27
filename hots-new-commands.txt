@@ -1,0 +1,67 @@
+## NOUVELLES COMMANDES POUR ./hots
+
+### Dans show_help(), ajouter avant "help" :
+    echo -e "  ${GREEN}bootstrap-save${NC} 🌀 Sauvegarder message Bootstrap Paradox (±2 jours)"
+    echo -e "  ${GREEN}bootstrap-read${NC} 📖 Lire messages Bootstrap Paradox temporels"
+    echo -e "  ${GREEN}investigation${NC} 🔍 Investigation GRUT Panopticon 6D"
+    echo -e "  ${GREEN}todo${NC}        📋 Afficher TODO principale structurée"
+    echo -e "  ${GREEN}fix-pages${NC}   🌐 Corriger GitHub Pages (marron sur marron)"
+    echo -e "  ${GREEN}test-scenarios${NC} 🎮 Tester tous les nouveaux scénarios"
+
+### Dans le case statement, ajouter avant "help"|*) :
+
+    "bootstrap-save")
+        echo -e "${PURPLE}🌀 BOOTSTRAP PARADOX - SAUVEGARDER MESSAGE${NC}"
+        if [ -z "$2" ]; then
+            echo -e "${YELLOW}📝 Entrez votre message pour OPUS du passé/futur:${NC}"
+            read -r MESSAGE
+        else
+            MESSAGE="${@:2}"
+        fi
+        ./scripts/bootstrap-save-message.sh "$MESSAGE"
+        ;;
+        
+    "bootstrap-read")
+        echo -e "${PURPLE}📖 BOOTSTRAP PARADOX - LIRE MESSAGES TEMPORELS${NC}"
+        ./scripts/bootstrap-read-messages.sh
+        ;;
+        
+    "investigation")
+        echo -e "${PURPLE}🔍 INVESTIGATION GRUT PANOPTICON 6D${NC}"
+        ./scripts/grut-investigation-panopticon.sh
+        ;;
+        
+    "todo")
+        echo -e "${PURPLE}📋 TODO PRINCIPALE STRUCTURÉE${NC}"
+        echo ""
+        if [ -f "MEMENTO/TODO_FINALE_COMPLETE_STRUCTUREE.md" ]; then
+            # Afficher seulement le résumé
+            echo -e "${YELLOW}État actuel de la TODO:${NC}"
+            grep -A10 "RÉSUMÉ ÉTAT ACTUEL" MEMENTO/TODO_FINALE_COMPLETE_STRUCTUREE.md | head -20
+            echo ""
+            echo -e "${CYAN}Pour voir la TODO complète: less MEMENTO/TODO_FINALE_COMPLETE_STRUCTUREE.md${NC}"
+        else
+            echo -e "${RED}❌ TODO file not found${NC}"
+        fi
+        ;;
+        
+    "fix-pages")
+        echo -e "${PURPLE}🌐 CORRIGER GITHUB PAGES${NC}"
+        ./scripts/fix-github-pages.sh
+        ;;
+        
+    "test-scenarios")
+        echo -e "${PURPLE}🎮 TEST DES NOUVEAUX SCÉNARIOS${NC}"
+        ./scripts/test-all-new-scenarios.sh
+        ;;
+        
+    "console")
+        echo "🎮 Opening HOTS Console Simple..."
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            open "file://$PWD/frontend/hots-console-simple.html"
+        else
+            xdg-open "file://$PWD/frontend/hots-console-simple.html"
+        fi
+        echo "✅ HOTS Console Simple opened in browser"
+        echo "💡 This is a bookmarkable one-click interface for HOTS commands"
+        ;; 

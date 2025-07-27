@@ -1,247 +1,161 @@
 /**
- * ⚔️ INTERFACE DE COMBAT - Heroes of Time
- * 
- * Version simple pour mode IA et démos
- * Grille hexagonale 8x6
+ * Interface de Combat Hexagonale
+ * Heroes of Time - Combat Tactique
  */
 
 class CombatInterface {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
-        this.canvas = null;
-        this.ctx = null;
-        this.hexGrid = [];
-        this.units = [];
-        this.selectedUnit = null;
-        this.currentTurn = 'player';
-        
-        // Configuration hexagones
-        this.hexSize = 40;
         this.gridWidth = 8;
         this.gridHeight = 6;
-        
-        // État du combat
+        this.hexSize = 50;
+        this.currentTurn = 'player';
+        this.selectedUnit = null;
+        this.possibleMoves = [];
+        this.possibleAttacks = [];
+        this.units = [];
         this.turnOrder = [];
-        this.currentUnitIndex = 0;
+        this.currentTurnIndex = 0;
+        this.combatLog = [];
         
         this.init();
     }
-    
+
     init() {
-        // Créer le canvas
-        this.canvas = document.createElement('canvas');
-        this.canvas.width = 800;
-        this.canvas.height = 600;
-        this.canvas.style.border = '2px solid #4a7c7e';
-        this.canvas.style.borderRadius = '10px';
-        this.container.appendChild(this.canvas);
-        
-        this.ctx = this.canvas.getContext('2d');
-        
-        // Créer l'interface de contrôle
-        this.createControls();
-        
-        // Initialiser la grille hexagonale
-        this.initHexGrid();
-        
-        // Événements
-        this.canvas.addEventListener('click', (e) => this.handleClick(e));
-        this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
-        
-        // Charger les unités de test
-        this.loadTestUnits();
-        
-        // Dessiner initial
-        this.draw();
+        this.createCombatLayout();
+        this.createHexGrid();
+        this.setupEventListeners();
+        this.initializeUnits();
+        this.startCombat();
     }
-    
-    createControls() {
-        const controls = document.createElement('div');
-        controls.className = 'combat-controls';
-        controls.innerHTML = `
-            <div class="turn-indicator">
-                <h3>Tour: <span id="current-turn">Joueur</span></h3>
-            </div>
-            <div class="unit-info" id="unit-info">
-                <p>Sélectionnez une unité</p>
-            </div>
-            <div class="action-buttons">
-                <button onclick="combat.endTurn()">⏭️ Fin de Tour</button>
-                <button onclick="combat.useAbility(1)">🔥 Capacité 1</button>
-                <button onclick="combat.useAbility(2)">⚡ Capacité 2</button>
-            </div>
-            <div class="combat-log" id="combat-log">
-                <h4>Journal de Combat</h4>
-                <div id="log-content"></div>
+
+    createCombatLayout() {
+        this.container.innerHTML = `
+            <div class="combat-interface">
+                <div class="combat-header">
+                    <h2>⚔️ Combat Tactique</h2>
+                    <div class="turn-indicator">
+                        Tour: <span id="currentTurn">Joueur</span>
+                    </div>
+                </div>
+                
+                <div class="combat-main">
+                    <div class="battlefield-container">
+                        <canvas id="combatCanvas" width="600" height="400"></canvas>
+                        <div class="hex-overlay" id="hexOverlay"></div>
+                    </div>
+                    
+                    <div class="combat-sidebar">
+                        <div class="unit-info" id="unitInfo">
+                            <h3>Unité Sélectionnée</h3>
+                            <div id="unitDetails">Aucune unité sélectionnée</div>
+                        </div>
+                        
+                        <div class="turn-order" id="turnOrder">
+                            <h3>Ordre d'Initiative</h3>
+                            <div id="turnOrderList"></div>
+                        </div>
+                        
+                        <div class="combat-actions">
+                            <button class="action-btn" id="moveBtn" onclick="combatInterface.setMode('move')">
+                                🦶 Déplacer
+                            </button>
+                            <button class="action-btn" id="attackBtn" onclick="combatInterface.setMode('attack')">
+                                ⚔️ Attaquer
+                            </button>
+                            <button class="action-btn" id="defendBtn" onclick="combatInterface.defend()">
+                                🛡️ Défendre
+                            </button>
+                            <button class="action-btn" id="endTurnBtn" onclick="combatInterface.endTurn()">
+                                ⏭️ Fin du Tour
+                            </button>
+                        </div>
+                        
+                        <div class="combat-log" id="combatLog">
+                            <h3>Journal de Combat</h3>
+                            <div id="logContent"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
-        
-        this.container.appendChild(controls);
+
+        this.canvas = document.getElementById('combatCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.hexOverlay = document.getElementById('hexOverlay');
     }
-    
-    initHexGrid() {
-        // Créer la grille hexagonale
+
+    createHexGrid() {
+        // Calcul des dimensions hexagonales
+        const hexHeight = Math.sqrt(3) * this.hexSize;
+        const hexWidth = 2 * this.hexSize;
+        const vertDist = hexHeight * 3/4;
+        
+        this.hexGrid = [];
+        
         for (let row = 0; row < this.gridHeight; row++) {
             this.hexGrid[row] = [];
             for (let col = 0; col < this.gridWidth; col++) {
-                const hex = {
+                const offsetX = row % 2 === 0 ? 0 : hexWidth / 2;
+                const x = col * hexWidth + offsetX + hexWidth;
+                const y = row * vertDist + hexHeight;
+                
+                this.hexGrid[row][col] = {
+                    x: x,
+                    y: y,
                     row: row,
                     col: col,
-                    x: this.getHexX(col, row),
-                    y: this.getHexY(row),
-                    occupied: false,
+                    terrain: this.getRandomTerrain(),
+                    unit: null,
                     highlighted: false,
-                    inRange: false
+                    attackHighlight: false
                 };
-                this.hexGrid[row][col] = hex;
             }
         }
+        
+        this.drawGrid();
     }
-    
-    getHexX(col, row) {
-        const offset = row % 2 === 0 ? 0 : this.hexSize * 0.866;
-        return 60 + col * this.hexSize * 1.732 + offset;
-    }
-    
-    getHexY(row) {
-        return 60 + row * this.hexSize * 1.5;
-    }
-    
-    loadTestUnits() {
-        // Unités du joueur
-        this.addUnit({
-            id: 'hero_1',
-            name: 'Arthur',
-            team: 'player',
-            hp: 100,
-            maxHp: 100,
-            mp: 50,
-            maxMp: 50,
-            attack: 15,
-            defense: 10,
-            speed: 5,
-            range: 3,
-            position: { row: 2, col: 1 },
-            icon: '⚔️',
-            abilities: [
-                { name: 'Frappe héroïque', damage: 25, mpCost: 10 },
-                { name: 'Bouclier sacré', effect: 'defense+', mpCost: 15 }
-            ]
-        });
+
+    getRandomTerrain() {
+        const terrains = ['grass', 'forest', 'hill', 'water'];
+        const weights = [60, 20, 15, 5];
+        const random = Math.random() * 100;
+        let sum = 0;
         
-        this.addUnit({
-            id: 'hero_2',
-            name: 'Merlin',
-            team: 'player',
-            hp: 70,
-            maxHp: 70,
-            mp: 100,
-            maxMp: 100,
-            attack: 10,
-            defense: 5,
-            speed: 3,
-            range: 5,
-            position: { row: 3, col: 1 },
-            icon: '🧙‍♂️',
-            abilities: [
-                { name: 'Boule de feu', damage: 30, mpCost: 20 },
-                { name: 'Téléportation', effect: 'teleport', mpCost: 25 }
-            ]
-        });
-        
-        // Unités ennemies
-        this.addUnit({
-            id: 'enemy_1',
-            name: 'Gobelin',
-            team: 'enemy',
-            hp: 50,
-            maxHp: 50,
-            mp: 0,
-            maxMp: 0,
-            attack: 10,
-            defense: 5,
-            speed: 4,
-            range: 1,
-            position: { row: 2, col: 6 },
-            icon: '👺'
-        });
-        
-        this.addUnit({
-            id: 'enemy_2',
-            name: 'Squelette',
-            team: 'enemy',
-            hp: 40,
-            maxHp: 40,
-            mp: 0,
-            maxMp: 0,
-            attack: 12,
-            defense: 3,
-            speed: 6,
-            range: 2,
-            position: { row: 3, col: 6 },
-            icon: '💀'
-        });
-        
-        // Initialiser l'ordre des tours
-        this.calculateTurnOrder();
-    }
-    
-    addUnit(unitData) {
-        const unit = {
-            ...unitData,
-            moved: false,
-            acted: false
-        };
-        
-        this.units.push(unit);
-        
-        // Marquer l'hexagone comme occupé
-        const hex = this.hexGrid[unit.position.row][unit.position.col];
-        if (hex) {
-            hex.occupied = true;
-            hex.unit = unit;
+        for (let i = 0; i < terrains.length; i++) {
+            sum += weights[i];
+            if (random < sum) return terrains[i];
         }
+        return 'grass';
     }
-    
-    calculateTurnOrder() {
-        // Trier par vitesse
-        this.turnOrder = [...this.units].sort((a, b) => b.speed - a.speed);
-    }
-    
-    draw() {
-        // Effacer le canvas
+
+    drawGrid() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Dessiner la grille
-        this.drawHexGrid();
-        
-        // Dessiner les unités
-        this.drawUnits();
-        
-        // Dessiner l'UI
-        this.drawUI();
-    }
-    
-    drawHexGrid() {
+        // Dessiner chaque hexagone
         for (let row = 0; row < this.gridHeight; row++) {
             for (let col = 0; col < this.gridWidth; col++) {
                 const hex = this.hexGrid[row][col];
                 this.drawHex(hex);
             }
         }
+        
+        // Dessiner les unités
+        this.units.forEach(unit => {
+            if (unit.hp > 0) {
+                this.drawUnit(unit);
+            }
+        });
     }
-    
+
     drawHex(hex) {
-        const x = hex.x;
-        const y = hex.y;
-        const size = this.hexSize;
+        const { x, y } = hex;
         
         this.ctx.beginPath();
         for (let i = 0; i < 6; i++) {
             const angle = (Math.PI / 3) * i;
-            const hx = x + size * Math.cos(angle);
-            const hy = y + size * Math.sin(angle);
-            
+            const hx = x + this.hexSize * Math.cos(angle);
+            const hy = y + this.hexSize * Math.sin(angle);
             if (i === 0) {
                 this.ctx.moveTo(hx, hy);
             } else {
@@ -250,371 +164,813 @@ class CombatInterface {
         }
         this.ctx.closePath();
         
-        // Couleur selon l'état
+        // Couleur selon le terrain
+        const terrainColors = {
+            grass: '#4a7c59',
+            forest: '#2d5016',
+            hill: '#8b7355',
+            water: '#4682b4'
+        };
+        
+        this.ctx.fillStyle = terrainColors[hex.terrain] || '#4a7c59';
+        
         if (hex.highlighted) {
-            this.ctx.fillStyle = 'rgba(74, 124, 126, 0.3)';
-        } else if (hex.inRange) {
-            this.ctx.fillStyle = 'rgba(199, 244, 100, 0.2)';
-        } else {
-            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            this.ctx.fillStyle = 'rgba(100, 200, 100, 0.5)';
+        }
+        if (hex.attackHighlight) {
+            this.ctx.fillStyle = 'rgba(255, 100, 100, 0.5)';
         }
         
         this.ctx.fill();
-        this.ctx.strokeStyle = '#4a7c7e';
+        this.ctx.strokeStyle = '#333';
+        this.ctx.lineWidth = 2;
         this.ctx.stroke();
     }
-    
-    drawUnits() {
-        for (const unit of this.units) {
-            this.drawUnit(unit);
-        }
-    }
-    
+
     drawUnit(unit) {
-        const hex = this.hexGrid[unit.position.row][unit.position.col];
+        const hex = this.hexGrid[unit.row][unit.col];
         if (!hex) return;
         
-        const x = hex.x;
-        const y = hex.y;
+        const { x, y } = hex;
         
-        // Dessiner le cercle de l'unité
+        // Cercle pour l'unité
         this.ctx.beginPath();
-        this.ctx.arc(x, y, 25, 0, Math.PI * 2);
-        this.ctx.fillStyle = unit.team === 'player' ? '#4a7c7e' : '#c44569';
+        this.ctx.arc(x, y, this.hexSize * 0.6, 0, Math.PI * 2);
+        this.ctx.fillStyle = unit.team === 'player' ? '#4169e1' : '#dc143c';
         this.ctx.fill();
+        this.ctx.strokeStyle = unit === this.selectedUnit ? '#ffd700' : '#000';
+        this.ctx.lineWidth = unit === this.selectedUnit ? 4 : 2;
+        this.ctx.stroke();
         
-        if (unit === this.selectedUnit) {
-            this.ctx.strokeStyle = '#c7f464';
-            this.ctx.lineWidth = 3;
-            this.ctx.stroke();
-        }
-        
-        // Dessiner l'icône
+        // Icône de l'unité
         this.ctx.font = '24px Arial';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
+        this.ctx.fillStyle = '#fff';
         this.ctx.fillText(unit.icon, x, y);
         
         // Barre de vie
-        const barWidth = 40;
+        const barWidth = this.hexSize;
         const barHeight = 6;
-        const barY = y + 30;
+        const barY = y + this.hexSize * 0.7;
         
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        // Fond de la barre
+        this.ctx.fillStyle = '#333';
         this.ctx.fillRect(x - barWidth/2, barY, barWidth, barHeight);
         
+        // Vie actuelle
         const hpPercent = unit.hp / unit.maxHp;
-        this.ctx.fillStyle = hpPercent > 0.5 ? '#4a7c7e' : 
-                            hpPercent > 0.25 ? '#f39c12' : '#e74c3c';
+        this.ctx.fillStyle = hpPercent > 0.5 ? '#4caf50' : hpPercent > 0.25 ? '#ff9800' : '#f44336';
         this.ctx.fillRect(x - barWidth/2, barY, barWidth * hpPercent, barHeight);
     }
-    
-    drawUI() {
-        // Indicateur de tour actuel
-        const currentUnit = this.turnOrder[this.currentUnitIndex];
-        if (currentUnit) {
-            const turnText = document.getElementById('current-turn');
-            if (turnText) {
-                turnText.textContent = currentUnit.name;
+
+    initializeUnits() {
+        // Unités du joueur
+        this.units.push(
+            {
+                id: 'hero1',
+                name: 'Chevalier',
+                icon: '⚔️',
+                team: 'player',
+                row: 2,
+                col: 1,
+                hp: 100,
+                maxHp: 100,
+                attack: 25,
+                defense: 15,
+                speed: 3,
+                range: 1,
+                moved: false,
+                acted: false
+            },
+            {
+                id: 'hero2',
+                name: 'Archer',
+                icon: '🏹',
+                team: 'player',
+                row: 3,
+                col: 1,
+                hp: 80,
+                maxHp: 80,
+                attack: 20,
+                defense: 10,
+                speed: 4,
+                range: 3,
+                moved: false,
+                acted: false
+            },
+            {
+                id: 'hero3',
+                name: 'Mage',
+                icon: '🧙',
+                team: 'player',
+                row: 4,
+                col: 0,
+                hp: 60,
+                maxHp: 60,
+                attack: 30,
+                defense: 5,
+                speed: 2,
+                range: 2,
+                moved: false,
+                acted: false
+            }
+        );
+        
+        // Unités ennemies
+        this.units.push(
+            {
+                id: 'enemy1',
+                name: 'Gobelin',
+                icon: '👺',
+                team: 'enemy',
+                row: 2,
+                col: 6,
+                hp: 50,
+                maxHp: 50,
+                attack: 15,
+                defense: 5,
+                speed: 4,
+                range: 1,
+                moved: false,
+                acted: false
+            },
+            {
+                id: 'enemy2',
+                name: 'Orc',
+                icon: '👹',
+                team: 'enemy',
+                row: 3,
+                col: 6,
+                hp: 80,
+                maxHp: 80,
+                attack: 20,
+                defense: 10,
+                speed: 3,
+                range: 1,
+                moved: false,
+                acted: false
+            },
+            {
+                id: 'enemy3',
+                name: 'Troll',
+                icon: '🧟',
+                team: 'enemy',
+                row: 4,
+                col: 7,
+                hp: 120,
+                maxHp: 120,
+                attack: 25,
+                defense: 20,
+                speed: 2,
+                range: 1,
+                moved: false,
+                acted: false
+            }
+        );
+        
+        // Placer les unités sur la grille
+        this.units.forEach(unit => {
+            if (this.hexGrid[unit.row] && this.hexGrid[unit.row][unit.col]) {
+                this.hexGrid[unit.row][unit.col].unit = unit;
+            }
+        });
+        
+        // Calculer l'ordre d'initiative
+        this.calculateTurnOrder();
+    }
+
+    calculateTurnOrder() {
+        this.turnOrder = [...this.units]
+            .filter(unit => unit.hp > 0)
+            .sort((a, b) => b.speed - a.speed);
+        this.updateTurnOrderDisplay();
+    }
+
+    updateTurnOrderDisplay() {
+        const turnOrderList = document.getElementById('turnOrderList');
+        turnOrderList.innerHTML = this.turnOrder.map((unit, index) => `
+            <div class="turn-order-item ${index === this.currentTurnIndex ? 'active' : ''}">
+                <span class="unit-icon">${unit.icon}</span>
+                <span class="unit-name">${unit.name}</span>
+                <span class="unit-speed">Vit: ${unit.speed}</span>
+            </div>
+        `).join('');
+    }
+
+    startCombat() {
+        this.addLog('⚔️ Combat commencé !', 'info');
+        this.nextTurn();
+    }
+
+    nextTurn() {
+        if (this.turnOrder.length === 0) return;
+        
+        const currentUnit = this.turnOrder[this.currentTurnIndex];
+        this.selectUnit(currentUnit);
+        
+        // Réinitialiser les actions
+        currentUnit.moved = false;
+        currentUnit.acted = false;
+        
+        this.updateTurnIndicator(currentUnit);
+        
+        // Si c'est un ennemi, jouer automatiquement
+        if (currentUnit.team === 'enemy') {
+            setTimeout(() => this.playAITurn(currentUnit), 1000);
+        }
+        
+        this.updateActionButtons();
+    }
+
+    updateTurnIndicator(unit) {
+        document.getElementById('currentTurn').textContent = 
+            `${unit.team === 'player' ? 'Joueur' : 'Ennemi'} - ${unit.name}`;
+    }
+
+    selectUnit(unit) {
+        this.selectedUnit = unit;
+        this.clearHighlights();
+        this.updateUnitInfo();
+        this.drawGrid();
+    }
+
+    updateUnitInfo() {
+        const unitDetails = document.getElementById('unitDetails');
+        if (this.selectedUnit) {
+            unitDetails.innerHTML = `
+                <div class="unit-stats">
+                    <div>${this.selectedUnit.icon} ${this.selectedUnit.name}</div>
+                    <div>HP: ${this.selectedUnit.hp}/${this.selectedUnit.maxHp}</div>
+                    <div>ATK: ${this.selectedUnit.attack}</div>
+                    <div>DEF: ${this.selectedUnit.defense}</div>
+                    <div>VIT: ${this.selectedUnit.speed}</div>
+                    <div>Portée: ${this.selectedUnit.range}</div>
+                </div>
+            `;
+        } else {
+            unitDetails.innerHTML = 'Aucune unité sélectionnée';
+        }
+    }
+
+    setMode(mode) {
+        this.mode = mode;
+        this.clearHighlights();
+        
+        if (!this.selectedUnit || this.selectedUnit.team !== 'player') return;
+        
+        if (mode === 'move' && !this.selectedUnit.moved) {
+            this.showMovementRange();
+        } else if (mode === 'attack' && !this.selectedUnit.acted) {
+            this.showAttackRange();
+        }
+        
+        this.drawGrid();
+    }
+
+    showMovementRange() {
+        const unit = this.selectedUnit;
+        if (!unit) return;
+        
+        const visited = new Set();
+        const queue = [{row: unit.row, col: unit.col, distance: 0}];
+        
+        while (queue.length > 0) {
+            const {row, col, distance} = queue.shift();
+            const key = `${row},${col}`;
+            
+            if (visited.has(key) || distance > unit.speed) continue;
+            visited.add(key);
+            
+            if (this.isValidHex(row, col) && !this.hexGrid[row][col].unit) {
+                this.hexGrid[row][col].highlighted = true;
+            }
+            
+            // Ajouter les hexagones adjacents
+            this.getAdjacentHexes(row, col).forEach(({row: r, col: c}) => {
+                if (this.isValidHex(r, c) && this.canMoveThrough(r, c)) {
+                    queue.push({row: r, col: c, distance: distance + 1});
+                }
+            });
+        }
+    }
+
+    showAttackRange() {
+        const unit = this.selectedUnit;
+        if (!unit) return;
+        
+        const range = unit.range;
+        
+        for (let row = 0; row < this.gridHeight; row++) {
+            for (let col = 0; col < this.gridWidth; col++) {
+                const distance = this.getHexDistance(unit.row, unit.col, row, col);
+                if (distance <= range && distance > 0) {
+                    const hex = this.hexGrid[row][col];
+                    if (hex.unit && hex.unit.team !== unit.team) {
+                        hex.attackHighlight = true;
+                    }
+                }
             }
         }
     }
-    
-    handleClick(event) {
+
+    getAdjacentHexes(row, col) {
+        const adjacents = [];
+        const offsets = row % 2 === 0 ?
+            [[-1, -1], [-1, 0], [0, -1], [0, 1], [1, -1], [1, 0]] :
+            [[-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0], [1, 1]];
+        
+        offsets.forEach(([dr, dc]) => {
+            const newRow = row + dr;
+            const newCol = col + dc;
+            if (this.isValidHex(newRow, newCol)) {
+                adjacents.push({row: newRow, col: newCol});
+            }
+        });
+        
+        return adjacents;
+    }
+
+    getHexDistance(r1, c1, r2, c2) {
+        const x1 = c1 - (r1 - (r1 & 1)) / 2;
+        const z1 = r1;
+        const y1 = -x1 - z1;
+        
+        const x2 = c2 - (r2 - (r2 & 1)) / 2;
+        const z2 = r2;
+        const y2 = -x2 - z2;
+        
+        return (Math.abs(x1 - x2) + Math.abs(y1 - y2) + Math.abs(z1 - z2)) / 2;
+    }
+
+    isValidHex(row, col) {
+        return row >= 0 && row < this.gridHeight && col >= 0 && col < this.gridWidth;
+    }
+
+    canMoveThrough(row, col) {
+        const hex = this.hexGrid[row][col];
+        return hex && hex.terrain !== 'water' && !hex.unit;
+    }
+
+    setupEventListeners() {
+        this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+        this.canvas.addEventListener('mousemove', (e) => this.handleCanvasHover(e));
+    }
+
+    handleCanvasClick(event) {
         const rect = this.canvas.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         
-        // Trouver l'hexagone cliqué
-        const hex = this.getHexAtPosition(x, y);
+        const hex = this.getHexAtPoint(x, y);
         if (!hex) return;
         
-        if (hex.occupied && hex.unit) {
-            // Sélectionner l'unité
+        if (this.mode === 'move' && hex.highlighted) {
+            this.moveUnit(this.selectedUnit, hex.row, hex.col);
+        } else if (this.mode === 'attack' && hex.attackHighlight && hex.unit) {
+            this.attackUnit(this.selectedUnit, hex.unit);
+        } else if (hex.unit && hex.unit.team === 'player') {
             this.selectUnit(hex.unit);
-        } else if (this.selectedUnit && hex.inRange) {
-            // Déplacer l'unité
-            this.moveUnit(this.selectedUnit, hex);
         }
     }
-    
-    getHexAtPosition(x, y) {
-        // Algorithme simple de détection d'hexagone
+
+    handleCanvasHover(event) {
+        const rect = this.canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        const hex = this.getHexAtPoint(x, y);
+        this.canvas.style.cursor = hex && (hex.highlighted || hex.attackHighlight || hex.unit) ? 
+            'pointer' : 'default';
+    }
+
+    getHexAtPoint(x, y) {
         for (let row = 0; row < this.gridHeight; row++) {
             for (let col = 0; col < this.gridWidth; col++) {
                 const hex = this.hexGrid[row][col];
-                const dx = x - hex.x;
-                const dy = y - hex.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < this.hexSize * 0.866) {
+                if (this.isPointInHex(x, y, hex.x, hex.y)) {
                     return hex;
                 }
             }
         }
         return null;
     }
-    
-    selectUnit(unit) {
-        this.selectedUnit = unit;
-        this.highlightMovementRange(unit);
-        this.updateUnitInfo(unit);
+
+    isPointInHex(px, py, hx, hy) {
+        const dx = Math.abs(px - hx);
+        const dy = Math.abs(py - hy);
+        return dx < this.hexSize && dy < this.hexSize * Math.sqrt(3)/2;
     }
-    
-    highlightMovementRange(unit) {
-        // Réinitialiser
-        for (let row = 0; row < this.gridHeight; row++) {
-            for (let col = 0; col < this.gridWidth; col++) {
-                this.hexGrid[row][col].inRange = false;
-            }
-        }
+
+    moveUnit(unit, toRow, toCol) {
+        if (!unit || unit.moved) return;
         
-        // Calculer la portée de mouvement
-        const range = unit.speed;
-        const start = unit.position;
+        const fromHex = this.hexGrid[unit.row][unit.col];
+        const toHex = this.hexGrid[toRow][toCol];
         
-        // Algorithme BFS pour trouver les hexagones accessibles
-        const visited = new Set();
-        const queue = [{...start, distance: 0}];
+        if (!fromHex || !toHex || toHex.unit) return;
         
-        while (queue.length > 0) {
-            const current = queue.shift();
-            const key = `${current.row},${current.col}`;
+        // Animation de déplacement
+        this.animateMovement(unit, unit.row, unit.col, toRow, toCol, () => {
+            fromHex.unit = null;
+            toHex.unit = unit;
+            unit.row = toRow;
+            unit.col = toCol;
+            unit.moved = true;
             
-            if (visited.has(key) || current.distance > range) continue;
-            visited.add(key);
+            this.addLog(`${unit.icon} ${unit.name} se déplace`, 'move');
+            this.clearHighlights();
+            this.drawGrid();
+            this.updateActionButtons();
+        });
+    }
+
+    animateMovement(unit, fromRow, fromCol, toRow, toCol, callback) {
+        const fromHex = this.hexGrid[fromRow][fromCol];
+        const toHex = this.hexGrid[toRow][toCol];
+        const frames = 20;
+        let frame = 0;
+        
+        const animate = () => {
+            frame++;
+            const progress = frame / frames;
             
-            if (current.row >= 0 && current.row < this.gridHeight &&
-                current.col >= 0 && current.col < this.gridWidth) {
-                const hex = this.hexGrid[current.row][current.col];
-                if (!hex.occupied || hex.unit === unit) {
-                    hex.inRange = true;
-                }
+            // Interpolation linéaire
+            unit.displayX = fromHex.x + (toHex.x - fromHex.x) * progress;
+            unit.displayY = fromHex.y + (toHex.y - fromHex.y) * progress;
+            
+            this.drawGrid();
+            
+            if (frame < frames) {
+                requestAnimationFrame(animate);
+            } else {
+                unit.displayX = null;
+                unit.displayY = null;
+                callback();
+            }
+        };
+        
+        animate();
+    }
+
+    attackUnit(attacker, defender) {
+        if (!attacker || !defender || attacker.acted) return;
+        
+        const damage = Math.max(1, attacker.attack - defender.defense);
+        defender.hp = Math.max(0, defender.hp - damage);
+        
+        attacker.acted = true;
+        
+        this.addLog(`${attacker.icon} ${attacker.name} attaque ${defender.icon} ${defender.name} pour ${damage} dégâts!`, 'attack');
+        
+        // Animation d'attaque
+        this.animateAttack(attacker, defender, () => {
+            if (defender.hp <= 0) {
+                this.removeUnit(defender);
+                this.addLog(`${defender.icon} ${defender.name} est vaincu!`, 'defeat');
             }
             
-            // Ajouter les voisins
-            const neighbors = this.getHexNeighbors(current.row, current.col);
-            for (const neighbor of neighbors) {
-                queue.push({
-                    row: neighbor.row,
-                    col: neighbor.col,
-                    distance: current.distance + 1
-                });
-            }
-        }
-        
-        this.draw();
+            this.clearHighlights();
+            this.drawGrid();
+            this.updateActionButtons();
+            this.checkVictoryConditions();
+        });
     }
-    
-    getHexNeighbors(row, col) {
-        const neighbors = [];
-        const offset = row % 2 === 0 ? -1 : 0;
+
+    animateAttack(attacker, defender, callback) {
+        const attackerHex = this.hexGrid[attacker.row][attacker.col];
+        const defenderHex = this.hexGrid[defender.row][defender.col];
         
-        const directions = [
-            { row: -1, col: offset },
-            { row: -1, col: offset + 1 },
-            { row: 0, col: -1 },
-            { row: 0, col: 1 },
-            { row: 1, col: offset },
-            { row: 1, col: offset + 1 }
-        ];
+        // Flash rouge sur le défenseur
+        const originalColor = this.ctx.fillStyle;
+        let flashes = 3;
         
-        for (const dir of directions) {
-            const newRow = row + dir.row;
-            const newCol = col + dir.col;
+        const flash = () => {
+            flashes--;
+            defenderHex.flashColor = flashes % 2 === 0 ? 'rgba(255,0,0,0.5)' : null;
+            this.drawGrid();
             
-            if (newRow >= 0 && newRow < this.gridHeight &&
-                newCol >= 0 && newCol < this.gridWidth) {
-                neighbors.push({ row: newRow, col: newCol });
+            if (flashes > 0) {
+                setTimeout(flash, 100);
+            } else {
+                defenderHex.flashColor = null;
+                callback();
             }
-        }
+        };
         
-        return neighbors;
+        flash();
     }
-    
-    moveUnit(unit, targetHex) {
-        // Libérer l'ancienne position
-        const oldHex = this.hexGrid[unit.position.row][unit.position.col];
-        oldHex.occupied = false;
-        oldHex.unit = null;
+
+    defend() {
+        if (!this.selectedUnit || this.selectedUnit.team !== 'player') return;
         
-        // Déplacer vers la nouvelle position
-        unit.position = { row: targetHex.row, col: targetHex.col };
-        targetHex.occupied = true;
-        targetHex.unit = unit;
+        this.selectedUnit.defense += 5; // Bonus temporaire
+        this.selectedUnit.acted = true;
+        this.selectedUnit.moved = true;
         
-        unit.moved = true;
-        
-        // Log
-        this.addCombatLog(`${unit.name} se déplace en ${targetHex.row},${targetHex.col}`);
-        
-        // Redessiner
-        this.highlightMovementRange(unit);
-        this.draw();
+        this.addLog(`${this.selectedUnit.icon} ${this.selectedUnit.name} se met en défense`, 'defend');
+        this.updateActionButtons();
     }
-    
-    updateUnitInfo(unit) {
-        const info = document.getElementById('unit-info');
-        if (info) {
-            info.innerHTML = `
-                <h4>${unit.icon} ${unit.name}</h4>
-                <p>HP: ${unit.hp}/${unit.maxHp}</p>
-                <p>MP: ${unit.mp}/${unit.maxMp}</p>
-                <p>ATK: ${unit.attack} | DEF: ${unit.defense}</p>
-                <p>SPD: ${unit.speed} | RNG: ${unit.range}</p>
-            `;
-        }
+
+    removeUnit(unit) {
+        const hex = this.hexGrid[unit.row][unit.col];
+        if (hex) hex.unit = null;
+        
+        const index = this.units.indexOf(unit);
+        if (index > -1) this.units.splice(index, 1);
+        
+        this.calculateTurnOrder();
     }
-    
-    endTurn() {
-        // Passer au prochain dans l'ordre
-        this.currentUnitIndex = (this.currentUnitIndex + 1) % this.turnOrder.length;
-        
-        // Réinitialiser les états
-        for (const unit of this.units) {
-            unit.moved = false;
-            unit.acted = false;
-        }
-        
-        this.selectedUnit = null;
-        this.draw();
-        
-        // Si c'est un ennemi, jouer automatiquement
-        const currentUnit = this.turnOrder[this.currentUnitIndex];
-        if (currentUnit.team === 'enemy') {
-            setTimeout(() => this.playAITurn(currentUnit), 1000);
-        }
-    }
-    
+
     playAITurn(unit) {
-        // IA simple - attaquer l'unité la plus proche
-        const target = this.findNearestEnemy(unit);
-        if (target) {
-            this.addCombatLog(`${unit.name} attaque ${target.name} !`);
-            this.attack(unit, target);
-        }
+        // IA simple : se rapprocher et attaquer
+        const targets = this.units.filter(u => u.team === 'player' && u.hp > 0);
+        if (targets.length === 0) return;
         
-        // Fin du tour automatique
-        setTimeout(() => this.endTurn(), 1500);
-    }
-    
-    findNearestEnemy(unit) {
-        let nearest = null;
+        // Trouver la cible la plus proche
+        let closestTarget = null;
         let minDistance = Infinity;
         
-        for (const other of this.units) {
-            if (other.team !== unit.team && other.hp > 0) {
-                const distance = Math.abs(other.position.row - unit.position.row) +
-                                Math.abs(other.position.col - unit.position.col);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    nearest = other;
+        targets.forEach(target => {
+            const distance = this.getHexDistance(unit.row, unit.col, target.row, target.col);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestTarget = target;
+            }
+        });
+        
+        // Vérifier si on peut attaquer
+        if (minDistance <= unit.range) {
+            this.attackUnit(unit, closestTarget);
+            setTimeout(() => this.endTurn(), 1000);
+        } else {
+            // Se déplacer vers la cible
+            this.moveAIUnit(unit, closestTarget);
+            setTimeout(() => {
+                // Vérifier à nouveau si on peut attaquer après le déplacement
+                const newDistance = this.getHexDistance(unit.row, unit.col, closestTarget.row, closestTarget.col);
+                if (newDistance <= unit.range && !unit.acted) {
+                    this.attackUnit(unit, closestTarget);
+                    setTimeout(() => this.endTurn(), 1000);
+                } else {
+                    this.endTurn();
+                }
+            }, 1000);
+        }
+    }
+
+    moveAIUnit(unit, target) {
+        const possibleMoves = [];
+        
+        // Trouver tous les mouvements possibles
+        for (let row = 0; row < this.gridHeight; row++) {
+            for (let col = 0; col < this.gridWidth; col++) {
+                const distance = this.getHexDistance(unit.row, unit.col, row, col);
+                if (distance <= unit.speed && this.canMoveThrough(row, col)) {
+                    possibleMoves.push({row, col});
                 }
             }
         }
         
-        return nearest;
-    }
-    
-    attack(attacker, target) {
-        const damage = Math.max(1, attacker.attack - target.defense);
-        target.hp = Math.max(0, target.hp - damage);
+        // Choisir le mouvement qui nous rapproche le plus de la cible
+        let bestMove = null;
+        let minDistance = this.getHexDistance(unit.row, unit.col, target.row, target.col);
         
-        this.addCombatLog(`${damage} points de dégâts !`);
-        
-        if (target.hp <= 0) {
-            this.removeUnit(target);
-            this.addCombatLog(`${target.name} est vaincu !`);
-        }
-        
-        this.draw();
-    }
-    
-    removeUnit(unit) {
-        // Retirer de la grille
-        const hex = this.hexGrid[unit.position.row][unit.position.col];
-        if (hex) {
-            hex.occupied = false;
-            hex.unit = null;
-        }
-        
-        // Retirer des listes
-        this.units = this.units.filter(u => u !== unit);
-        this.turnOrder = this.turnOrder.filter(u => u !== unit);
-    }
-    
-    useAbility(abilityIndex) {
-        if (!this.selectedUnit || this.selectedUnit.team !== 'player') {
-            return;
-        }
-        
-        const ability = this.selectedUnit.abilities?.[abilityIndex - 1];
-        if (!ability) return;
-        
-        if (this.selectedUnit.mp < ability.mpCost) {
-            this.addCombatLog("Pas assez de MP !");
-            return;
-        }
-        
-        this.selectedUnit.mp -= ability.mpCost;
-        this.addCombatLog(`${this.selectedUnit.name} utilise ${ability.name} !`);
-        
-        // Effets simplifiés
-        if (ability.damage) {
-            const target = this.findNearestEnemy(this.selectedUnit);
-            if (target) {
-                target.hp = Math.max(0, target.hp - ability.damage);
-                this.addCombatLog(`${ability.damage} points de dégâts magiques !`);
-                
-                if (target.hp <= 0) {
-                    this.removeUnit(target);
-                    this.addCombatLog(`${target.name} est vaincu !`);
-                }
+        possibleMoves.forEach(move => {
+            const distance = this.getHexDistance(move.row, move.col, target.row, target.col);
+            if (distance < minDistance) {
+                minDistance = distance;
+                bestMove = move;
             }
-        }
+        });
         
-        this.draw();
-    }
-    
-    addCombatLog(message) {
-        const log = document.getElementById('log-content');
-        if (log) {
-            const entry = document.createElement('div');
-            entry.textContent = `> ${message}`;
-            entry.style.marginBottom = '5px';
-            log.appendChild(entry);
-            log.scrollTop = log.scrollHeight;
+        if (bestMove) {
+            this.moveUnit(unit, bestMove.row, bestMove.col);
         }
     }
-    
-    handleMouseMove(event) {
-        const rect = this.canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+
+    endTurn() {
+        this.clearHighlights();
+        this.mode = null;
         
-        // Highlight hex sous la souris
+        // Passer au prochain dans l'ordre d'initiative
+        this.currentTurnIndex = (this.currentTurnIndex + 1) % this.turnOrder.length;
+        
+        // Si on a fait le tour complet, recalculer l'ordre
+        if (this.currentTurnIndex === 0) {
+            this.calculateTurnOrder();
+            this.addLog('--- Nouveau Round ---', 'info');
+        }
+        
+        this.drawGrid();
+        this.nextTurn();
+    }
+
+    updateActionButtons() {
+        const unit = this.selectedUnit;
+        const isPlayerTurn = unit && unit.team === 'player';
+        
+        document.getElementById('moveBtn').disabled = !isPlayerTurn || unit.moved;
+        document.getElementById('attackBtn').disabled = !isPlayerTurn || unit.acted;
+        document.getElementById('defendBtn').disabled = !isPlayerTurn || unit.acted;
+        document.getElementById('endTurnBtn').disabled = !isPlayerTurn;
+    }
+
+    clearHighlights() {
         for (let row = 0; row < this.gridHeight; row++) {
             for (let col = 0; col < this.gridWidth; col++) {
                 this.hexGrid[row][col].highlighted = false;
+                this.hexGrid[row][col].attackHighlight = false;
             }
         }
+    }
+
+    checkVictoryConditions() {
+        const playerUnits = this.units.filter(u => u.team === 'player' && u.hp > 0);
+        const enemyUnits = this.units.filter(u => u.team === 'enemy' && u.hp > 0);
         
-        const hex = this.getHexAtPosition(x, y);
-        if (hex) {
-            hex.highlighted = true;
-            this.draw();
+        if (playerUnits.length === 0) {
+            this.endCombat('defeat');
+        } else if (enemyUnits.length === 0) {
+            this.endCombat('victory');
+        }
+    }
+
+    endCombat(result) {
+        if (result === 'victory') {
+            this.addLog('🎉 Victoire! Vous avez gagné le combat!', 'victory');
+            alert('Victoire! Vous avez gagné le combat!');
+        } else {
+            this.addLog('💀 Défaite... Vous avez perdu le combat.', 'defeat');
+            alert('Défaite... Vous avez perdu le combat.');
+        }
+    }
+
+    addLog(message, type = 'info') {
+        const logContent = document.getElementById('logContent');
+        const entry = document.createElement('div');
+        entry.className = `log-entry log-${type}`;
+        entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        logContent.appendChild(entry);
+        logContent.scrollTop = logContent.scrollHeight;
+        
+        // Limiter le nombre de logs
+        while (logContent.children.length > 50) {
+            logContent.removeChild(logContent.firstChild);
         }
     }
 }
 
-// Instance globale pour faciliter les tests
-let combat = null;
+// Styles CSS intégrés
+const combatStyles = `
+<style>
+.combat-interface {
+    font-family: 'Georgia', serif;
+    color: #333;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-// Initialisation quand le DOM est prêt
-if (typeof document !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', () => {
-        if (document.getElementById('combat-container')) {
-            combat = new CombatInterface('combat-container');
-        }
-    });
-} 
+.combat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+.combat-main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.battlefield-container {
+    position: relative;
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#combatCanvas {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.combat-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.unit-info, .turn-order, .combat-log {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.unit-info h3, .turn-order h3, .combat-log h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #4169e1;
+    padding-bottom: 5px;
+}
+
+.unit-stats {
+    display: grid;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.unit-stats div {
+    padding: 3px 0;
+}
+
+.turn-order-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    margin: 5px 0;
+    background: #f0f0f0;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.turn-order-item.active {
+    background: #4169e1;
+    color: white;
+    transform: scale(1.05);
+}
+
+.unit-icon {
+    font-size: 20px;
+}
+
+.unit-speed {
+    margin-left: auto;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.combat-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 10px;
+    background: #4169e1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.action-btn:hover:not(:disabled) {
+    background: #5179f1;
+    transform: translateY(-2px);
+}
+
+.action-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.combat-log {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#logContent {
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+.log-entry {
+    padding: 2px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.log-move { color: #4169e1; }
+.log-attack { color: #dc143c; }
+.log-defend { color: #228b22; }
+.log-defeat { color: #8b0000; }
+.log-victory { color: #ffd700; font-weight: bold; }
+.log-info { color: #666; }
+</style>
+`;
+
+// Export pour utilisation
+export default CombatInterface; 

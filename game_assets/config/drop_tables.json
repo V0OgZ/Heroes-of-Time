@@ -1,0 +1,124 @@
+{
+  "drop_tables": {
+    "common_creature": {
+      "dropRate": 0.7,
+      "minDrops": 1,
+      "maxDrops": 2,
+      "items": [
+        { "itemId": "or", "weight": 40, "minQuantity": 5, "maxQuantity": 15 },
+        { "itemId": "potion_mineure", "weight": 30, "quantity": 1 },
+        { "itemId": "potion_mana", "weight": 20, "quantity": 1 },
+        { "itemId": "cristal_temps_petit", "weight": 10, "quantity": 1 }
+      ]
+    },
+    
+    "rare_creature": {
+      "dropRate": 0.85,
+      "minDrops": 1,
+      "maxDrops": 3,
+      "items": [
+        { "itemId": "or", "weight": 30, "minQuantity": 10, "maxQuantity": 30 },
+        { "itemId": "cristal_temps_petit", "weight": 25, "quantity": 1 },
+        { "itemId": "essence_bleue", "weight": 20, "quantity": 1 },
+        { "itemId": "fragment_temporel", "weight": 15, "quantity": 1 },
+        { "itemId": "potion_mineure", "weight": 10, "minQuantity": 1, "maxQuantity": 2 }
+      ]
+    },
+    
+    "epic_creature": {
+      "dropRate": 0.95,
+      "minDrops": 2,
+      "maxDrops": 4,
+      "items": [
+        { "itemId": "or", "weight": 25, "minQuantity": 20, "maxQuantity": 50 },
+        { "itemId": "fragment_temporel", "weight": 25, "quantity": 1 },
+        { "itemId": "essence_bleue", "weight": 20, "minQuantity": 1, "maxQuantity": 2 },
+        { "itemId": "amulette_chance", "weight": 15, "quantity": 1 },
+        { "itemId": "elixir_force", "weight": 10, "quantity": 1 },
+        { "itemId": "cristal_temps_petit", "weight": 5, "minQuantity": 2, "maxQuantity": 3 }
+      ]
+    },
+    
+    "boss_creature": {
+      "dropRate": 1.0,
+      "minDrops": 3,
+      "maxDrops": 5,
+      "guaranteedDrops": ["fragment_temporel"],
+      "items": [
+        { "itemId": "or", "weight": 20, "minQuantity": 50, "maxQuantity": 100 },
+        { "itemId": "fragment_temporel", "weight": 20, "minQuantity": 2, "maxQuantity": 3 },
+        { "itemId": "amulette_chance", "weight": 20, "quantity": 1 },
+        { "itemId": "elixir_force", "weight": 15, "quantity": 1 },
+        { "itemId": "essence_bleue", "weight": 15, "minQuantity": 2, "maxQuantity": 4 },
+        { "itemId": "cristal_temps_grand", "weight": 10, "quantity": 1 }
+      ]
+    },
+    
+    "treasure_chest": {
+      "dropRate": 1.0,
+      "minDrops": 2,
+      "maxDrops": 4,
+      "items": [
+        { "itemId": "or", "weight": 35, "minQuantity": 25, "maxQuantity": 75 },
+        { "itemId": "cristal_temps_petit", "weight": 25, "minQuantity": 1, "maxQuantity": 3 },
+        { "itemId": "potion_mineure", "weight": 15, "minQuantity": 2, "maxQuantity": 4 },
+        { "itemId": "potion_mana", "weight": 15, "minQuantity": 2, "maxQuantity": 4 },
+        { "itemId": "fragment_temporel", "weight": 8, "quantity": 1 },
+        { "itemId": "amulette_chance", "weight": 2, "quantity": 1 }
+      ]
+    }
+  },
+  
+  "creature_drop_mapping": {
+    "slime_bleu": "common_creature",
+    "gobelin_collecteur": "common_creature",
+    "imp_rouge": "common_creature",
+    "spectre_temporel": "rare_creature",
+    "gardien_cristal": "rare_creature",
+    "dragon_temps": "epic_creature",
+    "archonte_void": "epic_creature",
+    "jean_grofignon_boss": "boss_creature",
+    "vince_vega_boss": "boss_creature"
+  },
+  
+  "drop_modifiers": {
+    "player_luck": {
+      "description": "Modificateur basé sur la chance du joueur",
+      "formula": "1 + (luck * 0.01)"
+    },
+    "difficulty": {
+      "easy": 1.2,
+      "normal": 1.0,
+      "hard": 0.8,
+      "nightmare": 0.6
+    },
+    "time_bonus": {
+      "description": "Bonus basé sur le temps de combat",
+      "fast_kill": 1.5,
+      "normal_kill": 1.0,
+      "slow_kill": 0.8
+    }
+  },
+  
+  "special_drops": {
+    "first_kill_bonus": {
+      "enabled": true,
+      "extraItems": [
+        { "itemId": "potion_mineure", "quantity": 3 },
+        { "itemId": "or", "quantity": 50 }
+      ]
+    },
+    "streak_bonus": {
+      "enabled": true,
+      "requiredKills": 10,
+      "bonusDropRate": 1.5,
+      "message": "🔥 Série de victoires ! Drops améliorés !"
+    },
+    "rare_spawn_bonus": {
+      "enabled": true,
+      "creatures": ["creature_brillante", "slime_dore"],
+      "bonusDrops": 3,
+      "guaranteedRare": true
+    }
+  }
+} 

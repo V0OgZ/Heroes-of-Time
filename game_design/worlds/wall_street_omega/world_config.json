@@ -1,0 +1,204 @@
+{
+  "world_id": "wall_street_omega",
+  "name": "Wall Street Omega",
+  "code": "WSΩ",
+  "type": "fractal_instance",
+  "stability": 0.23,
+  "access_level": "restricted",
+  
+  "properties": {
+    "time_flow": "non-linear",
+    "physics": "market-based",
+    "gravity": "negotiable",
+    "reality_index": 0.42,
+    "dimension_type": "economic_singularity"
+  },
+  
+  "environment": {
+    "sky_color": "#FFD700",
+    "fog_density": 0.7,
+    "fog_type": "numeric_particles",
+    "ambient_sounds": [
+      "market_whispers",
+      "closing_bells",
+      "ticker_tape",
+      "panic_sells"
+    ],
+    "temperature": "volatile",
+    "weather": "financial_storms"
+  },
+  
+  "zones": [
+    {
+      "id": "the_floor",
+      "name": "The Floor",
+      "type": "central_hub",
+      "size": "infinite",
+      "danger_level": 3,
+      "special_features": [
+        "original_bell",
+        "toxic_pit",
+        "eternal_ticker"
+      ]
+    },
+    {
+      "id": "algorithmic_towers",
+      "name": "Les Tours Algorithmiques",
+      "type": "dynamic_architecture",
+      "size": "variable",
+      "danger_level": 5,
+      "inhabitants": ["quants", "models", "bugs"]
+    },
+    {
+      "id": "consultant_quarter",
+      "name": "Le Quartier des Consultants",
+      "type": "abstract_zone",
+      "size": "undefined",
+      "danger_level": 7,
+      "special_mechanics": ["time_traps", "fusion_entities", "audit_boss"]
+    },
+    {
+      "id": "inverted_exchange",
+      "name": "La Bourse Inversée",
+      "type": "temporal_anomaly",
+      "size": "inside-out",
+      "danger_level": 6,
+      "time_direction": "reverse"
+    }
+  ],
+  
+  "entities": {
+    "compressed_traders": {
+      "type": "trapped_players",
+      "level_range": [45, 60],
+      "behavior": "loop_trading",
+      "aggression": "desperate",
+      "drops": ["portfolio_fragments", "banano_green"]
+    },
+    "tie_consultants": {
+      "type": "abstract_avatars",
+      "level_range": [50, 70],
+      "behavior": "corporate_speak",
+      "special": "diagram_attacks",
+      "drops": ["powerpoint_shards", "synergy_essence"]
+    },
+    "closing_monkey": {
+      "type": "boss",
+      "level": 80,
+      "behavior": "adaptive_mimicry",
+      "phases": 3,
+      "special_mechanics": ["copy_player", "predict_future", "retroactive_optimization"],
+      "drops": ["golden_banano", "market_maker_badge", "temporal_option"]
+    }
+  },
+  
+  "events": {
+    "market_crash": {
+      "trigger": "daily_15h47",
+      "duration": 90,
+      "effects": [
+        "gravity_negotiation",
+        "price_chaos",
+        "arbitrage_windows"
+      ]
+    },
+    "margin_call": {
+      "trigger": "random",
+      "type": "interactive",
+      "success_reward": "secret_zone_access",
+      "failure_penalty": "world_ejection"
+    },
+    "ghost_ipo": {
+      "trigger": "rare_random",
+      "type": "investment_opportunity",
+      "risk": "extreme",
+      "potential_reward": "massive"
+    }
+  },
+  
+  "access_requirements": {
+    "items_needed": [
+      {
+        "item": "banano",
+        "quantity": 3
+      }
+    ],
+    "keywords": ["dividende cosmique"],
+    "conditions": ["near_economic_breach", "accept_terms"]
+  },
+  
+  "exit_methods": [
+    {
+      "name": "exit_strategy",
+      "method": "sell_all_declare_bankruptcy"
+    },
+    {
+      "name": "golden_parachute",
+      "method": "use_golden_banano",
+      "item_consumed": true
+    },
+    {
+      "name": "hostile_takeover",
+      "method": "conquer_algorithmic_tower"
+    },
+    {
+      "name": "margin_call_success",
+      "method": "answer_correctly"
+    }
+  ],
+  
+  "special_rules": {
+    "inverted_economy": {
+      "description": "Spending enriches, saving impoverishes",
+      "effect": "reverse_transaction_logic"
+    },
+    "temporal_inflation": {
+      "description": "Time has monetary value",
+      "effect": "time_currency_exchange"
+    },
+    "quantum_speculation": {
+      "description": "Items exist in value superposition",
+      "effect": "schrodinger_pricing"
+    },
+    "permanent_audit": {
+      "description": "McKinsey watches and evaluates",
+      "effect": "performance_tracking"
+    }
+  },
+  
+  "warnings": [
+    "Extended exposure may cause permanent financialization",
+    "Debts follow players across worlds",
+    "Some entities attempt to purchase player existence",
+    "McKinsey liability waiver required"
+  ],
+  
+  "loot_tables": {
+    "common": [
+      "market_data_fragments",
+      "expired_options",
+      "junk_bonds"
+    ],
+    "uncommon": [
+      "volatile_essence",
+      "algorithm_shard",
+      "banano_green"
+    ],
+    "rare": [
+      "mckinsey_business_card",
+      "quantum_derivative",
+      "banano_standard"
+    ],
+    "legendary": [
+      "market_maker_license",
+      "reality_short_position",
+      "banano_gold"
+    ]
+  },
+  
+  "music": {
+    "ambient": "corporate_elevator_distorted.ogg",
+    "combat": "trading_floor_panic.ogg",
+    "boss": "hostile_takeover_symphony.ogg"
+  }
+}

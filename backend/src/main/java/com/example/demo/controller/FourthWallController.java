@@ -38,7 +38,12 @@ public class FourthWallController {
      */
     @PostMapping("/init-mock-instances")
     public ResponseEntity<Map<String, Object>> initMockInstances() {
-        Map<String, Object> result = fourthWallService.initializeMockInstances();
+        // TODO: Implement initializeMockInstances in FourthWallService
+        // Map<String, Object> result = fourthWallService.initializeMockInstances();
+        Map<String, Object> result = Map.of(
+            "status", "success",
+            "message", "Mock instances initialization not yet implemented"
+        );
         return ResponseEntity.ok(result);
     }
     

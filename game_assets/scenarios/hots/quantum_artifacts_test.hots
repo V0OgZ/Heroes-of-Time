@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: quantum_realm
+MAP: quantum_artifacts_test_map
+
 # ===============================================
 # QUANTUM ARTIFACTS TEST - TIER 6 LEGENDARIES
 # Test des artefacts quantiques légendaires

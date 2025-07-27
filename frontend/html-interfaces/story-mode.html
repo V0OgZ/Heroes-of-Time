@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroes of Time - Mode Histoire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Canvas principal du jeu */
+        #gameCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: filter 2s ease-in-out;
+        }
+
+        /* Effet de transition entre mondes */
+        .world-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .world-transition.active {
+            opacity: 1;
+        }
+
+        /* Transition 2D vers 3D */
+        .transition-2d-to-3d {
+            background: radial-gradient(circle at center, transparent 0%, rgba(255,255,255,0.8) 50%, #fff 100%);
+            animation: expandReality 3s ease-out;
+        }
+
+        @keyframes expandReality {
+            0% {
+                transform: scale(0);
+                filter: blur(20px);
+            }
+            50% {
+                transform: scale(1.5);
+                filter: blur(5px);
+            }
+            100% {
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Interface narrative */
+        .narrative-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 2rem;
+            z-index: 50;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+        }
+
+        .narrative-overlay.active {
+            transform: translateY(0);
+        }
+
+        .dialogue-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .speaker-name {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .dialogue-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .dialogue-choices {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .choice-button {
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid #667eea;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-button:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Assistant Memento */
+        .memento-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 60;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .memento-assistant:hover {
+            transform: scale(1.1);
+        }
+
+        .memento-face {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(118, 75, 162, 0.8);
+            }
+        }
+
+        .memento-tooltip {
+            position: absolute;
+            bottom: 100px;
+            right: 0;
+            background: rgba(20, 20, 40, 0.95);
+            border: 1px solid #667eea;
+            border-radius: 10px;
+            padding: 1rem;
+            width: 250px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .memento-assistant:hover .memento-tooltip {
+            opacity: 1;
+        }
+
+        /* Indicateur de progression */
+        .progress-indicator {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 40, 0.8);
+            padding: 0.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            z-index: 40;
+        }
+
+        .chapter-name {
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+
+        /* Effets spéciaux pour transitions */
+        .reality-shatter {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        .shard {
+            position: absolute;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%);
+            transform-origin: center;
+            animation: shatter 2s ease-out forwards;
+        }
+
+        @keyframes shatter {
+            0% {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(720deg) scale(0) translateY(500px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas principal -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Effet de transition entre mondes -->
+    <div class="world-transition" id="worldTransition"></div>
+
+    <!-- Indicateur de progression -->
+    <div class="progress-indicator">
+        <div class="chapter-name" id="chapterName">Chapitre 1 : Les Ombres sur le Mur</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- Interface narrative -->
+    <div class="narrative-overlay" id="narrativeOverlay">
+        <div class="dialogue-box">
+            <div class="speaker-name" id="speakerName">???</div>
+            <div class="dialogue-text" id="dialogueText">
+                Des ombres dansent sur le mur... Est-ce là toute la réalité ?
+            </div>
+            <div class="dialogue-choices" id="dialogueChoices"></div>
+        </div>
+    </div>
+
+    <!-- Assistant Memento -->
+    <div class="memento-assistant" onclick="toggleMemento()">
+        <div class="memento-face">🧠</div>
+        <div class="memento-tooltip">
+            Je suis Memento, ton guide à travers les réalités. Clique pour obtenir des conseils !
+        </div>
+    </div>
+
+    <!-- Effet de brisure de réalité -->
+    <div class="reality-shatter" id="realityShatter"></div>
+
+    <script>
+        // Configuration du canvas
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // État du jeu
+        let gameState = {
+            storyId: null,
+            chapter: 1,
+            world: 'cave_2d',
+            playerVision: 'shadows',
+            progress: 0,
+            isTransitioning: false
+        };
+
+        // Système de dialogue
+        class DialogueSystem {
+            constructor() {
+                this.currentDialogue = null;
+                this.overlay = document.getElementById('narrativeOverlay');
+            }
+
+            show(speaker, text, choices = []) {
+                document.getElementById('speakerName').textContent = speaker;
+                document.getElementById('dialogueText').textContent = text;
+                
+                const choicesContainer = document.getElementById('dialogueChoices');
+                choicesContainer.innerHTML = '';
+                
+                if (choices.length > 0) {
+                    choices.forEach(choice => {
+                        const button = document.createElement('button');
+                        button.className = 'choice-button';
+                        button.textContent = choice.text;
+                        button.onclick = () => choice.action();
+                        choicesContainer.appendChild(button);
+                    });
+                } else {
+                    // Bouton continuer par défaut
+                    const button = document.createElement('button');
+                    button.className = 'choice-button';
+                    button.textContent = 'Continuer';
+                    button.onclick = () => this.hide();
+                    choicesContainer.appendChild(button);
+                }
+
+                this.overlay.classList.add('active');
+            }
+
+            hide() {
+                this.overlay.classList.remove('active');
+            }
+        }
+
+        const dialogue = new DialogueSystem();
+
+        // Système de transition entre mondes
+        function transitionToWorld(newWorld, effect = 'default') {
+            if (gameState.isTransitioning) return;
+            gameState.isTransitioning = true;
+
+            const transition = document.getElementById('worldTransition');
+            
+            // Effet spécial selon le type de transition
+            if (effect === '2d-to-3d') {
+                transition.className = 'world-transition transition-2d-to-3d active';
+                createRealityShatterEffect();
+            }
+
+            // Changement de monde après l'effet
+            setTimeout(() => {
+                gameState.world = newWorld;
+                updateWorldVisuals();
+                transition.classList.remove('active');
+                gameState.isTransitioning = false;
+            }, 2000);
+        }
+
+        // Effet de brisure de réalité
+        function createRealityShatterEffect() {
+            const container = document.getElementById('realityShatter');
+            container.innerHTML = '';
+
+            // Créer des éclats
+            for (let i = 0; i < 20; i++) {
+                const shard = document.createElement('div');
+                shard.className = 'shard';
+                shard.style.width = Math.random() * 200 + 50 + 'px';
+                shard.style.height = Math.random() * 200 + 50 + 'px';
+                shard.style.left = Math.random() * window.innerWidth + 'px';
+                shard.style.top = Math.random() * window.innerHeight + 'px';
+                shard.style.animationDelay = Math.random() * 0.5 + 's';
+                container.appendChild(shard);
+            }
+
+            // Nettoyer après l'animation
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        }
+
+        // Mise à jour visuelle selon le monde
+        function updateWorldVisuals() {
+            switch(gameState.world) {
+                case 'cave_2d':
+                    canvas.style.filter = 'grayscale(80%) brightness(0.5)';
+                    break;
+                case 'cave_3d':
+                    canvas.style.filter = 'grayscale(40%) brightness(0.8)';
+                    break;
+                case 'surface_world':
+                    canvas.style.filter = 'none';
+                    break;
+                case 'interstice':
+                    canvas.style.filter = 'hue-rotate(180deg) contrast(1.2)';
+                    break;
+            }
+        }
+
+        // Démarrage de l'aventure
+        async function startAdventure() {
+            try {
+                // Appel API pour démarrer l'histoire
+                const response = await fetch('http://localhost:8080/api/story/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        playerId: 'player-' + Date.now()
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    gameState.storyId = data.storyId;
+                    gameState.chapter = data.chapter;
+                    gameState.world = data.world;
+                    
+                    // Afficher le premier dialogue
+                    const d = data.dialogue;
+                    dialogue.show(
+                        d.speaker,
+                        d.text,
+                        d.choices.map(choice => ({
+                            text: choice.text,
+                            action: () => makeChoice(choice.id)
+                        }))
+                    );
+                }
+            } catch (error) {
+                console.error('Erreur démarrage:', error);
+                // Fallback local
+                dialogue.show(
+                    "L'Évadé",
+                    "Réveille-toi... Tu as passé toute ta vie à regarder des ombres sur ce mur.",
+                    [
+                        {
+                            text: "Qui êtes-vous ?",
+                            action: () => continueIntro()
+                        },
+                        {
+                            text: "Je préfère rester ici...",
+                            action: () => showDoubt()
+                        }
+                    ]
+                );
+            }
+
+            // Démarrer le rendu
+            gameLoop();
+        }
+
+        // Gestion des choix de dialogue
+        async function makeChoice(choiceId) {
+            try {
+                const response = await fetch('http://localhost:8080/api/story/dialogue/choice', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        storyId: gameState.storyId,
+                        choiceId: choiceId
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success && data.nextDialogue) {
+                    const d = data.nextDialogue;
+                    
+                    // Gérer les conséquences
+                    if (data.consequences) {
+                        handleConsequences(data.consequences);
+                    }
+                    
+                    // Si c'est une transition
+                    if (choiceId === 'ready_for_3d') {
+                        beginTransition();
+                    } else {
+                        dialogue.show(d.speaker || "???", d.text || "...");
+                    }
+                }
+            } catch (error) {
+                console.error('Erreur choix:', error);
+                continueIntro(); // Fallback
+            }
+        }
+
+        function handleConsequences(consequences) {
+            // Gérer les conséquences des choix
+            if (consequences.unlock) {
+                console.log('Déblocage:', consequences.unlock);
+            }
+        }
+
+        function continueIntro() {
+            dialogue.show(
+                "L'Évadé",
+                "Je suis celui qui a vu au-delà. Regarde... La réalité commence à se fissurer. Es-tu prêt à voir le monde en trois dimensions ?",
+                [
+                    {
+                        text: "Je suis prêt !",
+                        action: () => beginTransition()
+                    }
+                ]
+            );
+        }
+
+        function showDoubt() {
+            dialogue.show(
+                "Memento",
+                "Le doute est normal. Mais tu ne peux pas rester prisonnier éternellement. L'aventure t'attend.",
+                [
+                    {
+                        text: "D'accord, montrez-moi",
+                        action: () => continueIntro()
+                    }
+                ]
+            );
+        }
+
+        function beginTransition() {
+            dialogue.hide();
+            transitionToWorld('cave_3d', '2d-to-3d');
+            updateProgress(25);
+            
+            setTimeout(() => {
+                dialogue.show(
+                    "L'Évadé",
+                    "Bienvenue dans la troisième dimension ! Tes yeux s'ajustent... Bientôt, tu verras encore plus loin."
+                );
+            }, 3000);
+        }
+
+        // Mise à jour de la progression
+        function updateProgress(percent) {
+            gameState.progress = percent;
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        // Toggle Memento
+        function toggleMemento() {
+            dialogue.show(
+                "Memento",
+                getMementoAdvice(),
+                [
+                    {
+                        text: "Merci !",
+                        action: () => dialogue.hide()
+                    }
+                ]
+            );
+        }
+
+        function getMementoAdvice() {
+            const advices = {
+                'cave_2d': "Les ombres ne sont que le début. Cherche la lumière qui brise les chaînes.",
+                'cave_3d': "La profondeur révèle de nouvelles perspectives. Continue ton ascension.",
+                'surface_world': "Le monde réel n'est qu'une étape. L'Interstice t'attend.",
+                'interstice': "Tu approches de la vérité. Prépare-toi aux questions de l'Archiviste."
+            };
+            return advices[gameState.world] || "Continue ton voyage, l'archive vivante veille sur toi.";
+        }
+
+        // Boucle de jeu principale
+        function gameLoop() {
+            // Effacer le canvas
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Rendu selon le monde actuel
+            renderWorld();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function renderWorld() {
+            switch(gameState.world) {
+                case 'cave_2d':
+                    render2DCave();
+                    break;
+                case 'cave_3d':
+                    render3DCave();
+                    break;
+                // Ajouter d'autres mondes
+            }
+        }
+
+        function render2DCave() {
+            // Ombres sur le mur
+            ctx.fillStyle = '#222';
+            ctx.fillRect(100, 100, canvas.width - 200, canvas.height - 200);
+            
+            // Ombres mouvantes
+            for (let i = 0; i < 5; i++) {
+                const x = 200 + i * 150 + Math.sin(Date.now() * 0.001 + i) * 20;
+                const y = canvas.height / 2;
+                
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.ellipse(x, y, 50, 100, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function render3DCave() {
+            // Simulation 3D basique
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Murs avec perspective
+            ctx.strokeStyle = '#444';
+            ctx.lineWidth = 2;
+            
+            // Lignes de fuite
+            for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 6) {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * 500,
+                    centerY + Math.sin(angle) * 500
+                );
+                ctx.stroke();
+            }
+        }
+
+        // Gestion du redimensionnement
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Démarrer l'aventure au chargement
+        window.addEventListener('load', startAdventure);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Heroes of Time - Dashboard Central</title>
+    <link rel="stylesheet" href="translation-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            zoom: 0.7;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .dashboard-title {
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1em;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .heroes-grofi-section {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(78, 205, 196, 0.1) 50%, rgba(69, 183, 209, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .heroes-grofi-title {
+            font-size: 1.5em;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .hero-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #4ecdc4;
+        }
+
+        .hero-faction {
+            font-size: 0.8em;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+        }
+
+        .hero-power {
+            font-size: 0.7em;
+            color: #ff6b6b;
+            font-style: italic;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-up { background-color: #4ecdc4; }
+        .status-down { background-color: #ff6b6b; }
+        .status-loading { background-color: #ffa726; }
+
+        .ui-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Panel Admin Multijoueur - Taille de 2 fiches */
+        #admin-multiplayer-panel {
+            grid-column: span 2;
+            min-height: 300px;
+        }
+
+        /* Responsive pour écrans petits (1280x800) */
+        @media (max-width: 1280px) {
+            .ui-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 15px;
+                max-width: 100%;
+            }
+            
+            #admin-multiplayer-panel {
+                grid-column: span 1;
+                min-height: 250px;
+            }
+            
+            .ui-panel {
+                padding: 20px;
+            }
+            
+            .panel-icon {
+                font-size: 3em;
+                margin-bottom: 15px;
+            }
+            
+            .panel-title {
+                font-size: 1.2em;
+            }
+            
+            .panel-description {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Responsive pour très petits écrans */
+        @media (max-width: 1024px) {
+            .ui-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .ui-panel {
+                padding: 15px;
+            }
+            
+            .panel-icon {
+                font-size: 2.5em;
+                margin-bottom: 10px;
+            }
+            
+            .panel-title {
+                font-size: 1.1em;
+            }
+        }
+
+        .ui-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+
+        .ui-panel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .ui-panel.active {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .ui-panel.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .ui-panel.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .panel-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .panel-description {
+            font-size: 0.9em;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .panel-url {
+            font-family: 'Courier New', monospace;
+            color: #4ecdc4;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .panel-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .panel-features li {
+            padding: 5px 0;
+            color: #b0b0b0;
+            font-size: 0.9em;
+        }
+
+        .panel-features li:before {
+            content: "✨ ";
+            color: #4ecdc4;
+        }
+
+        .launch-button {
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .launch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .launch-button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .refresh-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 2px solid #4ecdc4;
+            color: #4ecdc4;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-button:hover {
+            background: #4ecdc4;
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .ui-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-title {
+                font-size: 2em;
+            }
+            .status-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9em;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success { background-color: #4ecdc4; }
+        .notification.error { background-color: #ff6b6b; }
+        .notification.warning { background-color: #ffa726; }
+
+        /* Héros cliquables */
+        .clickable-hero {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .clickable-hero:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            border-color: #FFD700;
+        }
+        
+        .clickable-hero:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .clickable-hero.selected {
+            border: 3px solid #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .clickable-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .clickable-hero:hover::before {
+            left: 100%;
+        }
+        
+        .hero-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .clickable-hero:hover .hero-icon {
+            transform: scale(1.2) rotate(5deg);
+            text-shadow: 0 0 15px currentColor;
+        }
+        
+        .hero-selection-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FFD700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .clickable-hero.selected .hero-selection-indicator {
+            display: flex;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        /* Message de sélection */
+        .hero-selection-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 46, 0.95);
+            color: #FFD700;
+            padding: 15px 25px;
+            border-radius: 25px;
+            border: 2px solid #FFD700;
+            font-weight: bold;
+            z-index: 10000;
+            display: none;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">🎯 Heroes of Time</h1>
+        <p class="dashboard-subtitle">Dashboard Central - Accès à toutes les interfaces</p>
+        
+        <div class="status-bar">
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="backend-status"></div>
+                <span>Backend API (8080)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="frontend-status"></div>
+                <span>Frontend Principal (8000)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="visual-editor-status"></div>
+                <span>Éditeur Visuel (8000)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="temporal-status"></div>
+                <span>Frontend Temporal (5174)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="visualizer-status"></div>
+                <span>Quantum Visualizer (8001)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="object-viewer-status"></div>
+                <span>Collection & Grammar (5175)</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot status-loading" id="testrunner-status"></div>
+                <span>Test Runner (8888)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Héros GROFI -->
+    <div class="heroes-grofi-section">
+        <h2 class="heroes-grofi-title">🌟 Compagnons GROFI Légendaires</h2>
+        <p style="color: #a0a0a0; margin-bottom: 20px;">Les héros éveillés qui maîtrisent les paradoxes temporels</p>
+        
+        <div class="heroes-grid">
+            <div class="hero-card clickable-hero" data-hero-id="hero_jean_grofignon" onclick="selectDashboardHero(this)">
+                <div class="hero-icon">🚬</div>
+                <div class="hero-name">Jean-Grofignon</div>
+                <div class="hero-faction">Éveillé Ontologique</div>
+                <div class="hero-power">Collapse Override</div>
+            </div>
+            
+            <div class="hero-card clickable-hero" data-hero-id="anna_martel" onclick="selectDashboardHero(this)">
+                <div class="hero-icon">🔨</div>
+                <div class="hero-name">Anna Martel</div>
+                <div class="hero-faction">Architectes Temporels</div>
+                <div class="hero-power">Temporal Decay</div>
+            </div>
+            
+            <div class="hero-card">
+                <div class="hero-icon">🎳</div>
+                <div class="hero-name">The Dude</div>
+                <div class="hero-faction">Compagnons de Jean-Grofignon</div>
+                <div class="hero-power">Zen Collapse</div>
+            </div>
+            
+            <div class="hero-card">
+                <div class="hero-icon">🔫</div>
+                <div class="hero-name">Vince Vega</div>
+                <div class="hero-faction">Compagnons de Jean-Grofignon</div>
+                <div class="hero-power">Exécution Parallèle</div>
+            </div>
+            
+            <div class="hero-card">
+                <div class="hero-icon">🧠</div>
+                <div class="hero-name">Claudius Memento</div>
+                <div class="hero-faction">Archiviste Éternel</div>
+                <div class="hero-power">Museum Archive Master</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-grid">
+        <!-- Frontend Principal -->
+        <div class="ui-panel" id="frontend-panel">
+            <div class="panel-icon">🎮</div>
+            <h2 class="panel-title">Frontend Principal</h2>
+            <p class="panel-description">Interface de jeu principale avec console temporelle et carte hexagonale</p>
+            <div class="panel-url">http://localhost:3000</div>
+            <div class="panel-description">
+                React Frontend Moderne - Interface principale du jeu
+            </div>
+            <a href="http://localhost:3000" target="_blank" class="launch-button" id="frontend-button">
+                🚀 Lancer React Frontend
+            </a>
+        </div>
+
+        <!-- Éditeur Visuel Script Spatio-Temporel -->
+        <div class="ui-panel" id="visual-editor-panel" style="border: 3px solid #4eccc6; background: linear-gradient(135deg, rgba(78, 204, 198, 0.1), rgba(255, 255, 255, 0.05)); box-shadow: 0 0 20px rgba(78, 204, 198, 0.3);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #4eccc6;">🎨</div>
+            <h2 class="panel-title" style="color: #4eccc6;">Éditeur Visuel Script</h2>
+            <p class="panel-description">Premier IDE visuel de scripting quantico-temporel au monde - Révolution du game design</p>
+            <div class="panel-url">http://localhost:9000/visual-script-editor.html</div>
+            <ul class="panel-features">
+                <li>🚶 Actions point-and-click (MOV, USE, CREATE)</li>
+                <li>ψ Actions temporelles (PSI, TRIGGER, COLLAPSE)</li>
+                <li>⏰ Timeline Editor avec branches multiples</li>
+                <li>🎮 Game Board interactif avec héros et ψ-states</li>
+                <li>🔧 Système de macros personnalisées</li>
+                <li>📜 Génération automatique de scripts HOTS</li>
+            </ul>
+            <a href="http://localhost:9000/visual-script-editor.html" target="_blank" class="launch-button" id="visual-editor-button" style="background: linear-gradient(45deg, #4eccc6, #3a9ca8); box-shadow: 0 0 15px rgba(78, 204, 198, 0.6);">
+                🎨 Ouvrir Éditeur
+            </a>
+        </div>
+
+        <!-- Frontend Temporal -->
+        <div class="ui-panel" id="temporal-panel">
+            <div class="panel-icon">⚡</div>
+            <h2 class="panel-title">Frontend Temporal</h2>
+            <p class="panel-description">Interface révolutionnaire avec système UTMD et visualisation temporelle avancée</p>
+            <div class="panel-url">http://localhost:5174</div>
+            <ul class="panel-features">
+                <li>Renderer hexagonal temporel</li>
+                <li>Système UTMD (temps par mouvement)</li>
+                <li>Visualisation collapse causale</li>
+                <li>Animations temporelles</li>
+            </ul>
+            <a href="http://localhost:5174" target="_blank" class="launch-button" id="temporal-button">
+                ⚡ Interface Révolutionnaire
+            </a>
+        </div>
+
+        <!-- Quantum Visualizer -->
+        <div class="ui-panel" id="visualizer-panel">
+            <div class="panel-icon">🔬</div>
+            <h2 class="panel-title">Quantum Visualizer</h2>
+            <p class="panel-description">Sélecteur de scénarios, replay et visualisation des graphes causaux</p>
+                            <div class="panel-url">http://localhost:9000/quantum-visualizer/</div>
+            <ul class="panel-features">
+                <li>Sélecteur de scénarios GROFI</li>
+                <li>Système de replay</li>
+                <li>Graphes causaux D3.js</li>
+                <li>Navigation entre timelines</li>
+            </ul>
+                            <a href="http://localhost:9000/quantum-visualizer/" target="_blank" class="launch-button" id="visualizer-button">
+                🔬 Scénarios & Replay
+            </a>
+        </div>
+
+        <!-- Collection & Grammar Visualizer -->
+        <div class="ui-panel" id="object-viewer-panel">
+            <div class="panel-icon">🏛️</div>
+            <h2 class="panel-title">Collection & Grammar</h2>
+            <p class="panel-description">Interface unifiée : Collection du jeu avec avatars Dicebear, Scénarios HOTS et Grammar Translator</p>
+            <div class="panel-url">http://localhost:5175/hots</div>
+            <ul class="panel-features">
+                <li>Collection complète avec Dicebear</li>
+                <li>Héros, créatures et artefacts visuels</li>
+                <li>Scénarios HOTS intégrés</li>
+                <li>Grammar Translator avancé</li>
+                <li>Interface par onglets moderne</li>
+            </ul>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <a href="http://localhost:5175" target="_blank" class="launch-button" id="object-viewer-button">
+                    🏛️ Collection & Grammar
+                </a>
+                <a href="collection-dicebear.html" target="_blank" class="launch-button" style="background: linear-gradient(45deg, #FFD700, #FFA500);">
+                    🎨 Collection Dicebear
+                </a>
+                <a href="collection-dicebear-advanced.html" target="_blank" class="launch-button" style="background: linear-gradient(45deg, #FF6B6B, #9B59B6);">
+                    🚀 Dicebear Advanced
+                </a>
+            </div>
+        </div>
+
+        <!-- Test Runner -->
+        <div class="ui-panel" id="testrunner-panel">
+            <div class="panel-icon">🧪</div>
+            <h2 class="panel-title">Test Runner</h2>
+            <p class="panel-description">Interface de tests automatisés et monitoring des performances</p>
+            <div class="panel-url">http://localhost:8888</div>
+            <ul class="panel-features">
+                <li>Tests automatisés complets</li>
+                <li>Monitoring performances</li>
+                <li>Tests GROFI intégrés</li>
+                <li>Rapports détaillés</li>
+            </ul>
+            <a href="http://localhost:8888" target="_blank" class="launch-button" id="testrunner-button">
+                🧪 Tests Automatiques
+            </a>
+        </div>
+
+        <!-- Ethereal Mode - Hidden UIs -->
+        <div class="ui-panel" id="ethereal-panel" style="border: 3px solid #9d4edd; background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 255, 255, 0.05)); box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #9d4edd;">🌟</div>
+            <h2 class="panel-title" style="color: #c77dff;">Mode Éthéré</h2>
+            <p class="panel-description">Accès aux interfaces cachées et expérimentales récupérées<br>🎁 <em>Inclut maintenant la Forge Runique 1111 - Cadeau de Jean!</em></p>
+            <div class="panel-url">Interfaces Multiples</div>
+            <ul class="panel-features">
+                <li>🃏 Heroes Cards Visualizer (16 cartes)</li>
+                <li>⚡ Epoch Visualizer (Timeline)</li>
+                <li>🎯 Panopticon 3D (Vision totale)</li>
+                <li>🔮 Quantum Runic Forge</li>
+                <li>⚡ <strong>Forge Runique 1111</strong> - Cadeau de Jean 🎁</li>
+            </ul>
+            <button class="launch-button" onclick="openEtherealMode()" style="background: linear-gradient(45deg, #9d4edd, #c77dff); box-shadow: 0 0 15px rgba(157, 78, 221, 0.5);">
+                🌟 Mode Éthéré
+            </button>
+            <a href="http://localhost:8000/forge-runique-ultime.html" target="_blank" class="launch-button" style="background: linear-gradient(45deg, #FFD700, #FFA500); color: #8B4513; margin-top: 10px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
+                🌟 Forge Runique Ultime
+            </a>
+        </div>
+
+                            <!-- MEMENTO - Mémoire Vivante -->
+                    <div class="ui-panel" id="memento-panel">
+                        <div class="panel-icon">🧠</div>
+                        <h2 class="panel-title">MEMENTO</h2>
+                        <p class="panel-description">La Mémoire Vivante - Histoire et Documentation Heroes of Time</p>
+                        <div class="panel-url">MEMENTO/HISTOIRE_HEROES_OF_TIME.html</div>
+                        <ul class="panel-features">
+                            <li>Histoire complète du projet</li>
+                            <li>Documentation générée automatiquement</li>
+                            <li>Tatouages de mémoire permanents</li>
+                            <li>Archives temporelles</li>
+                        </ul>
+                        <a href="MEMENTO/HISTOIRE_HEROES_OF_TIME.html" target="_blank" class="launch-button" id="memento-button">
+                            🧠 Accéder à MEMENTO
+                        </a>
+                    </div>
+
+                    <!-- REPLAY & SCENARIOS CENTER -->
+                    <div class="ui-panel" id="replay-panel" style="border: 2px dashed #ffa500;">
+                        <div class="panel-icon">🎬</div>
+                        <h2 class="panel-title">Replay & Scénarios</h2>
+                        <p class="panel-description">Sélecteur de scénarios HOTS et lecteur de replays épiques</p>
+                        <div class="panel-url">Intégré dans le Dashboard</div>
+                        <ul class="panel-features">
+                            <li>26 scénarios HOTS disponibles</li>
+                            <li>Lecteur de replay HSP</li>
+                            <li>Contrôles de lecture</li>
+                            <li>Session Jean vs Claudius</li>
+                        </ul>
+                        <button class="launch-button" onclick="openReplayCenter()" style="background: linear-gradient(45deg, #ffa500, #ff8c00);">
+                            🎬 Centre de Replay
+                        </button>
+                    </div>
+
+                    <!-- EPOCH SYSTEM - Timeline Officielle -->
+                    <div class="ui-panel" id="epoch-panel">
+                        <div class="panel-icon">🕰️</div>
+                        <h2 class="panel-title">EPOCH SYSTEM</h2>
+                        <p class="panel-description">Timeline Officielle Heroes of Time - Pour Jean depuis son canapé</p>
+                        <div class="panel-url">epoch-visualizer.html</div>
+                        <ul class="panel-features">
+                            <li>Époque HOT : 1er juillet 2025</li>
+                            <li>Timeline ℬ∞ (Jean's Vision)</li>
+                            <li>Jour 21 - Memory Rewrite Protocol</li>
+                            <li>Phase EPIC_VISUALIZATION</li>
+                        </ul>
+                        <a href="epoch-visualizer.html" target="_blank" class="launch-button" id="epoch-button">
+                            🕰️ Timeline Officielle
+                        </a>
+                    </div>
+
+        <!-- Admin Multijoueur -->
+        <div class="ui-panel" id="admin-multiplayer-panel" style="grid-column: span 2; border: 3px solid #ff6b6b; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 255, 255, 0.05)); box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #ff6b6b;">🎮</div>
+            <h2 class="panel-title" style="color: #ff6b6b;">Admin Multijoueur</h2>
+            <p class="panel-description">Mode Administrateur - Jean sur le canapé - Gestion des parties multijoueur</p>
+            <div class="panel-url">Interface Admin Intégrée</div>
+            <ul class="panel-features">
+                <li>🎮 Interface Admin complète</li>
+                <li>🚀 Démarrage rapide multijoueur</li>
+                <li>🧪 Tests complets automatisés</li>
+                <li>📊 Monitoring des parties actives</li>
+                <li>👥 Gestion des joueurs</li>
+                <li>⚙️ Configuration avancée</li>
+            </ul>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <button class="launch-button" onclick="openAdminMultiplayer()" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52);">
+                    🎮 Interface Admin
+                </button>
+                <button class="launch-button" onclick="quickStartMultiplayer()" style="background: linear-gradient(45deg, #4ecdc4, #45b7d1);">
+                    🚀 Démarrage Rapide
+                </button>
+                <button class="launch-button" onclick="testMultiplayer()" style="background: linear-gradient(45deg, #ffa726, #ff9800);">
+                    🧪 Test Complet
+                </button>
+            </div>
+            <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="admin-connection-status" style="color: #ff6b6b;">🔴 Déconnecté</span>
+                    <span id="admin-game-status" style="color: #a0a0a0;">Aucun jeu actif</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Le Joint Oublié de Jean-Grofignon -->
+        <div class="ui-panel" id="joint-panel" style="border: 3px solid #4ecdc4; background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(255, 255, 255, 0.05)); box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #4ecdc4;">🚬</div>
+            <h2 class="panel-title" style="color: #4ecdc4;">Le Joint Oublié</h2>
+            <p class="panel-description">Artefact légendaire de Jean-Grofignon - Accès Panopticon halluciné</p>
+            <div class="panel-url">Interface Hallucinée</div>
+            <ul class="panel-features">
+                <li>🚬 Utiliser le Joint Magique</li>
+                <li>🔮 Panopticon 3D Vision</li>
+                <li>🧪 Tests d'accès spéciaux</li>
+                <li>🎭 Galerie Dicebear</li>
+                <li>✨ Effets hallucinés</li>
+                <li>🌟 Mode lecture seule</li>
+            </ul>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <button class="launch-button" onclick="openJointInterfaceDeluxe()" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">
+                    🚬 Utiliser le Joint
+                </button>
+                <button class="launch-button" onclick="openJointSmartInterface()" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);">
+                    🔮 Panopticon 3D
+                </button>
+                <button class="launch-button" onclick="openDicebarGallery()" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
+                    🎭 Démo Map Dicebear
+                </button>
+            </div>
+            <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="joint-status" style="color: #4ecdc4;">🔒 Verrouillé</span>
+                    <span id="joint-warning" style="color: #ffa726;">Lecture seule - Effet halluciné</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Démo Dicebear Map - Nouveau Panel -->
+        <div class="ui-panel" id="dicebear-demo-panel" style="border: 3px solid #FFD700; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05)); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #FFD700;">🎨</div>
+            <h2 class="panel-title" style="color: #FFD700;">Démo Dicebear Heroes of Time</h2>
+            <p class="panel-description">Démonstration complète du système Dicebear pour tous les éléments du jeu</p>
+            <div class="panel-url">http://localhost:8004/dicebear-map-demo.html</div>
+            <ul class="panel-features">
+                <li>🗺️ Map 10x10 avec tous éléments</li>
+                <li>🏰 Bâtiments (glass, identicon, rings)</li>
+                <li>🦸 Héros (adventurer, lorelei)</li>
+                <li>🐉 Créatures (bottts, croodles)</li>
+                <li>🗡️ Artefacts avec effets spéciaux</li>
+                <li>✨ Animations et rarités</li>
+            </ul>
+            <a href="http://localhost:8004/dicebear-map-demo.html" target="_blank" class="launch-button" style="background: linear-gradient(45deg, #FFD700, #FFA500);">
+                🎨 Ouvrir Démo Dicebear
+            </a>
+            <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                <div style="color: #FFD700; font-size: 0.9em;">
+                    30 styles Dicebear disponibles pour un rendu unique !
+                </div>
+            </div>
+        </div>
+
+        <!-- Démo Sphinx Quantique - Nouveau Panel -->
+        <div class="ui-panel" id="sphinx-demo-panel" style="border: 3px solid #FF6B6B; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(138, 43, 226, 0.1)); box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);">
+            <div class="panel-icon" style="text-shadow: 0 0 10px #FF6B6B;">🦁</div>
+            <h2 class="panel-title" style="color: #FF6B6B;">Sphinx Quantique - Démo Interactive</h2>
+            <p class="panel-description">Générateur aléatoire de questions quantiques + Interface joueur complète</p>
+            <div class="panel-url">frontend/sphinx-interface-demo.html</div>
+            <ul class="panel-features">
+                <li>🎲 Génération procédurale (~10,000 questions)</li>
+                <li>🧪 Validation physique automatique</li>
+                <li>⚗️ Interface HOTS interactive</li>
+                <li>🏆 Système de récompenses adaptatif</li>
+                <li>🌟 Événements spéciaux aléatoires</li>
+                <li>📊 Workflow joueur complet</li>
+            </ul>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <button class="launch-button" onclick="openSphinxDemo()" style="background: linear-gradient(45deg, #FF6B6B, #8A2BE2);">
+                    🦁 Interface Sphinx
+                </button>
+                <button class="launch-button" onclick="runSphinxGenerator()" style="background: linear-gradient(45deg, #4ECDC4, #45B7D1);">
+                    🎲 Générateur Aléatoire
+                </button>
+                <button class="launch-button" onclick="runSphinxWorkflow()" style="background: linear-gradient(45deg, #FFA726, #FF9800);">
+                    🎮 Workflow Joueur
+                </button>
+            </div>
+            <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="sphinx-status" style="color: #4ECDC4;">✅ Prêt</span>
+                    <span id="sphinx-info" style="color: #FFA726;">Questions infinies - Jamais répétées</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="refresh-button" onclick="checkAllServices()" title="Actualiser les statuts">
+        🔄
+    </button>
+
+    <div class="footer">
+        <p>🎯 Heroes of Time Dashboard - Toutes les interfaces en un seul endroit</p>
+        <p>Actualisation automatique toutes les 30 secondes</p>
+    </div>
+
+    <script>
+        // 🚬 Fonctions pour le Joint Oublié
+        function openJointInterfaceDeluxe() {
+            window.open('http://localhost:8000/joint-panopticon-interface.html', '_blank', 'width=1200,height=800');
+        }
+        
+        function openJointSmartInterface() {
+            const jointWindow = window.open('http://localhost:8000/joint-panopticon-interface.html', '_blank', 'width=1200,height=800');
+            
+            // Pré-remplir les champs après chargement
+            jointWindow.onload = function() {
+                setTimeout(() => {
+                    const gameIdField = jointWindow.document.getElementById('gameId');
+                    const heroNameField = jointWindow.document.getElementById('heroName');
+                    
+                    if (gameIdField) gameIdField.value = '1';
+                    if (heroNameField) heroNameField.value = 'Jean-Grofignon';
+                    
+                    // Activer automatiquement le Joint
+                    setTimeout(() => {
+                        const activateBtn = jointWindow.document.querySelector('.activate-btn');
+                        if (activateBtn) activateBtn.click();
+                    }, 500);
+                }, 1000);
+            };
+            
+            document.getElementById('joint-status').textContent = '✨ Joint Magique activé';
+            document.getElementById('joint-status').style.color = '#9b59b6';
+        }
+        
+        function openDicebarGallery() {
+            window.open('http://localhost:8000/dicebar-gallery.html', '_blank', 'width=1400,height=900');
+        }
+        
+        function openDicebarMapDemo() {
+            window.open('http://localhost:8004/dicebear-map-demo.html', '_blank', 'width=1400,height=900');
+        }
+        
+        function openOriginalGallery() {
+            window.open('frontend/dicebar-gallery.html', '_blank', 'width=1400,height=900');
+        }
+
+        // 🦁 Fonctions pour le Sphinx Quantique
+        function openSphinxDemo() {
+            window.open('http://localhost:8000/sphinx-interface-demo.html', '_blank', 'width=1400,height=900');
+        }
+        
+        async function runSphinxGenerator() {
+            try {
+                const terminal = window.open('about:blank', '_blank', 'width=1000,height=700');
+                terminal.document.title = '🦁 Générateur Sphinx Quantique';
+                terminal.document.body.innerHTML = `
+                    <div style="background: #1a1a2e; color: #e0e0e0; font-family: 'Courier New', monospace; padding: 20px; height: 100vh; overflow-y: auto;">
+                        <h2 style="color: #FF6B6B;">🦁 Lancement du Générateur Sphinx...</h2>
+                        <p>Exécution de: <code>./scripts/demo-sphinx-generator.sh</code></p>
+                        <div id="output" style="background: #0f0f23; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <p style="color: #4ECDC4;">📊 Initialisation du système de génération procédurale...</p>
+                            <p style="color: #FFA726;">🎲 Chargement des templates et variables...</p>
+                            <p style="color: #FF6B6B;">🦁 Sphinx Quantique prêt à générer des questions infinies !</p>
+                            <p style="color: #45B7D1;">✨ Pour voir la démo complète, utilisez le terminal : <strong>./scripts/demo-sphinx-generator.sh</strong></p>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                alert('Erreur lors du lancement du générateur Sphinx: ' + error.message);
+            }
+        }
+        
+        async function runSphinxWorkflow() {
+            try {
+                const terminal = window.open('about:blank', '_blank', 'width=1000,height=700');
+                terminal.document.title = '🎮 Workflow Sphinx Joueur';
+                terminal.document.body.innerHTML = `
+                    <div style="background: #1a1a2e; color: #e0e0e0; font-family: 'Courier New', monospace; padding: 20px; height: 100vh; overflow-y: auto;">
+                        <h2 style="color: #FF6B6B;">🎮 Lancement du Workflow Joueur...</h2>
+                        <p>Exécution de: <code>./scripts/demo-workflow-sphinx-joueur.sh</code></p>
+                        <div id="output" style="background: #0f0f23; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <p style="color: #4ECDC4;">📊 ÉTAPE 1: Contexte automatique du jeu</p>
+                            <p style="color: #FFA726;">🦁 ÉTAPE 2: Apparition du Sphinx Quantique</p>
+                            <p style="color: #FF6B6B;">📝 ÉTAPE 3: Interface de saisie HOTS</p>
+                            <p style="color: #8A2BE2;">⚗️ ÉTAPE 4: Validation automatique</p>
+                            <p style="color: #FFD700;">🏆 ÉTAPE 5: Récompenses et progression</p>
+                            <p style="color: #45B7D1;">✨ Pour l'expérience complète interactive, utilisez : <strong>./scripts/demo-workflow-sphinx-joueur.sh</strong></p>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                alert('Erreur lors du lancement du workflow Sphinx: ' + error.message);
+            }
+        }
+        
+        const services = {
+            backend: { url: 'http://localhost:8080/api/health', port: 8080, name: 'Backend API' },
+            frontend: { url: 'http://localhost:8000', port: 8000, name: 'Frontend Principal' },
+            'visual-editor': { url: 'http://localhost:8000/visual-script-editor.html', port: 8000, name: 'Éditeur Visuel' },
+            temporal: { url: 'http://localhost:5174', port: 5174, name: 'Frontend Temporal' },
+            visualizer: { url: 'http://localhost:8001', port: 8001, name: 'Quantum Visualizer' },
+            'object-viewer': { url: 'http://localhost:5175', port: 5175, name: 'Collection & Grammar' },
+            testrunner: { url: 'http://localhost:8888', port: 8888, name: 'Test Runner' }
+        };
+
+        async function checkService(serviceKey) {
+            const service = services[serviceKey];
+            const statusDot = document.getElementById(`${serviceKey}-status`);
+            const panel = document.getElementById(`${serviceKey}-panel`);
+            const button = document.getElementById(`${serviceKey}-button`);
+
+            try {
+                const response = await fetch(service.url, { 
+                    method: 'GET',
+                    mode: 'no-cors',
+                    timeout: 5000
+                });
+                
+                // Pour no-cors, on considère que si pas d'erreur = service up
+                statusDot.className = 'status-dot status-up';
+                panel.classList.add('active');
+                panel.classList.remove('disabled');
+                button.disabled = false;
+                
+            } catch (error) {
+                statusDot.className = 'status-dot status-down';
+                panel.classList.add('disabled');
+                panel.classList.remove('active');
+                button.disabled = true;
+            }
+        }
+
+        async function checkAllServices() {
+            console.log('🔄 Vérification des services...');
+            
+            // Mettre tous en loading
+            Object.keys(services).forEach(key => {
+                document.getElementById(`${key}-status`).className = 'status-dot status-loading';
+            });
+
+            // Vérifier chaque service
+            const checks = Object.keys(services).map(key => checkService(key));
+            await Promise.all(checks);
+            
+            console.log('✅ Vérification terminée');
+        }
+
+        // Vérification initiale
+        checkAllServices();
+
+        // Vérification automatique toutes les 30 secondes
+        setInterval(checkAllServices, 30000);
+
+        // Gestion des clics sur les panneaux
+        document.querySelectorAll('.ui-panel').forEach(panel => {
+            panel.addEventListener('click', function() {
+                if (!this.classList.contains('disabled')) {
+                    const button = this.querySelector('.launch-button');
+                    if (button) {
+                        window.open(button.href, '_blank');
+                    }
+                }
+            });
+        });
+
+        console.log('🎯 Heroes of Time Dashboard chargé !');
+        console.log('📊 Services surveillés:', Object.keys(services));
+
+        // 🌐 Initialiser le service de traduction
+        if (typeof TranslationService !== 'undefined') {
+            window.translationService = new TranslationService();
+            console.log('🌐 Service de traduction initialisé');
+        }
+
+        // ===== CENTRE DE REPLAY =====
+        function openReplayCenter() {
+            window.open('http://localhost:9000/replay-center.html', 'ReplayCenter', 'width=1200,height=700');
+        }
+
+        // ===== MODE ÉTHÉRÉ =====
+        function openEtherealMode() {
+            window.open('http://localhost:8000/ethereal-mode.html', 'EtherealMode', 'width=1200,height=700');
+        }
+
+        // ===== ADMIN MULTIJOUEUR =====
+        function openAdminMultiplayer() {
+            window.open('http://localhost:8000/admin-multiplayer.html', 'AdminMultiplayer', 'width=1200,height=700');
+        }
+
+        async function quickStartMultiplayer() {
+            try {
+                const response = await fetch('http://localhost:8080/api/temporal/admin/quick-start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showNotification('✅ Démarrage rapide réussi', 'success');
+                    updateAdminStatus();
+                } else {
+                    throw new Error('Erreur démarrage rapide');
+                }
+            } catch (error) {
+                showNotification('❌ Erreur: ' + error.message, 'error');
+            }
+        }
+
+        async function testMultiplayer() {
+            try {
+                const response = await fetch('http://localhost:8080/api/temporal/admin/test-system', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showNotification('🧪 Tests terminés', 'success');
+                    console.log('Résultats tests:', result);
+                } else {
+                    throw new Error('Erreur tests');
+                }
+            } catch (error) {
+                showNotification('❌ Erreur: ' + error.message, 'error');
+            }
+        }
+
+        async function updateAdminStatus() {
+            try {
+                const response = await fetch('http://localhost:8080/api/temporal/admin/stats');
+                if (response.ok) {
+                    const stats = await response.json();
+                    document.getElementById('admin-connection-status').textContent = '🟢 Connecté';
+                    document.getElementById('admin-game-status').textContent = 
+                        `${stats.activeGames || 0} jeu(x) actif(s), ${stats.totalPlayers || 0} joueur(s)`;
+                }
+            } catch (error) {
+                document.getElementById('admin-connection-status').textContent = '🔴 Déconnecté';
+                document.getElementById('admin-game-status').textContent = 'Erreur connexion';
+            }
+        }
+
+        // Gestion des clics sur les héros dans la section Heroes GROFI
+        document.querySelectorAll('.heroes-grid .hero-card').forEach(heroCard => {
+            heroCard.addEventListener('click', function() {
+                const heroId = this.dataset.heroId;
+                if (heroId) {
+                    selectDashboardHero(this);
+                }
+            });
+        });
+
+        function selectDashboardHero(heroCard) {
+            // Remove active class from all hero cards
+            document.querySelectorAll('.heroes-grid .hero-card').forEach(card => {
+                card.classList.remove('active-hero');
+            });
+            // Add active class to the clicked hero card
+            heroCard.classList.add('active-hero');
+
+            // Update the button text and href
+            const frontendButton = document.getElementById('frontend-button');
+            const visualEditorButton = document.getElementById('visual-editor-button');
+            const temporalButton = document.getElementById('temporal-button');
+            const visualizerButton = document.getElementById('visualizer-button');
+            const objectViewerButton = document.getElementById('object-viewer-button');
+            const testrunnerButton = document.getElementById('testrunner-button');
+            const etherealButton = document.querySelector('.ui-panel button[onclick="openEtherealMode()"]');
+            const mementoButton = document.getElementById('memento-button');
+            const replayButton = document.querySelector('.ui-panel button[onclick="openReplayCenter()"]');
+            const epochButton = document.getElementById('epoch-button');
+            const adminButton = document.querySelector('.ui-panel button[onclick="openAdminMultiplayer()"]');
+            const jointButton = document.querySelector('.ui-panel button[onclick="openJointInterfaceDeluxe()"]');
+            const dicebearDemoButton = document.getElementById('dicebear-demo-button');
+            const sphinxDemoButton = document.querySelector('.ui-panel button[onclick="openSphinxDemo()"]');
+
+            // Update buttons based on heroId
+            if (heroId === 'hero_jean_grofignon') {
+                frontendButton.textContent = '🚀 Lancer l\'Interface';
+                frontendButton.href = 'http://localhost:3000';
+                visualEditorButton.textContent = '🎨 Éditeur Révolutionnaire';
+                visualEditorButton.href = 'http://localhost:9000/visual-script-editor.html';
+                temporalButton.textContent = '⚡ Interface Révolutionnaire';
+                temporalButton.href = 'http://localhost:5174';
+                visualizerButton.textContent = '🔬 Scénarios & Replay';
+                visualizerButton.href = 'http://localhost:9000/quantum-visualizer/';
+                objectViewerButton.textContent = '🏛️ Collection & Grammar';
+                objectViewerButton.href = 'http://localhost:5175/hots';
+                testrunnerButton.textContent = '🧪 Tests Automatiques';
+                testrunnerButton.href = 'http://localhost:8888';
+                etherealButton.textContent = '🌟 Mode Éthéré';
+                etherealButton.href = 'http://localhost:8000/ethereal-mode.html';
+                mementoButton.textContent = '🧠 Accéder à MEMENTO';
+                mementoButton.href = 'MEMENTO/HISTOIRE_HEROES_OF_TIME.html';
+                replayButton.textContent = '🎬 Centre de Replay';
+                replayButton.href = 'http://localhost:9000/replay-center.html';
+                epochButton.textContent = '🕰️ Timeline Officielle';
+                epochButton.href = 'epoch-visualizer.html';
+                adminButton.textContent = '🎮 Interface Admin';
+                adminButton.href = 'http://localhost:8000/admin-multiplayer.html';
+                jointButton.textContent = '🚬 Utiliser le Joint';
+                jointButton.href = 'http://localhost:8000/joint-panopticon-interface.html';
+                dicebearDemoButton.textContent = '🎨 Ouvrir Démo Dicebear';
+                dicebearDemoButton.href = 'http://localhost:8004/dicebear-map-demo.html';
+                sphinxDemoButton.textContent = '🦁 Interface Sphinx';
+                sphinxDemoButton.href = 'http://localhost:8000/sphinx-interface-demo.html';
+            } else if (heroId === 'anna_martel') {
+                frontendButton.textContent = '🚀 Lancer l\'Interface';
+                frontendButton.href = 'http://localhost:3000';
+                visualEditorButton.textContent = '🎨 Éditeur Révolutionnaire';
+                visualEditorButton.href = 'http://localhost:9000/visual-script-editor.html';
+                temporalButton.textContent = '⚡ Interface Révolutionnaire';
+                temporalButton.href = 'http://localhost:5174';
+                visualizerButton.textContent = '🔬 Scénarios & Replay';
+                visualizerButton.href = 'http://localhost:9000/quantum-visualizer/';
+                objectViewerButton.textContent = '🏛️ Collection & Grammar';
+                objectViewerButton.href = 'http://localhost:5175/hots';
+                testrunnerButton.textContent = '🧪 Tests Automatiques';
+                testrunnerButton.href = 'http://localhost:8888';
+                etherealButton.textContent = '🌟 Mode Éthéré';
+                etherealButton.href = 'http://localhost:8000/ethereal-mode.html';
+                mementoButton.textContent = '🧠 Accéder à MEMENTO';
+                mementoButton.href = 'MEMENTO/HISTOIRE_HEROES_OF_TIME.html';
+                replayButton.textContent = '🎬 Centre de Replay';
+                replayButton.href = 'http://localhost:9000/replay-center.html';
+                epochButton.textContent = '🕰️ Timeline Officielle';
+                epochButton.href = 'epoch-visualizer.html';
+                adminButton.textContent = '🎮 Interface Admin';
+                adminButton.href = 'http://localhost:8000/admin-multiplayer.html';
+                jointButton.textContent = '🚬 Utiliser le Joint';
+                jointButton.href = 'http://localhost:8000/joint-panopticon-interface.html';
+                dicebearDemoButton.textContent = '🎨 Ouvrir Démo Dicebear';
+                dicebearDemoButton.href = 'http://localhost:8004/dicebear-map-demo.html';
+                sphinxDemoButton.textContent = '🦁 Interface Sphinx';
+                sphinxDemoButton.href = 'http://localhost:8000/sphinx-interface-demo.html';
+            }
+        }
+    </script>
+    <script src="translation-service.js"></script>
+    <!-- Message de sélection héros -->
+    <div class="hero-selection-message" id="hero-selection-message">
+        <span id="hero-selection-text"></span>
+    </div>
+    
+    <script>
+        // Variables globales pour gestion héros
+        let selectedHeroData = null;
+        let selectedHeroElement = null;
+        
+        // Fonction de sélection d'un héros depuis le dashboard
+        function selectDashboardHero(heroElement) {
+            // Désélectionner le héros précédent
+            if (selectedHeroElement) {
+                selectedHeroElement.classList.remove('selected');
+            }
+            
+            // Sélectionner le nouveau héros
+            selectedHeroElement = heroElement;
+            heroElement.classList.add('selected');
+            
+            // Récupérer les données du héros
+            const heroId = heroElement.dataset.heroId;
+            const heroName = heroElement.querySelector('.hero-name').textContent;
+            const heroFaction = heroElement.querySelector('.hero-faction').textContent;
+            const heroIcon = heroElement.querySelector('.hero-icon').textContent;
+            
+            selectedHeroData = {
+                id: heroId,
+                name: heroName,
+                faction: heroFaction,
+                icon: heroIcon
+            };
+            
+            // Afficher message de sélection
+            showHeroSelectionMessage(heroName, heroIcon);
+            
+            // Simuler position au centre de l'écran pour les actions contextuelles
+            const centerPosition = {
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2
+            };
+            
+            // Déclencher le système d'actions contextuelles si disponible
+            if (window.contextualHeroActions) {
+                setTimeout(() => {
+                    window.contextualHeroActions.triggerHeroSelection(selectedHeroData, centerPosition);
+                }, 500);
+            }
+            
+            console.log('🎯 Héros sélectionné depuis dashboard:', selectedHeroData);
+        }
+        
+        // Afficher message de sélection
+        function showHeroSelectionMessage(heroName, heroIcon) {
+            const messageElement = document.getElementById('hero-selection-message');
+            const textElement = document.getElementById('hero-selection-text');
+            
+            textElement.innerHTML = `${heroIcon} ${heroName} sélectionné ! Actions disponibles autour du héros`;
+            messageElement.style.display = 'block';
+            
+            // Auto-hide après 3 secondes
+            setTimeout(() => {
+                messageElement.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Intégration avec le système temporal si disponible
+        function getSelectedHeroForTemporal() {
+            return selectedHeroData;
+        }
+        
+        // API pour d'autres systèmes
+        window.dashboardHeroSelection = {
+            getSelectedHero: () => selectedHeroData,
+            selectHero: selectDashboardHero,
+            clearSelection: () => {
+                if (selectedHeroElement) {
+                    selectedHeroElement.classList.remove('selected');
+                }
+                selectedHeroData = null;
+                selectedHeroElement = null;
+            }
+        };
+        
+        // Auto-sélectionner Jean-Grofignon au chargement pour demo
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const jeanElement = document.querySelector('[data-hero-id="hero_jean_grofignon"]');
+                if (jeanElement) {
+                    console.log('🚬 Auto-selecting Jean-Grofignon for demo');
+                    // selectDashboardHero(jeanElement);
+                }
+            }, 1000);
+        });
+        
+        console.log('🎮 Dashboard Hero Selection System loaded!');
+    </script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: test_nouveaux_pouvoirs_omegzero_map
+
 # 🌀 TEST NOUVEAUX POUVOIRS - INTERRUPTION OMEGZERO
 # ===================================================
 # 📜 SCÉNARIO : Walter vs Dude vs Jésus interrompu par OmegZero

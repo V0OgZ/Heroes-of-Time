@@ -1,0 +1,175 @@
+{
+  "system_name": "Banano™ Economic System",
+  "version": "1.0.0",
+  "type": "parallel_economy",
+  "visibility": "hidden",
+  
+  "currency": {
+    "name": "Banano™",
+    "symbol": "🍌",
+    "code": "BNN",
+    "decimal_places": 8,
+    "max_supply": null,
+    "circulating_supply": "unknown",
+    "creation_method": "dimensional_breach"
+  },
+  
+  "item_types": {
+    "banano_standard": {
+      "id": "banano_yellow",
+      "name": "Banano Standard",
+      "value": 1.0,
+      "stability": 0.98,
+      "stack_size": 42,
+      "description": "Une banane pixelisée jaune qui vibre légèrement",
+      "effects": ["portal_minor", "value_transfer"],
+      "decay_rate": 0.001
+    },
+    "banano_green": {
+      "id": "banano_green",
+      "name": "Banano Verte",
+      "value": "0.1-0.9",
+      "stability": 0.45,
+      "stack_size": 20,
+      "description": "Banano non mûre, valeur spéculative",
+      "effects": ["speculation", "ripen_chance"],
+      "special": "Peut devenir Standard (70%) ou Noire (30%) après 10 cycles"
+    },
+    "banano_gold": {
+      "id": "banano_dividend",
+      "name": "Banano Dorée",
+      "value": 10.0,
+      "stability": 0.999,
+      "stack_size": 10,
+      "description": "Banano de dividende, extrêmement stable",
+      "effects": ["vip_access", "quest_modifier_major"],
+      "creation": "Hold 3 Bananos Standards pendant 30 cycles"
+    },
+    "banano_black": {
+      "id": "banano_corrupted",
+      "name": "Banano Noire",
+      "value": -1.0,
+      "stability": 0.05,
+      "stack_size": 5,
+      "description": "Banano corrompue, valeur négative",
+      "effects": ["economic_damage", "corruption_spread"],
+      "warning": "Peut infecter autres Bananos dans l'inventaire"
+    },
+    "banano_quantum": {
+      "id": "banano_quantum",
+      "name": "Banano Quantique",
+      "value": "superposition",
+      "stability": null,
+      "stack_size": 1,
+      "description": "Existe dans tous les états de valeur simultanément",
+      "effects": ["reality_breach", "unknown"],
+      "rarity": "unique"
+    }
+  },
+  
+  "mechanics": {
+    "storage": {
+      "type": "metaphysical_attachment",
+      "max_carry": 42,
+      "visibility": "hidden_from_standard_inventory",
+      "weight": 0,
+      "detection": ["vince", "economic_entities", "special_vision"]
+    },
+    
+    "transfer": {
+      "methods": [
+        {
+          "name": "broker_transfer",
+          "requires": "economic_entity",
+          "fee": "5%"
+        },
+        {
+          "name": "ritual_transfer",
+          "requires": "economic_ritual",
+          "fee": "1 banano"
+        },
+        {
+          "name": "breach_transfer",
+          "requires": "dimensional_breach",
+          "fee": "volatility"
+        }
+      ]
+    },
+    
+    "usage": {
+      "activation_steps": [
+        "mental_grasp",
+        "economic_intention",
+        "terms_acceptance",
+        "effect_resolution"
+      ],
+      "failure_chance": 0.1,
+      "failure_effects": ["confusion", "temporary_blindness", "audit_flag"]
+    }
+  },
+  
+  "effects": {
+    "portal_minor": {
+      "description": "Ouvre un petit portail économique",
+      "cost": 1,
+      "duration": "30 seconds",
+      "cooldown": 300
+    },
+    "value_transfer": {
+      "description": "Transfère de la valeur entre mondes",
+      "cost": "variable",
+      "success_rate": 0.85
+    },
+    "quest_modifier_major": {
+      "description": "Modifie significativement une quête",
+      "cost": 10,
+      "permanent": true
+    },
+    "reality_breach": {
+      "description": "Crée une faille dans la réalité économique",
+      "cost": "unknown",
+      "danger_level": "extreme"
+    }
+  },
+  
+  "special_interactions": {
+    "wall_street_omega_access": {
+      "requirement": "3 bananos + 'dividende cosmique' keyword",
+      "type": "world_access"
+    },
+    "mckinsey_summon": {
+      "requirement": "5 bananos + business_card",
+      "type": "entity_summon",
+      "warning": "Irreversible"
+    },
+    "ultimate_creditor": {
+      "requirement": "42 bananos offered to Source",
+      "type": "game_ending",
+      "result": "Become Universal Creditor"
+    }
+  },
+  
+  "market_dynamics": {
+    "volatility": {
+      "base": 0.3,
+      "factors": [
+        "vince_presence",
+        "player_actions",
+        "dimensional_stability",
+        "mckinsey_interference"
+      ]
+    },
+    "price_discovery": {
+      "method": "chaos",
+      "update_frequency": "random",
+      "manipulation_possible": true
+    }
+  },
+  
+  "warnings": [
+    "System operates outside standard economic rules",
+    "May cause reality distortions",
+    "McKinsey monitoring suspected",
+    "Not responsible for existential debt"
+  ]
+}

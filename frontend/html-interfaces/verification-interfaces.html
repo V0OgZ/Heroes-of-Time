@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Vérification des Interfaces - Heroes of Time</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        .category {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .category h2 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+        .interface-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .interface-item {
+            background: rgba(0,255,136,0.1);
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+        .interface-item:hover {
+            background: rgba(0,255,136,0.2);
+            transform: translateY(-2px);
+        }
+        .interface-item a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .status {
+            float: right;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .status.active { background: #00ff88; color: #000; }
+        .status.legacy { background: #ff9500; color: #000; }
+        .status.broken { background: #ff3838; color: #fff; }
+        .port-info {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Vérification des Interfaces Heroes of Time</h1>
+        
+        <div class="port-info">
+            <h3>📍 Ports Actuels:</h3>
+            <ul>
+                <li><strong>Port 3000</strong> - Morgana React (Interface principale)</li>
+                <li><strong>Port 8000</strong> - Vince HTML (Interface simple)</li>
+                <li><strong>Port 8001/8002</strong> - GRUT Panopticon (Dashboard)</li>
+                <li><strong>Port 8080</strong> - Backend API Spring Boot</li>
+                <li><strong>Port 9000</strong> - Dashboard Pocket World</li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>🎮 Interfaces Principales (À GARDER)</h2>
+            <div class="interface-list">
+                <div class="interface-item">
+                    <span class="status active">ACTIF</span>
+                    <h3>Vince Vega Map Demo</h3>
+                    <a href="/vince-vega-map-demo-backend.html">vince-vega-map-demo-backend.html</a>
+                    <p>Interface simple avec map 10x8, wormholes, pistolet</p>
+                </div>
+                <div class="interface-item">
+                    <span class="status active">ACTIF</span>
+                    <h3>Dashboard Principal</h3>
+                    <a href="/dashboard.html">dashboard.html</a>
+                    <p>Dashboard central avec tous les liens</p>
+                </div>
+                <div class="interface-item">
+                    <span class="status active">ACTIF</span>
+                    <h3>Portail 100 Interfaces</h3>
+                    <a href="/portail-100-html-interfaces.html">portail-100-html-interfaces.html</a>
+                    <p>Menu principal de toutes les interfaces HTML</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🧪 Interfaces de Test (À VÉRIFIER)</h2>
+            <div class="interface-list">
+                <div class="interface-item">
+                    <span class="status legacy">LEGACY</span>
+                    <h3>Quantum ER-EPR Test</h3>
+                    <a href="/quantum-er-epr-test.html">quantum-er-epr-test.html</a>
+                    <p>Test du principe ER=EPR</p>
+                </div>
+                <div class="interface-item">
+                    <span class="status legacy">LEGACY</span>
+                    <h3>Story Mode</h3>
+                    <a href="/story-mode.html">story-mode.html</a>
+                    <p>Interface mode histoire</p>
+                </div>
+                <div class="interface-item">
+                    <span class="status legacy">LEGACY</span>
+                    <h3>Forge Runique</h3>
+                    <a href="/forge-runique.html">forge-runique.html</a>
+                    <p>Création d'objets magiques</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>⚠️ Interfaces Cassées/Obsolètes (À SUPPRIMER)</h2>
+            <div class="interface-list">
+                <div class="interface-item">
+                    <span class="status broken">CASSÉ</span>
+                    <h3>Vince Map BROKEN</h3>
+                    <a href="/vince-vega-map-demo-backend-BROKEN.html">vince-vega-map-demo-backend-BROKEN.html</a>
+                    <p>Version cassée - À supprimer</p>
+                </div>
+                <div class="interface-item">
+                    <span class="status broken">BACKUP</span>
+                    <h3>Multiples Backups</h3>
+                    <p>vince-vega-map-demo-backend-BACKUP.html</p>
+                    <p>vince-vega-map-demo-backend-V9-BACKUP.html</p>
+                    <p>Tous les backups à nettoyer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🔄 Plan de Rationalisation</h2>
+            <ol>
+                <li><strong>Port 3000</strong> - Fusionner Morgana + GRUT en une seule app React</li>
+                <li><strong>Port 8000</strong> - Regrouper TOUS les HTML ici</li>
+                <li><strong>Port 8080</strong> - Backend (ne pas toucher)</li>
+                <li><strong>Supprimer</strong> - Ports 8001, 8002, 9000</li>
+            </ol>
+        </div>
+
+        <script>
+            // Test de connexion au backend
+            async function testBackend() {
+                try {
+                    const response = await fetch('http://localhost:8080/actuator/health');
+                    if (response.ok) {
+                        console.log('✅ Backend connecté');
+                    }
+                } catch (error) {
+                    console.error('❌ Backend non disponible:', error);
+                }
+            }
+            
+            testBackend();
+        </script>
+    </div>
+</body>
+</html> 

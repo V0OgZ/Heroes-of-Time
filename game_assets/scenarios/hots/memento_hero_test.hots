@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: memento_hero_test_map
+
 # 🧠 TEST HÉROS MEMENTO - LA MÉMOIRE VIVANTE
 # ==========================================
 # Scénario de test pour le nouveau héros Memento

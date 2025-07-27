@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: quantum_realm
+MAP: quantum_interference_example_map
+
 # Exemple d'interférence quantique avec amplitudes complexes
 # Heroes of Time - Quantum Temporal Script (.hots)
 

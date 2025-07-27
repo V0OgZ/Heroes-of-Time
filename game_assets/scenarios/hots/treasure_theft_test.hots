@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: test_world
+MAP: treasure_theft_test_map
+
 # 💎 TEST VOL DU TRÉSOR - HEROES OF TIME SCRIPT
 # Scénario : Axis peut voler un trésor dans le futur avant qu'il existe
 # Version HOTS du TreasureTheftTest.java

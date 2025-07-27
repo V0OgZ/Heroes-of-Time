@@ -1,0 +1,182 @@
+{
+  "id": "christian_stratege_amplifie",
+  "name": "Christian",
+  "title": "Le Stratège Amplifié",
+  "stage_name": "CHR-SINE",
+  "description": "Consultant le jour, guitariste de metal la nuit. Beau-frère de Vince Vega. Stabilise les distorsions par le pouvoir du son saturé.",
+  "type": "HERO",
+  "race": "HUMAIN",
+  "class": "STRATEGE_SONIQUE",
+  "rarity": "epic",
+  "tier": 5,
+  "faction": "DOUBLE_AGENT",
+  "affiliations": [
+    "Le Bureau (consulting)",
+    "Les Harmonistes de Fer (musique)",
+    "Famille Vega (par alliance)"
+  ],
+  "suspect_note": "⚠️ CONFIDENTIEL: Possible lien avec McKinsey. Porte une mallette noire émettant des fréquences suspectes. À SURVEILLER.",
+  
+  "stats": {
+    "health": 150,
+    "mana": 120,
+    "attack": 35,
+    "defense": 30,
+    "speed": 7,
+    "knowledge": 40,
+    "spellPower": 45,
+    "amplification": 85
+  },
+  
+  "forms": {
+    "consultant": {
+      "name": "Mode Consultant",
+      "description": "Costume impeccable, analyse froide, efficacité redoutable",
+      "bonus": {
+        "knowledge": 20,
+        "defense": 10
+      }
+    },
+    "guitarist": {
+      "name": "Mode CHR-SINE",
+      "description": "Cheveux détachés, ampli branché, puissance brute canalisée",
+      "bonus": {
+        "spellPower": 25,
+        "amplification": 40
+      }
+    }
+  },
+  
+  "abilities": [
+    {
+      "id": "on_va_cadrer_ca",
+      "name": "On va cadrer ça",
+      "form": "consultant",
+      "description": "Applique un effet d'encadrement sur une zone. Les anomalies cessent.",
+      "formula": "ψ_cadrage = |Ψ⟩ → Π_stable|Ψ⟩",
+      "quantum_effect": "COLLAPSE_PARTIEL_CONTROLE",
+      "cost": 20,
+      "cooldown": 3
+    },
+    {
+      "id": "feuille_excel_noire",
+      "name": "Feuille Excel Noire",
+      "form": "consultant",
+      "description": "Déploie une table de variables d'action projetée. Trois trajectoires possibles.",
+      "formula": "Σ_trajectoires = ∫ P(x,t)|Ψ₁⟩ + P(y,t)|Ψ₂⟩ + P(z,t)|Ψ₃⟩",
+      "quantum_effect": "SUPERPOSITION_DECISIONNELLE",
+      "cost": 30,
+      "cooldown": 5
+    },
+    {
+      "id": "power_chord",
+      "name": "Power Chord",
+      "form": "guitarist",
+      "description": "Il griffe les cordes, le sol se tend. Onde de force frontale.",
+      "formula": "A_chord = √(2πf) × e^(iωt) × |amplitude⟩",
+      "quantum_effect": "ONDE_AMPLIFIEE",
+      "damage": "45 + amplification * 0.5",
+      "cost": 25,
+      "cooldown": 2
+    },
+    {
+      "id": "wall_of_sound",
+      "name": "Wall of Sound",
+      "form": "guitarist",
+      "description": "Mur sonore dense et saturé. Réduit les dégâts à distance.",
+      "formula": "W_sound = ∮ |ψ_son⟩⟨ψ_son| × saturate(f, gain)",
+      "quantum_effect": "BARRIERE_HARMONIQUE",
+      "defense_bonus": 50,
+      "duration": 4,
+      "cost": 40,
+      "cooldown": 6
+    },
+    {
+      "id": "refrain_martele",
+      "name": "Refrain Martelé",
+      "form": "guitarist",
+      "description": "Boucle de riff à 4 temps. Actions renforcées à chaque répétition.",
+      "formula": "R_loop = Σ(n=1→4) A^n × resonance(f_n)",
+      "quantum_effect": "BOUCLE_AMPLIFICATRICE",
+      "stack_bonus": "15% par boucle",
+      "max_stacks": 4,
+      "cost": 35,
+      "cooldown": 4
+    }
+  ],
+  
+  "ultimate": {
+    "id": "full_distortion_breakdown",
+    "name": "Full Distortion Breakdown",
+    "description": "Il plante les deux pieds, descend un accord... le monde se fend en deux.",
+    "formula": "Ω_breakdown = lim(gain→∞) ∫∫∫ |ψ⟩ × distort(reality) dxdydz",
+    "quantum_effect": "RESET_PARTIEL_STRUCTURE",
+    "effects": [
+      "Réinitialise tous les effets de statut",
+      "Réarme tous les scripts temporels",
+      "Reset partiel en accord avec le rythme"
+    ],
+    "cost": 100,
+    "cooldown": 10
+  },
+  
+  "equipment": {
+    "guitar": {
+      "name": "ReverbEdge 11",
+      "description": "Accordée en drop-C, câblée sur un ampli non-euclidien",
+      "bonus": {
+        "amplification": 30,
+        "spellPower": 15
+      }
+    },
+    "mallette_noire": {
+      "name": "Mallette Mystérieuse",
+      "description": "Émet un larsen inaudible. Contenu inconnu.",
+      "effects": [
+        "Détection par certains PNJ sensibles",
+        "Connexion suspecte au Bureau"
+      ],
+      "suspect_flag": true
+    }
+  },
+  
+  "lore": {
+    "background": "Christian mène une double vie parfaitement équilibrée. Consultant stratégique respecté le jour, il devient CHR-SINE la nuit, guitariste dans les clubs underground où la musique défie les lois de la physique.",
+    "personality": "Calme, analytique, mais avec une passion brûlante pour le son saturé. Loyal envers sa famille (Vince), mais ses affiliations professionnelles restent floues.",
+    "relationships": {
+      "vince_vega": "Beau-frère - Relation complexe mais respectueuse",
+      "le_bureau": "Employeur officiel - Nature exacte du travail classifiée",
+      "harmonistes_fer": "Groupe de musique - Fraternité artistique"
+    }
+  },
+  
+  "spawn_locations": [
+    {
+      "world": "NEXUS_CORPORATIF",
+      "coordinates": {"x": 45, "y": 78},
+      "conditions": "Après événement 'Mallettes Convergentes'"
+    },
+    {
+      "world": "UNDERGROUND_SONIQUE",
+      "coordinates": {"x": 12, "y": 34},
+      "conditions": "Nuit seulement, mode CHR-SINE"
+    }
+  ],
+  
+  "dialogue_samples": {
+    "greeting_consultant": "Bonjour. Christian, Strategic Solutions. On va optimiser tout ça.",
+    "greeting_guitarist": "*accord puissant* Le son, c'est la structure. Prêt pour le breakdown?",
+    "combat_start": "Rien de personnel. C'est juste une question de fréquence.",
+    "victory": "*ajuste sa cravate/ses cordes* Tout est dans le timing.",
+    "defeat": "La dissonance... était trop forte..."
+  },
+  
+  "meta": {
+    "created_by": "MEMENTO",
+    "creation_date": "2025-01-26",
+    "version": "1.0",
+    "tags": ["double_agent", "musical", "suspect", "famille_vega"],
+    "walter_test_required": true,
+    "conspiracy_level": 3
+  }
+} 

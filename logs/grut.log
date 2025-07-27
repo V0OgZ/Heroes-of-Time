@@ -1,0 +1,10 @@
+
+> panopticon-grut-dashboard@1.0.0 dev
+> vite --port 8001 --host
+
+Port 8001 is in use, trying another one...
+
+  VITE v5.4.19  ready in 108 ms
+
+  ➜  Local:   http://localhost:8002/
+  ➜  Network: http://192.168.1.38:8002/

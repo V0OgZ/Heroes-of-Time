@@ -1,0 +1,122 @@
+# 🏢 INITIATION AU BUREAU - Examen d'Entrée
+
+## Configuration
+WORLD: le_bureau
+MAP: le_bureau_map
+PLAYER: etudiant_candidat
+MODE: survival
+
+## Introduction
+NARRATOR: "Premier jour au Bureau. L'ascenseur monte vers le 42ème étage. Vos mains tremblent."
+
+DIRECTRICE_STERN: "Je suis la Directrice Stern. Ici, on ne tolère ni l'incompétence, ni les excuses. Vous avez 30 minutes pour prouver votre valeur."
+
+## Acte 1 : Test de Conformité
+TURN 1:
+  SPAWN dossiers_urgents AT (5, 5) QUANTITY 10
+  SPAWN cafe_obligatoire AT (15, 10)
+  DIALOGUE:
+    DIRECTRICE_STERN: "Premier test : classez ces dossiers par ordre de priorité temporelle. Et prenez un café. C'est obligatoire."
+    ETUDIANT: "Mais je ne bois pas de café..."
+    DIRECTRICE_STERN: "Ai-je demandé votre avis ?"
+
+TURN 2:
+  IF NOT collected(cafe_obligatoire):
+    DAMAGE player 20
+    DIALOGUE:
+      DIRECTRICE_STERN: "Insubordination notée. -20 points de performance."
+
+## Acte 2 : Gestion de Crise
+TURN 5:
+  EVENT paradoxe_administratif
+  SPAWN consultants_mckinsey AT (10, 15) QUANTITY 3
+  DIALOGUE:
+    DIRECTRICE_STERN: "Des consultants non autorisés. Neutralisez-les sans laisser de traces."
+    ASSISTANT_NERVEUX: "Mais Madame, ils ont des badges..."
+    DIRECTRICE_STERN: "Les badges peuvent être falsifiés. Exécution."
+
+## Acte 3 : Test de Loyauté
+TURN 10:
+  SPAWN mallette_suspecte AT (8, 8)
+  TRIGGER moral_dilemma
+  DIALOGUE:
+    VOIX_MYSTERIEUSE: "Cette mallette contient des informations compromettantes sur la Directrice..."
+    DIRECTRICE_STERN: "J'observe tout. Votre prochain choix déterminera votre carrière."
+
+CHOICE loyalty_test:
+  OPTION report_mallette:
+    DIALOGUE:
+      ETUDIANT: "Madame la Directrice, j'ai trouvé une mallette suspecte."
+      DIRECTRICE_STERN: "Bien. Vous comprenez la hiérarchie. +50 points."
+    BUFF player DEFENSE +30
+    
+  OPTION open_mallette:
+    DIALOGUE:
+      DIRECTRICE_STERN: "Curieux... Trop curieux. SÉCURITÉ !"
+    SPAWN agents_securite AT player_position QUANTITY 5
+    DEBUFF player SPEED -50%
+
+## Acte 4 : Épreuve Finale
+TURN 15:
+  EVENT effondrement_causal
+  SPAWN anomalies_temporelles RADIUS 10
+  DIALOGUE:
+    DIRECTRICE_STERN: "Le Bureau subit une attaque quantique. Protocole Omega activé."
+    GRUT: "GRUT OBSERVE. LA DIRECTRICE CACHE QUELQUE CHOSE."
+
+TURN 20:
+  IF player_health > 50:
+    REVEAL directrice_secret
+    DIALOGUE:
+      DIRECTRICE_STERN: "Vous avez survécu. Peu y arrivent. Mais maintenant, vous en savez trop..."
+      NARRATOR: "Son visage se pixelise. Ce n'était qu'une projection."
+
+## Conditions de Victoire
+VICTORY:
+  - SURVIVE 25 turns
+  - COMPLETE all_administrative_tasks
+  - MAINTAIN loyalty_score > 70
+
+## Conditions de Défaite  
+DEFEAT:
+  - LOSE sanity <= 0
+  - FAIL performance_review
+  - DISCOVER too_much_truth
+
+## Épilogue
+ON_VICTORY:
+  DIALOGUE:
+    VRAIE_DIRECTRICE: "La simulation est terminée. Vous êtes accepté au Bureau."
+    ETUDIANT: "C'était... un test ?"
+    VRAIE_DIRECTRICE: "Tout est un test ici. Bienvenue en Enfer administratif."
+  REWARD:
+    - badge_bureau_niveau_1
+    - manuel_survie_corporative
+    - UNLOCK therapist_contact
+
+ON_DEFEAT:
+  DIALOGUE:
+    DIRECTRICE_STERN: "Médiocre. Retournez à vos études. Le Bureau n'a pas besoin de faibles."
+    NARRATOR: "L'ascenseur descend. Vous ne vous souvenez déjà plus du 42ème étage..."
+
+## Personnage Spécial : Directrice Stern
+
+### Stats
+- Nom : Margareth Stern
+- Titre : Directrice Exécutive du Bureau
+- Pouvoir : Vision Panoptique Administrative
+- Faiblesse : Aucune (apparente)
+
+### Citations
+- "L'efficacité n'est pas une option."
+- "Les émotions sont un luxe que le Bureau ne peut se permettre."
+- "Chaque seconde perdue est documentée."
+- "Je ne répète jamais. C'est inefficace."
+
+## Métadonnées
+AUTHOR: GRUT-MEMENTO
+DATE: 2025-01-27
+TAGS: [bureau, initiation, corporate_horror, student_nightmare]
+DIFFICULTY: EXTREME
+ESTIMATED_TIME: 45min
+WARNING: "Ce scénario peut causer des traumatismes administratifs" 

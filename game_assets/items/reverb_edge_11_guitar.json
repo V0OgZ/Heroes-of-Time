@@ -1,0 +1,47 @@
+{
+  "id": "reverb_edge_11_guitar",
+  "name": "ReverbEdge 11",
+  "description": "Guitare électrique accordée en drop-C, câblée sur un ampli non-euclidien. Les cordes vibrent entre les dimensions.",
+  "type": "WEAPON_INSTRUMENT",
+  "rarity": "epic",
+  "slot": "two_hand",
+  "requirements": {
+    "class": ["STRATEGE_SONIQUE", "BARDE", "ROCKSTAR"],
+    "level": 15,
+    "amplification": 50
+  },
+  "stats": {
+    "attack": 25,
+    "spellPower": 30,
+    "amplification": 40,
+    "resonance": 15
+  },
+  "effects": [
+    {
+      "type": "ON_HIT",
+      "description": "10% chance d'infliger Dissonance (étourdit 1 tour)",
+      "chance": 0.1,
+      "duration": 1
+    },
+    {
+      "type": "PASSIVE",
+      "description": "Les sorts de son sont amplifiés de 25%",
+      "multiplier": 1.25,
+      "school": "sonic"
+    }
+  ],
+  "special_ability": {
+    "name": "Accord Dimensionnel",
+    "description": "Active un portail sonique vers une case adjacente",
+    "cooldown": 5,
+    "cost": 30
+  },
+  "lore": "Forgée dans les ateliers secrets des Harmonistes de Fer, cette guitare défie les lois de la physique. Ses cordes sont tissées de filaments temporels.",
+  "visual": {
+    "model": "guitar_metal_black",
+    "effects": "purple_lightning",
+    "sound": "dimensional_riff"
+  },
+  "value": 5000,
+  "bound_to": "christian_stratege_amplifie"
+} 

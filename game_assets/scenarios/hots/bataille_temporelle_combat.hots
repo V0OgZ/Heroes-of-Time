@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: battlefield
+MAP: bataille_temporelle_combat_map
+
 # ===============================================
 # BATAILLE TEMPORELLE - COMBAT
 # Script de combat avec mécaniques temporelles

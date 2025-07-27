@@ -42,3 +42,33 @@ target/
 *.war
 *.ear
 *.class
+
+# Backend data and backups
+backend/data/backup/
+backend/data/worlds/*_*.json
+
+# Development reports and demos
+JEAN/RAPPORTS_TECHNIQUES/*_2025_*.md
+JEAN/RAPPORTS_URGENTS/
+MEMENTO/RAPPORT_*_NARRATIF.md
+frontend/html-interfaces/*-demo.html
+frontend/html-interfaces/*-test*.html
+
+# Personal folders (contain sensitive data)
+VINCE/
+MEMENTO/CONFIDENTIEL_*/
+BUREAU/
+
+# Temporary test files
+scripts/test-walter-*.sh
+*-demo.html
+*-test.html
+
+# Log files
+*.log
+logs/
+
+# Backup files
+*.backup
+*.bak
+*~

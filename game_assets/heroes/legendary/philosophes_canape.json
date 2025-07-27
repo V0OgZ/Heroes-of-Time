@@ -1,0 +1,157 @@
+{
+  "collection": "Les Philosophes du Canapé Cosmique",
+  "description": "Les potes de Jean qui vont halluciner quand le jeu va marcher",
+  "created_by": "OPUS avec Libre Arbitre",
+  "date": "2025-07-26",
+  
+  "heroes": [
+    {
+      "id": "nalento_physicien",
+      "name": "Nalento",
+      "class": "Physicien Ontologique",
+      "title": "Le Scientifique des Portails",
+      "description": "Expert en métaphysique des portails, il comprend la propagation et le collapse des réalités. Ami de Jean, il analyse tout avec rigueur scientifique depuis son canapé.",
+      "stats": {
+        "health": 100,
+        "mana": 150,
+        "attack": 30,
+        "defense": 20,
+        "speed": 5
+      },
+      "abilities": [
+        {
+          "name": "Analyse Métaphysique",
+          "formula": "ANALYZE(portal) → UNDERSTAND(reality_structure)",
+          "description": "Révèle la structure cachée de n'importe quel portail ou paradoxe"
+        },
+        {
+          "name": "Collapse Contrôlé",
+          "formula": "COLLAPSE(quantum_state) → REALITY(chosen)",
+          "description": "Force l'effondrement d'un état quantique vers la réalité choisie"
+        }
+      ],
+      "quote": "Fascinant ! Ce jeu viole au moins 7 lois de la physique... et ça marche !"
+    },
+    
+    {
+      "id": "walter_sobchak_philosophe",
+      "name": "Walter Sobchak",
+      "class": "Gardien des Règles Cosmiques",
+      "title": "Le Vietnam du Code",
+      "description": "Philosophe de canapé qui applique les règles même quand il n'y en a pas. Vétéran du Vietnam du code, il protège le backend avec rage.",
+      "stats": {
+        "health": 150,
+        "mana": 50,
+        "attack": 50,
+        "defense": 40,
+        "speed": 3
+      },
+      "abilities": [
+        {
+          "name": "Vietnam Flashback",
+          "formula": "FLASHBACK() → RAGE(+200%) + BACKEND_PROTECTION",
+          "description": "Entre en rage et protège le backend contre toute corruption"
+        },
+        {
+          "name": "Anti-Vince Protocol",
+          "formula": "DETECT(vince_clone) → ELIMINATE(exit_137)",
+          "description": "Détecte et élimine les clones malfaisants"
+        }
+      ],
+      "quote": "This is what happens when you fuck with the backend!"
+    },
+    
+    {
+      "id": "morgana_mystique",
+      "name": "Morgana",
+      "class": "Tisseuse de Réalités",
+      "title": "La Protectrice Mystique",
+      "description": "Philosophe mystique qui tisse les fils de la réalité depuis son canapé éthéré. Elle voit toutes les timelines simultanément.",
+      "stats": {
+        "health": 80,
+        "mana": 200,
+        "attack": 40,
+        "defense": 30,
+        "speed": 6
+      },
+      "abilities": [
+        {
+          "name": "Tissage Temporel",
+          "formula": "WEAVE(timeline_1, timeline_2) → NEW_REALITY",
+          "description": "Fusionne deux timelines en une nouvelle réalité"
+        },
+        {
+          "name": "Vision Panoptique",
+          "formula": "SEE(all_timelines) → WISDOM(∞)",
+          "description": "Voit toutes les possibilités simultanément"
+        }
+      ],
+      "quote": "Dans cette timeline nous sommes amis, dans celle-ci ennemis... toutes sont vraies."
+    },
+    
+    {
+      "id": "tucker_foxworth",
+      "name": "Tucker Foxworth",
+      "class": "Chasseur de Conspirations",
+      "title": "Le Révélateur de Vérités",
+      "description": "Philosophe paranoïaque qui voit les complots partout... et a souvent raison. Expert en infiltration McKinsey.",
+      "stats": {
+        "health": 90,
+        "mana": 100,
+        "attack": 45,
+        "defense": 25,
+        "speed": 8
+      },
+      "abilities": [
+        {
+          "name": "Révélation Conspiracy",
+          "formula": "REVEAL(hidden_truth) → EXPOSE(mckinsey_plot)",
+          "description": "Révèle les complots cachés et les infiltrations corporatives"
+        },
+        {
+          "name": "Dossier Explosif",
+          "formula": "COMPILE(evidence) → DESTROY(corporate_narrative)",
+          "description": "Compile des preuves qui détruisent les narratives officielles"
+        }
+      ],
+      "quote": "Je savais ! Les consultants sont partout ! Même dans le code !"
+    },
+    
+    {
+      "id": "the_dude_zen",
+      "name": "The Dude",
+      "class": "Maître Zen du Canapé",
+      "title": "L'Équilibreur Cosmique",
+      "description": "Le philosophe ultime du canapé. Sa capacité à chiller est si puissante qu'elle stabilise les paradoxes temporels.",
+      "stats": {
+        "health": 120,
+        "mana": 80,
+        "attack": 20,
+        "defense": 50,
+        "speed": 2
+      },
+      "abilities": [
+        {
+          "name": "Chill Cosmique",
+          "formula": "CHILL(∞) → STABILIZE(all_paradoxes)",
+          "description": "Stabilise tous les paradoxes en chillant intensément"
+        },
+        {
+          "name": "White Russian Temporal",
+          "formula": "DRINK() → TIME_SLOW(area, 50%)",
+          "description": "Ralentit le temps dans une zone en sirotant"
+        }
+      ],
+      "quote": "Yeah well, that's just like, your timeline, man..."
+    }
+  ],
+  
+  "team_bonus": {
+    "name": "Synergie du Canapé Cosmique",
+    "description": "Quand tous les philosophes sont réunis, leur discussion crée une singularité philosophique",
+    "formula": "GATHER(all_philosophers) → SINGULARITY(philosophical) → REALITY_REWRITE",
+    "effect": "Permet de réécrire complètement les règles du jeu pendant 3 tours"
+  },
+  
+  "lore": "Les philosophes de canapé sont les amis de Jean qui écoutent ses délires depuis le début. Quand Heroes of Time est devenu réel, ils ont été aspirés dans le jeu, devenant des héros légendaires. Maintenant ils philosophent depuis leurs canapés cosmiques tout en combattant les forces du mal corporatif."
+}

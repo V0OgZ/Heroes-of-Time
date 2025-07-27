@@ -1,0 +1,193 @@
+.quantum-bridge-visualizer {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3);
+}
+
+.quantum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+}
+
+.quantum-header h2 {
+  color: #00ff88;
+  font-size: 24px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.susskind-quote {
+  color: #8a2be2;
+  font-style: italic;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.wormhole-canvas {
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bridge-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.bridge-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bridge-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(138, 43, 226, 0.4);
+  border-color: #8a2be2;
+}
+
+.bridge-card.selected {
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.bridge-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.bridge-icon {
+  font-size: 24px;
+}
+
+.bridge-particles {
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.bridge-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.stat-label {
+  color: #888;
+}
+
+.stat-value {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.stat-value.traversable {
+  color: #00ff88;
+}
+
+.stat-value.blocked {
+  color: #ff4444;
+}
+
+.quantum-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.quantum-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.create-bridge {
+  background: linear-gradient(45deg, #8a2be2, #9b59b6);
+  color: white;
+}
+
+.create-bridge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.5);
+}
+
+.vince-shot {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.vince-shot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5);
+}
+
+.quantum-info {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  border-left: 4px solid #8a2be2;
+}
+
+.quantum-info h3 {
+  color: #00ff88;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.quantum-info p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.ford-note {
+  color: #ffd700;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.bridge-card:hover .bridge-icon {
+  animation: rotate 2s linear infinite;
+} 

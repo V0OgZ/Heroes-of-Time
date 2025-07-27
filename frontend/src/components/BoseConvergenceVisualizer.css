@@ -1,0 +1,126 @@
+.bose-convergence-visualizer {
+    background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+    border: 2px solid #9b59b6;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.3);
+}
+
+.bose-convergence-visualizer h2 {
+    text-align: center;
+    color: #9b59b6;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+}
+
+.convergence-canvas {
+    border: 1px solid #3498db;
+    border-radius: 10px;
+    width: 100%;
+    background: radial-gradient(ellipse at center, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+}
+
+.convergence-info {
+    margin-top: 20px;
+}
+
+.convergence-message {
+    text-align: center;
+    color: #ecf0f1;
+    font-style: italic;
+    min-height: 30px;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.timeline-status {
+    margin: 20px 0;
+}
+
+.timeline-bar {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-bar span {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    min-width: 150px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.convergence-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.accelerate-btn, .sync-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.accelerate-btn {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.accelerate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+}
+
+.sync-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+}
+
+.sync-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+}
+
+.quantum-formula {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid #9b59b6;
+}
+
+.quantum-formula code {
+    color: #9b59b6;
+    font-size: 16px;
+    text-shadow: 0 0 5px rgba(155, 89, 182, 0.5);
+} 

@@ -1,0 +1,116 @@
+{
+  "id": "planet_ezith_test",
+  "name": "Test Scientifique - Planet Ezith",
+  "world": "planet_ezith",
+  "size": {
+    "width": 20,
+    "height": 20
+  },
+  "description": "Carte de test pour la résistance scientifique de Hari Seldon contre Ford et McKinsey.",
+  "tiles": [
+    {
+      "x": 10,
+      "y": 10,
+      "type": "foundation_hq",
+      "terrain": "building",
+      "passable": true,
+      "description": "QG de la Fondation"
+    },
+    {
+      "x": 15,
+      "y": 15,
+      "type": "prime_radiant",
+      "terrain": "special",
+      "passable": true,
+      "description": "Coffre du Prime Radiant"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "type": "laboratory",
+      "terrain": "building",
+      "passable": true,
+      "description": "Laboratoire de recherche"
+    },
+    {
+      "x": 18,
+      "y": 2,
+      "type": "mckinsey_portal",
+      "terrain": "danger",
+      "passable": true,
+      "description": "Tentative d'infiltration McKinsey"
+    },
+    {
+      "x": 2,
+      "y": 18,
+      "type": "ford_anomaly",
+      "terrain": "danger",
+      "passable": true,
+      "description": "Anomalie temporelle de Ford"
+    }
+  ],
+  "starting_positions": {
+    "player1": {
+      "x": 10,
+      "y": 10,
+      "hero": "hari_seldon"
+    },
+    "enemies": [
+      {
+        "x": 18,
+        "y": 2,
+        "type": "mckinsey_consultant",
+        "level": 10
+      },
+      {
+        "x": 2,
+        "y": 18,
+        "type": "ford_host",
+        "level": 12
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "defend",
+      "target": "prime_radiant",
+      "description": "Protéger le Prime Radiant des infiltrateurs"
+    },
+    {
+      "type": "defeat",
+      "targets": ["mckinsey_consultant", "ford_host"],
+      "description": "Repousser les agents corporatistes"
+    },
+    {
+      "type": "collect",
+      "resource": "knowledge_crystals",
+      "amount": 100,
+      "description": "Collecter 100 cristaux de savoir"
+    }
+  ],
+  "special_events": [
+    {
+      "turn": 5,
+      "type": "seldon_crisis",
+      "description": "Une crise prédite par Hari révèle les vraies intentions des ennemis"
+    },
+    {
+      "turn": 10,
+      "type": "quantum_storm",
+      "description": "Tempête électromagnétique perturbant les communications ennemies"
+    }
+  ],
+  "rewards": {
+    "completion": {
+      "experience": 5000,
+      "items": ["encyclopedia_galactica_page", "anti_manipulation_device"],
+      "unlock": "advanced_psychohistory"
+    }
+  },
+  "metadata": {
+    "difficulty": "hard",
+    "estimated_time": "30 minutes",
+    "created_by": "OPUS-MEMENTO",
+    "tags": ["scientific", "defense", "anti-corporate"]
+  }
+} 

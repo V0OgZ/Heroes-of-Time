@@ -1,0 +1,49 @@
+{
+  "id": "nexus_corporatif",
+  "name": "Nexus Corporatif",
+  "description": "Tour de verre et d'acier où les décisions façonnent la réalité. Siège de consultants aux mallettes mystérieuses.",
+  "type": "HYBRID",
+  "tier": 5,
+  "physics": {
+    "gravity": "variable selon étage",
+    "time_flow": "accéléré en salle de réunion",
+    "reality_stability": 0.7
+  },
+  
+  "zones": [
+    {
+      "id": "lobby",
+      "name": "Lobby Principal",
+      "description": "Marbre noir, écrans holographiques, silence pesant",
+      "npcs": ["receptionniste_quantique"],
+      "items": ["badge_temporel", "cafe_probabiliste"]
+    },
+    {
+      "id": "etage_42",
+      "name": "Étage 42 - Strategic Solutions",
+      "description": "Bureau de Christian. Vue sur le vide dimensionnel.",
+      "special": "Mallettes noires alignées émettant des fréquences",
+      "suspect_activity": true
+    },
+    {
+      "id": "salle_serveur",
+      "name": "Salle des Serveurs Ontologiques",
+      "description": "Les données deviennent réalité ici",
+      "access": "Badge niveau McKinsey requis",
+      "danger_level": "EXTREME"
+    }
+  ],
+  
+  "connections": [
+    {
+      "to": "UNDERGROUND_SONIQUE",
+      "type": "ascenseur_secret",
+      "condition": "Après 18h"
+    },
+    {
+      "to": "REALITY",
+      "type": "portal_corporatif",
+      "warning": "Surveillance McKinsey active"
+    }
+  ]
+} 

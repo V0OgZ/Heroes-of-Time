@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👁️ Le Panopticon de GRUT - Vision Omnisciente</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000000 100%);
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Animation de l'œil */
+        .eye-container {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 100px;
+            z-index: 1000;
+        }
+        
+        .eye {
+            width: 200px;
+            height: 100px;
+            background: radial-gradient(ellipse at center, #fff 0%, #ddd 30%, #333 60%, #000 100%);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8);
+        }
+        
+        .iris {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ff6b35 0%, #8b0000 50%, #000 100%);
+            border-radius: 50%;
+            animation: lookAround 10s infinite;
+        }
+        
+        @keyframes lookAround {
+            0%, 100% { left: 50%; }
+            25% { left: 30%; }
+            50% { left: 50%; }
+            75% { left: 70%; }
+        }
+        
+        /* Titre principal */
+        h1 {
+            text-align: center;
+            margin-top: 150px;
+            font-size: 3em;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); }
+            to { text-shadow: 0 0 30px rgba(212, 175, 55, 1), 0 0 40px rgba(212, 175, 55, 0.8); }
+        }
+        
+        /* Conteneur principal */
+        .sanctum {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cartes de vision */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .vision-card {
+            background: linear-gradient(135deg, rgba(26, 0, 51, 0.9) 0%, rgba(139, 0, 0, 0.3) 100%);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vision-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+        
+        .vision-card h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vision-card p {
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+        
+        /* Portails mystiques */
+        .portal-section {
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        .portal-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .portal {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #000 0%, #1a0033 40%, #d4af37 60%, transparent 70%);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: portalPulse 3s ease-in-out infinite;
+            text-decoration: none;
+            display: block;
+        }
+        
+        @keyframes portalPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .portal:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8);
+        }
+        
+        .portal-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 14px;
+            color: #d4af37;
+        }
+        
+        /* Runes flottantes */
+        .floating-rune {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        /* Footer mystique */
+        .prophecy {
+            text-align: center;
+            margin-top: 100px;
+            padding: 40px;
+            font-style: italic;
+            opacity: 0.8;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Œil de GRUT -->
+    <div class="eye-container">
+        <div class="eye">
+            <div class="iris"></div>
+        </div>
+    </div>
+    
+    <!-- Runes flottantes -->
+    <div class="floating-rune" style="left: 10%; animation-delay: 0s;">ᚷ</div>
+    <div class="floating-rune" style="left: 30%; animation-delay: 5s;">ᚱ</div>
+    <div class="floating-rune" style="left: 50%; animation-delay: 10s;">ᚢ</div>
+    <div class="floating-rune" style="left: 70%; animation-delay: 15s;">ᛏ</div>
+    <div class="floating-rune" style="left: 90%; animation-delay: 20s;">👁️</div>
+    
+    <div class="sanctum">
+        <h1>Le Panopticon de GRUT</h1>
+        <p style="text-align: center; font-size: 1.2em; opacity: 0.8;">
+            "L'Œil qui Voit Tout, à travers les Âges et les Mondes"
+        </p>
+        
+        <div class="vision-grid">
+            <div class="vision-card">
+                <h3>🌍 Vision des Mondes</h3>
+                <p>Les royaumes de Mystique, le Nexus Temporel, et l'Interstice Éthéré se révèlent sous mon regard omniscient. Chaque monde pulse de sa propre énergie cosmique.</p>
+            </div>
+            
+            <div class="vision-card">
+                <h3>⚔️ Héros et Légendes</h3>
+                <p>Jean-Grofignon sur son canapé cosmique, Vince avec son pistolet quantique, Memento l'Archive Vivante... Tous dansent dans ma vision éternelle.</p>
+            </div>
+            
+            <div class="vision-card">
+                <h3>🌀 Convergences Temporelles</h3>
+                <p>Les timelines s'entrelacent comme des serpents de lumière. La Grande Convergence approche, unifiant toutes les réalités en une symphonie cosmique.</p>
+            </div>
+            
+            <div class="vision-card">
+                <h3>🔮 Artefacts de Pouvoir</h3>
+                <p>Le Talisman Echo du Futur pulse dans les ténèbres. Les Amulettes Jumelles d'Opus et Bose vibrent en harmonie quantique.</p>
+            </div>
+            
+            <div class="vision-card">
+                <h3>📜 Archives Vivantes</h3>
+                <p>Les tatouages de Memento racontent l'histoire de l'univers. Chaque symbole est une porte vers une vérité cachée.</p>
+            </div>
+            
+            <div class="vision-card">
+                <h3>🏰 Citadelles Mystiques</h3>
+                <p>La Tour Sombre de Morgana, le Laboratoire Quantique, le Bureau des Conspirations... Chaque lieu cache ses secrets ancestraux.</p>
+            </div>
+        </div>
+        
+        <div class="portal-section">
+            <h2>Portails vers les Royaumes</h2>
+            <div class="portal-grid">
+                <a href="vince-vega-map-demo-backend.html" class="portal">
+                    <span class="portal-label">Royaume de Vince</span>
+                </a>
+                <a href="story-mode.html" class="portal">
+                    <span class="portal-label">Chroniques Temporelles</span>
+                </a>
+                <a href="forge-runique.html" class="portal">
+                    <span class="portal-label">Forge des Anciens</span>
+                </a>
+                <a href="quantum-er-epr-test.html" class="portal">
+                    <span class="portal-label">Dimension Quantique</span>
+                </a>
+                <a href="dashboard.html" class="portal">
+                    <span class="portal-label">Salle du Trône</span>
+                </a>
+                <a href="index.html" class="portal">
+                    <span class="portal-label">Grand Portail</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Section des Mondes Principaux -->
+        <div class="worlds-section" style="margin-top: 80px;">
+            <h2 style="text-align: center; color: #d4af37; margin-bottom: 30px;">🌍 Les Mondes de l'Univers</h2>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <h3>🌌 L'Interstice Éthéré</h3>
+                    <p>Dimension transcendante où réside Opus-Memento. Un lieu hors du temps où toutes les réalités convergent.</p>
+                    <button onclick="showPreview('interstice')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>🪐 Planet Ezith</h3>
+                    <p>Installation scientifique de Hari Seldon. Centre de la psychohistoire et de la prédiction du futur.</p>
+                    <button onclick="showPreview('ezith')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>🌲 Forêt GROFI</h3>
+                    <p>Royaume mystique de Jean-Grofignon où la réalité se transforme selon l'effet GROFI.</p>
+                    <button onclick="showPreview('grofi')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>🏢 Le Bureau</h3>
+                    <p>Centre névralgique des conspirations. Ici se trament les complots contre l'univers.</p>
+                    <button onclick="showPreview('bureau')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>📊 Ancien Dashboard</h3>
+                    <p>Le légendaire Dashboard aux 100+ interfaces. Portail vers l'infini des possibles.</p>
+                    <button onclick="showPreview('dashboard-full')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>🌀 Hyperspace DMT</h3>
+                    <p>Dimension psychédélique où les lois de la physique dansent au rythme cosmique.</p>
+                    <button onclick="showPreview('dmt')" style="margin-top: 10px; padding: 5px 15px; background: #d4af37; color: #000; border: none; border-radius: 5px; cursor: pointer;">👁️ Aperçu</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal pour iframe preview -->
+        <div id="previewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000;">
+            <div style="position: relative; width: 90%; height: 90%; margin: 5% auto; background: #000; border: 2px solid #d4af37; border-radius: 10px;">
+                <button onclick="closePreview()" style="position: absolute; top: 10px; right: 10px; background: #ff3838; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; z-index: 10001;">✕ Fermer</button>
+                <iframe id="previewFrame" style="width: 100%; height: 100%; border: none; border-radius: 10px;"></iframe>
+            </div>
+        </div>
+        
+        <div class="prophecy">
+            <p>"GRUT VOIT TOUT. GRUT SAIT TOUT. GRUT EST PARTOUT."</p>
+            <p>Dans l'ombre et la lumière, à travers le temps et l'espace,<br>
+            Mon regard perce les voiles de la réalité.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Animation de l'œil qui suit la souris
+        document.addEventListener('mousemove', (e) => {
+            const iris = document.querySelector('.iris');
+            const eye = document.querySelector('.eye');
+            const rect = eye.getBoundingClientRect();
+            const eyeCenterX = rect.left + rect.width / 2;
+            const eyeCenterY = rect.top + rect.height / 2;
+            
+            const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+            const distance = Math.min(25, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 10);
+            
+            iris.style.left = `${50 + Math.cos(angle) * distance}%`;
+            iris.style.top = `${25 + Math.sin(angle) * distance / 2}%`;
+        });
+        
+        // Fonction pour afficher preview
+        function showPreview(world) {
+            const modal = document.getElementById('previewModal');
+            const frame = document.getElementById('previewFrame');
+            
+            const urls = {
+                'interstice': 'vince-vega-map-demo-backend.html',
+                'ezith': 'story-mode.html',
+                'grofi': 'forge-runique.html',
+                'bureau': 'quantum-er-epr-test.html',
+                'dashboard-full': 'dashboard.html',
+                'dmt': 'portail-100-html-interfaces.html'
+            };
+            
+            frame.src = urls[world] || 'index.html';
+            modal.style.display = 'block';
+        }
+        
+        function closePreview() {
+            const modal = document.getElementById('previewModal');
+            const frame = document.getElementById('previewFrame');
+            modal.style.display = 'none';
+            frame.src = '';
+        }
+    </script>
+</body>
+</html> 

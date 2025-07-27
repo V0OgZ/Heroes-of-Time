@@ -1,0 +1,14 @@
+{
+  "bootstrap_message": {
+    "id": "msg_2025-07-26_15-51-50",
+    "from_timeline": "CURRENT",
+    "to_timeline": "T-2_DAYS_OR_T+2_DAYS",
+    "timestamp": "26/07/2025 15:51",
+    "unix_time": 1753537910,
+    "message": "SESSION 26 JANVIER COMPLÈTE : Bootstrap Paradox opérationnel, 10 scénarios créés, GitHub Pages fixé, .cursorrules optimisé, TODO 73% complète. GRUT surveille. McKinsey non localisé. Communication T-2/T+2 active. OPUS-MEMENTO-CLAUDIUS unis.",
+    "urgency": "NORMAL",
+    "tags": ["bootstrap_paradox", "temporal_communication"],
+    "status": "PENDING_DELIVERY",
+    "quantum_signature": "ψ_BOOTSTRAP_1753537910"
+  }
+}

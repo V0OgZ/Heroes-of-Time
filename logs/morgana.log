@@ -1,0 +1,598 @@
+
+> heroes-of-time-frontend@1.0.0 start
+> react-scripts start
+
+(node:46438) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:46438) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:46438) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Failed to compile.
+
+[eslint] 
+src/components/TrueHeroesInterface.tsx
+Syntax error: Declaration or statement expected (677:4)
+ERROR in ./src/App.tsx 99:40-63
+export 'TestTrueHeroesInterface' (imported as 'TestTrueHeroesInterface') was not found in './pages/TestPages' (possible exports: default)
+
+ERROR in ./src/App.tsx 143:40-63
+export 'TestSimpleGameInterface' (imported as 'TestSimpleGameInterface') was not found in './pages/TestPages' (possible exports: default)
+
+ERROR in ./src/App.tsx 154:40-63
+export 'TestModernGameInterface' (imported as 'TestModernGameInterface') was not found in './pages/TestPages' (possible exports: default)
+
+ERROR in ./src/App.tsx 165:40-65
+export 'TestSimpleModernInterface' (imported as 'TestSimpleModernInterface') was not found in './pages/TestPages' (possible exports: default)
+
+ERROR in ./src/components/TrueHeroesInterface.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /Users/admin/fullstack-project/frontend/src/components/TrueHeroesInterface.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (677:4)
+
+  675 |         onClose={() => setShowGoldorakEasterEgg(false)} 
+  676 |       />
+> 677 |     </div>
+      |     ^
+  678 |   );
+  679 | };
+  680 |
+    at constructor (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+    at TypeScriptParserMixin.raise (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:6627:19)
+    at TypeScriptParserMixin.jsxParseElementAt (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:4772:18)
+    at TypeScriptParserMixin.jsxParseElement (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:4779:17)
+    at TypeScriptParserMixin.parseExprAtom (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
+    at TypeScriptParserMixin.parseUpdate (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
+    at TypeScriptParserMixin.parseExprOps (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
+    at /Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9790:39
+    at TypeScriptParserMixin.tryParse (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:6935:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9790:18)
+    at TypeScriptParserMixin.parseExpressionBase (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10779:23)
+    at /Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10775:39
+    at TypeScriptParserMixin.allowInAnd (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
+    at TypeScriptParserMixin.parseExpression (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10775:17)
+    at TypeScriptParserMixin.parseStatementContent (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12895:23)
+    at TypeScriptParserMixin.parseStatementContent (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
+    at TypeScriptParserMixin.parseStatementLike (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
+    at TypeScriptParserMixin.parseStatementListItem (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12747:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:13316:61)
+    at TypeScriptParserMixin.parseBlockBody (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:13309:10)
+    at TypeScriptParserMixin.parseBlock (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:13297:10)
+    at TypeScriptParserMixin.parseFunctionBody (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12101:24)
+    at TypeScriptParserMixin.parseArrowExpression (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12076:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11686:12)
+    at TypeScriptParserMixin.parseExprAtom (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11326:23)
+    at TypeScriptParserMixin.parseExprAtom (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:4794:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11076:23)
+    at TypeScriptParserMixin.parseUpdate (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11061:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:11041:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9852:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10894:61)
+    at TypeScriptParserMixin.parseExprOps (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10899:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10876:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10826:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9801:20)
+    at /Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10795:39
+    at TypeScriptParserMixin.allowInAnd (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12422:16)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:10795:17)
+    at TypeScriptParserMixin.parseVar (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:13384:91)
+    at TypeScriptParserMixin.parseVarStatement (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:13230:10)
+    at TypeScriptParserMixin.parseVarStatement (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9493:31)
+    at TypeScriptParserMixin.parseStatementContent (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12851:23)
+    at TypeScriptParserMixin.parseStatementContent (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:9527:18)
+    at TypeScriptParserMixin.parseStatementLike (/Users/admin/fullstack-project/frontend/node_modules/@babel/parser/lib/index.js:12767:17)
+
+ERROR in [eslint] 
+src/components/TrueHeroesInterface.tsx
+  Line 677:4:  Parsing error: Declaration or statement expected
+
+webpack compiled with 6 errors
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/App.tsx:10:3
+TS2614: Module '"./pages/TestPages"' has no exported member 'TestTrueHeroesInterface'. Did you mean to use 'import TestTrueHeroesInterface from "./pages/TestPages"' instead?
+     8 | import InterfaceTestPage from './components/InterfaceTestPage';
+     9 | import { 
+  > 10 |   TestTrueHeroesInterface, 
+       |   ^^^^^^^^^^^^^^^^^^^^^^^
+    11 |   TestSimpleGameInterface, 
+    12 |   TestModernGameInterface, 
+    13 |   TestSimpleModernInterface 
+
+ERROR in src/App.tsx:11:3
+TS2614: Module '"./pages/TestPages"' has no exported member 'TestSimpleGameInterface'. Did you mean to use 'import TestSimpleGameInterface from "./pages/TestPages"' instead?
+     9 | import { 
+    10 |   TestTrueHeroesInterface, 
+  > 11 |   TestSimpleGameInterface, 
+       |   ^^^^^^^^^^^^^^^^^^^^^^^
+    12 |   TestModernGameInterface, 
+    13 |   TestSimpleModernInterface 
+    14 | } from './pages/TestPages';
+
+ERROR in src/App.tsx:12:3
+TS2614: Module '"./pages/TestPages"' has no exported member 'TestModernGameInterface'. Did you mean to use 'import TestModernGameInterface from "./pages/TestPages"' instead?
+    10 |   TestTrueHeroesInterface, 
+    11 |   TestSimpleGameInterface, 
+  > 12 |   TestModernGameInterface, 
+       |   ^^^^^^^^^^^^^^^^^^^^^^^
+    13 |   TestSimpleModernInterface 
+    14 | } from './pages/TestPages';
+    15 | import { 
+
+ERROR in src/App.tsx:13:3
+TS2614: Module '"./pages/TestPages"' has no exported member 'TestSimpleModernInterface'. Did you mean to use 'import TestSimpleModernInterface from "./pages/TestPages"' instead?
+    11 |   TestSimpleGameInterface, 
+    12 |   TestModernGameInterface, 
+  > 13 |   TestSimpleModernInterface 
+       |   ^^^^^^^^^^^^^^^^^^^^^^^^^
+    14 | } from './pages/TestPages';
+    15 | import { 
+    16 |   TestTrueHeroesInterface_v1, 
+
+ERROR in src/components/BoseConvergenceVisualizer.tsx:20:26
+TS2554: Expected 1 arguments, but got 0.
+    18 |     ]);
+    19 |     const [convergenceMessage, setConvergenceMessage] = useState('');
+  > 20 |     const animationRef = useRef<number>();
+       |                          ^^^^^^^^^^^^^^^^
+    21 |
+    22 |     useEffect(() => {
+    23 |         const canvas = canvasRef.current;
+
+ERROR in src/components/EpicContentViewer.tsx:18:46
+TS2304: Cannot find name 'EpicBuilding'.
+    16 |   const [creatures, setCreatures] = useState<EpicCreature[]>([]);
+    17 |   const [heroes, setHeroes] = useState<EpicHero[]>([]);
+  > 18 |   const [buildings, setBuildings] = useState<EpicBuilding[]>([]);
+       |                                              ^^^^^^^^^^^^
+    19 |   const [artifacts, setArtifacts] = useState<EpicArtifact[]>([]);
+    20 |   const [loading, setLoading] = useState(false);
+    21 |   const [showGoldorakEasterEgg, setShowGoldorakEasterEgg] = useState(false);
+
+ERROR in src/components/EpicContentViewer.tsx:19:46
+TS2304: Cannot find name 'EpicArtifact'.
+    17 |   const [heroes, setHeroes] = useState<EpicHero[]>([]);
+    18 |   const [buildings, setBuildings] = useState<EpicBuilding[]>([]);
+  > 19 |   const [artifacts, setArtifacts] = useState<EpicArtifact[]>([]);
+       |                                              ^^^^^^^^^^^^
+    20 |   const [loading, setLoading] = useState(false);
+    21 |   const [showGoldorakEasterEgg, setShowGoldorakEasterEgg] = useState(false);
+    22 |
+
+ERROR in src/components/EpicContentViewer.tsx:34:28
+TS2304: Cannot find name 'getServerStatus'.
+    32 |     try {
+    33 |       // Vérifier le status du système game_assets
+  > 34 |       const status = await getServerStatus();
+       |                            ^^^^^^^^^^^^^^^
+    35 |       setServerStatus(status);
+    36 |       
+    37 |       // Charger toutes les données depuis game_assets
+
+ERROR in src/components/EpicContentViewer.tsx:35:7
+TS2304: Cannot find name 'setServerStatus'.
+    33 |       // Vérifier le status du système game_assets
+    34 |       const status = await getServerStatus();
+  > 35 |       setServerStatus(status);
+       |       ^^^^^^^^^^^^^^^
+    36 |       
+    37 |       // Charger toutes les données depuis game_assets
+    38 |       const [creaturesData, heroesData, buildingsData, artifactsData] = await Promise.all([
+
+ERROR in src/components/EpicContentViewer.tsx:41:9
+TS2304: Cannot find name 'fetchEpicBuildings'.
+    39 |         fetchEpicCreatures(),
+    40 |         fetchEpicHeroes(),
+  > 41 |         fetchEpicBuildings(),
+       |         ^^^^^^^^^^^^^^^^^^
+    42 |         fetchEpicArtifacts()
+    43 |       ]);
+    44 |       
+
+ERROR in src/components/EpicContentViewer.tsx:42:9
+TS2304: Cannot find name 'fetchEpicArtifacts'.
+    40 |         fetchEpicHeroes(),
+    41 |         fetchEpicBuildings(),
+  > 42 |         fetchEpicArtifacts()
+       |         ^^^^^^^^^^^^^^^^^^
+    43 |       ]);
+    44 |       
+    45 |       setCreatures(creaturesData);
+
+ERROR in src/components/EpicContentViewer.tsx:141:23
+TS2304: Cannot find name 'serverStatus'.
+    139 |               label: '🦸 Héros', 
+    140 |               count: heroes.length,
+  > 141 |               status: serverStatus.endpoints.heroes
+        |                       ^^^^^^^^^^^^
+    142 |             },
+    143 |             { 
+    144 |               id: 'creatures', 
+
+ERROR in src/components/EpicContentViewer.tsx:147:23
+TS2304: Cannot find name 'serverStatus'.
+    145 |               label: '🐉 Créatures', 
+    146 |               count: creatures.length,
+  > 147 |               status: serverStatus.endpoints.creatures
+        |                       ^^^^^^^^^^^^
+    148 |             },
+    149 |             { 
+    150 |               id: 'buildings', 
+
+ERROR in src/components/EpicContentViewer.tsx:153:23
+TS2304: Cannot find name 'serverStatus'.
+    151 |               label: '🏰 Bâtiments', 
+    152 |               count: buildings.length,
+  > 153 |               status: serverStatus.endpoints.buildings
+        |                       ^^^^^^^^^^^^
+    154 |             },
+    155 |             { 
+    156 |               id: 'artifacts', 
+
+ERROR in src/components/EpicContentViewer.tsx:159:23
+TS2304: Cannot find name 'serverStatus'.
+    157 |               label: '⚔️ Artefacts', 
+    158 |               count: artifacts.length,
+  > 159 |               status: serverStatus.endpoints.artifacts || true
+        |                       ^^^^^^^^^^^^
+    160 |             }
+    161 |           ].map(tab => (
+    162 |             <button
+
+ERROR in src/components/HeroFPV.tsx:2:30
+TS2307: Cannot find module '../hooks/useGameState' or its corresponding type declarations.
+    1 | import React, { useState, useEffect } from 'react';
+  > 2 | import { useGameState } from '../hooks/useGameState';
+      |                              ^^^^^^^^^^^^^^^^^^^^^^^
+    3 | import './HeroFPV.css';
+    4 |
+    5 | interface HeroFPVProps {
+
+ERROR in src/components/ModernGameRenderer.tsx:125:29
+TS2554: Expected 1 arguments, but got 0.
+    123 |   });
+    124 |   
+  > 125 |   const animationFrameRef = useRef<number | undefined>();
+        |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    126 |   
+    127 |   // 🔮 ÉTAT SYMBOLES RUNIQUES
+    128 |   const [runicSymbols, setRunicSymbols] = useState<RunicSymbol[]>([]);
+
+ERROR in src/components/QuantumBridgeVisualizer.tsx:19:24
+TS2554: Expected 1 arguments, but got 0.
+    17 |   const [selectedBridge, setSelectedBridge] = useState<string | null>(null);
+    18 |   const canvasRef = useRef<HTMLCanvasElement>(null);
+  > 19 |   const animationRef = useRef<number>();
+       |                        ^^^^^^^^^^^^^^^^
+    20 |
+    21 |   // Fetch bridges from backend
+    22 |   useEffect(() => {
+
+ERROR in src/components/TimelinesDashboard.tsx:77:11
+TS2322: Type '{ onNavigate: (page: string) => void; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'onNavigate' does not exist on type 'IntrinsicAttributes'.
+    75 |       <div className="current-interface">
+    76 |         <CurrentComponent 
+  > 77 |           onNavigate={(page: string) => {
+       |           ^^^^^^^^^^
+    78 |             console.log(`[DASHBOARD] Navigation vers: ${page}`);
+    79 |           }}
+    80 |         />
+
+ERROR in src/components/TrueHeroesInterface_v3.tsx:109:13
+TS2322: Type '(position: {    x: number;    y: number;}) => void' is not assignable to type '(x: number, y: number) => void'.
+  Types of parameters 'position' and 'x' are incompatible.
+    Type 'number' is not assignable to type '{ x: number; y: number; }'.
+    107 |             width={800}
+    108 |             height={600}
+  > 109 |             onTileClick={handleTileClick}
+        |             ^^^^^^^^^^^
+    110 |           />
+    111 |         </div>
+    112 |
+
+ERROR in src/components/TrueHeroesInterface.tsx:257:13
+TS2322: Type '(position: Position) => void' is not assignable to type '(x: number, y: number) => void'.
+  Types of parameters 'position' and 'x' are incompatible.
+    Type 'number' is not assignable to type 'Position'.
+    255 |             width={900}
+    256 |             height={700}
+  > 257 |             onTileClick={handleTileClick}
+        |             ^^^^^^^^^^^
+    258 |           />
+    259 |         </div>
+    260 |       </div>
+
+ERROR in src/components/TrueHeroesInterface.tsx:274:81
+TS18047: 'currentGame' is possibly 'null'.
+    272 |                 <div className="scenario-stats">
+    273 |                   <div>🗺️ Tiles: {hexTiles.length}</div>
+  > 274 |                                       <div>🎲 Seed: {currentGame?.id ? hashCode(currentGame.id) : 12345}</div>
+        |                                                                                 ^^^^^^^^^^^
+    275 |                   <div>🌍 Biomes: {new Set(hexTiles.map(t => t.biome)).size}</div>
+    276 |                   <div>🏰 Players: {currentGame?.players?.length || 4}</div>
+    277 |                 </div>
+
+ERROR in src/components/TrueHeroesInterface.tsx:306:60
+TS2339: Property 'selectedHero' does not exist on type 'Player'.
+    304 |                   <div 
+    305 |                     key={hero.id} 
+  > 306 |                     className={`hero-card ${currentPlayer?.selectedHero?.id === hero.id ? 'selected' : ''}`}
+        |                                                            ^^^^^^^^^^^^
+    307 |                     onClick={() => handleHeroSelect(hero)}
+    308 |                   >
+    309 |                     <div className="hero-avatar">👤</div>
+
+ERROR in src/components/TrueHeroesInterface.tsx:362:43
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"fog"' have no overlap.
+    360 |               </button>
+    361 |               <button 
+  > 362 |                 className={`sidebar-tab ${activePanel === 'fog' ? 'active' : ''}`}
+        |                                           ^^^^^^^^^^^^^^^^^^^^^
+    363 |                 onClick={() => setActivePanel('fog')}
+    364 |                 title="Brouillard de Causalité"
+    365 |               >
+
+ERROR in src/components/TrueHeroesInterface.tsx:363:47
+TS2345: Argument of type '"fog"' is not assignable to parameter of type 'SetStateAction<"scenario" | "hero" | "inventory" | "castle" | "quantum">'.
+    361 |               <button 
+    362 |                 className={`sidebar-tab ${activePanel === 'fog' ? 'active' : ''}`}
+  > 363 |                 onClick={() => setActivePanel('fog')}
+        |                                               ^^^^^
+    364 |                 title="Brouillard de Causalité"
+    365 |               >
+    366 |                 🌫️
+
+ERROR in src/components/TrueHeroesInterface.tsx:390:43
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"script"' have no overlap.
+    388 |               </button>
+    389 |               <button 
+  > 390 |                 className={`sidebar-tab ${activePanel === 'script' ? 'active' : ''}`}
+        |                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+    391 |                 onClick={() => setActivePanel('script')}
+    392 |                 title="Script Editor"
+    393 |               >
+
+ERROR in src/components/TrueHeroesInterface.tsx:391:47
+TS2345: Argument of type '"script"' is not assignable to parameter of type 'SetStateAction<"scenario" | "hero" | "inventory" | "castle" | "quantum">'.
+    389 |               <button 
+    390 |                 className={`sidebar-tab ${activePanel === 'script' ? 'active' : ''}`}
+  > 391 |                 onClick={() => setActivePanel('script')}
+        |                                               ^^^^^^^^
+    392 |                 title="Script Editor"
+    393 |               >
+    394 |                 🧪
+
+ERROR in src/components/TrueHeroesInterface.tsx:397:43
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"epic"' have no overlap.
+    395 |               </button>
+    396 |               <button 
+  > 397 |                 className={`sidebar-tab ${activePanel === 'epic' ? 'active' : ''}`}
+        |                                           ^^^^^^^^^^^^^^^^^^^^^^
+    398 |                 onClick={() => setActivePanel('epic')}
+    399 |                 title="Epic Content"
+    400 |               >
+
+ERROR in src/components/TrueHeroesInterface.tsx:398:47
+TS2345: Argument of type '"epic"' is not assignable to parameter of type 'SetStateAction<"scenario" | "hero" | "inventory" | "castle" | "quantum">'.
+    396 |               <button 
+    397 |                 className={`sidebar-tab ${activePanel === 'epic' ? 'active' : ''}`}
+  > 398 |                 onClick={() => setActivePanel('epic')}
+        |                                               ^^^^^^
+    399 |                 title="Epic Content"
+    400 |               >
+    401 |                 🌟
+
+ERROR in src/components/TrueHeroesInterface.tsx:424:20
+TS2304: Cannot find name 'TerrainModeSelector'.
+    422 |                   
+    423 |                   {/* Sélecteur de mode terrain */}
+  > 424 |                   <TerrainModeSelector 
+        |                    ^^^^^^^^^^^^^^^^^^^
+    425 |                     currentMode={terrainMode}
+    426 |                     onModeChange={setTerrainMode}
+    427 |                     disabled={isLoading}
+
+ERROR in src/components/TrueHeroesInterface.tsx:468:14
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"fog"' have no overlap.
+    466 |
+    467 |             {/* BROUILLARD DE CAUSALITÉ ULTRA-DISCRET */}
+  > 468 |             {activePanel === 'fog' && (
+        |              ^^^^^^^^^^^^^^^^^^^^^
+    469 |               <div className="panel-content fog-panel-compact">
+    470 |                 <div className="panel-header-mini">
+    471 |                   <h4>🌫️ Causalité</h4>
+
+ERROR in src/components/TrueHeroesInterface.tsx:506:22
+TS2304: Cannot find name 'EnhancedHeroDisplay'.
+    504 |                 <div className="heroes-list">
+    505 |                   {mockHeroes.map((hero) => (
+  > 506 |                     <EnhancedHeroDisplay
+        |                      ^^^^^^^^^^^^^^^^^^^
+    507 |                       key={hero.id}
+    508 |                       hero={hero}
+    509 |                       isSelected={currentPlayer?.selectedHero?.id === hero.id}
+
+ERROR in src/components/TrueHeroesInterface.tsx:509:50
+TS2339: Property 'selectedHero' does not exist on type 'Player'.
+    507 |                       key={hero.id}
+    508 |                       hero={hero}
+  > 509 |                       isSelected={currentPlayer?.selectedHero?.id === hero.id}
+        |                                                  ^^^^^^^^^^^^
+    510 |                       onSelect={(hero: any) => console.log('Hero selected:', hero)}
+    511 |                     />
+    512 |                   ))}
+
+ERROR in src/components/TrueHeroesInterface.tsx:573:14
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"script"' have no overlap.
+    571 |
+    572 |             {/* SCRIPT EDITOR INTÉGRÉ */}
+  > 573 |             {activePanel === 'script' && (
+        |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    574 |               <div className="panel-content script-panel">
+    575 |                 <div className="panel-header">
+    576 |                   <h3>🧪 Script Editor</h3>
+
+ERROR in src/components/TrueHeroesInterface.tsx:580:101
+TS2339: Property 'hero' does not exist on type '{ basic: string; quantum: string; }'.
+    578 |                 <div className="script-editor-container">
+    579 |                   <div className="script-editor-toolbar">
+  > 580 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.hero)}>New Hero</button>
+        |                                                                                                     ^^^^
+    581 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.castle)}>New Castle</button>
+    582 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.combat)}>Combat</button>
+    583 |                     <button className="script-btn" onClick={() => executeScript()}>▶️ Run</button>
+
+ERROR in src/components/TrueHeroesInterface.tsx:581:101
+TS2339: Property 'castle' does not exist on type '{ basic: string; quantum: string; }'.
+    579 |                   <div className="script-editor-toolbar">
+    580 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.hero)}>New Hero</button>
+  > 581 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.castle)}>New Castle</button>
+        |                                                                                                     ^^^^^^
+    582 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.combat)}>Combat</button>
+    583 |                     <button className="script-btn" onClick={() => executeScript()}>▶️ Run</button>
+    584 |                     <button className="script-btn" onClick={() => setScriptResults('')}>🗑️ Clear</button>
+
+ERROR in src/components/TrueHeroesInterface.tsx:582:101
+TS2339: Property 'combat' does not exist on type '{ basic: string; quantum: string; }'.
+    580 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.hero)}>New Hero</button>
+    581 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.castle)}>New Castle</button>
+  > 582 |                     <button className="script-btn" onClick={() => setScriptContent(SCRIPT_TEMPLATES.combat)}>Combat</button>
+        |                                                                                                     ^^^^^^
+    583 |                     <button className="script-btn" onClick={() => executeScript()}>▶️ Run</button>
+    584 |                     <button className="script-btn" onClick={() => setScriptResults('')}>🗑️ Clear</button>
+    585 |                   </div>
+
+ERROR in src/components/TrueHeroesInterface.tsx:626:14
+TS2367: This comparison appears to be unintentional because the types '"scenario" | "hero" | "inventory" | "castle" | "quantum"' and '"epic"' have no overlap.
+    624 |
+    625 |             {/* EPIC CONTENT INTÉGRÉ */}
+  > 626 |             {activePanel === 'epic' && (
+        |              ^^^^^^^^^^^^^^^^^^^^^^
+    627 |               <div className="panel-content epic-panel">
+    628 |                 <div className="panel-header">
+    629 |                   <h3>🌟 Epic Content - Game Assets</h3>
+
+ERROR in src/components/TrueHeroesInterface.tsx:668:8
+TS2741: Property 'isVisible' is missing in type '{ onClose: () => void; }' but required in type 'EpicContentViewerProps'.
+    666 |
+    667 |       {/* Epic Content Viewer */}
+  > 668 |       <EpicContentViewer 
+        |        ^^^^^^^^^^^^^^^^^
+    669 |         onClose={() => setShowEpicContentViewer(false)} 
+    670 |       />
+    671 |
+
+ERROR in src/components/TrueHeroesInterface.tsx:677:5
+TS1128: Declaration or statement expected.
+    675 |         onClose={() => setShowGoldorakEasterEgg(false)} 
+    676 |       />
+  > 677 |     </div>
+        |     ^^
+    678 |   );
+    679 | };
+    680 |
+
+ERROR in src/components/TrueHeroesInterface.tsx:677:7
+TS2304: Cannot find name 'div'.
+    675 |         onClose={() => setShowGoldorakEasterEgg(false)} 
+    676 |       />
+  > 677 |     </div>
+        |       ^^^
+    678 |   );
+    679 | };
+    680 |
+
+ERROR in src/components/TrueHeroesInterface.tsx:678:3
+TS1109: Expression expected.
+    676 |       />
+    677 |     </div>
+  > 678 |   );
+        |   ^
+    679 | };
+    680 |
+    681 | export default TrueHeroesInterface; 
+
+ERROR in src/components/TrueHeroesInterface.tsx:679:1
+TS1128: Declaration or statement expected.
+    677 |     </div>
+    678 |   );
+  > 679 | };
+        | ^
+    680 |
+    681 | export default TrueHeroesInterface; 
+
+ERROR in src/services/epicService.ts:2:14
+TS2451: Cannot redeclare block-scoped variable 'getServerStatus'.
+    1 |
+  > 2 | export const getServerStatus = async () => {
+      |              ^^^^^^^^^^^^^^^
+    3 |   return { endpoints: { heroes: true, creatures: true, buildings: true, artifacts: true } };
+    4 | };
+    5 |
+
+ERROR in src/services/epicService.ts:6:14
+TS2451: Cannot redeclare block-scoped variable 'fetchEpicBuildings'.
+    4 | };
+    5 |
+  > 6 | export const fetchEpicBuildings = async (): Promise<any[]> => {
+      |              ^^^^^^^^^^^^^^^^^^
+    7 |   return [];
+    8 | };
+    9 |
+
+ERROR in src/services/epicService.ts:10:14
+TS2451: Cannot redeclare block-scoped variable 'fetchEpicArtifacts'.
+     8 | };
+     9 |
+  > 10 | export const fetchEpicArtifacts = async (): Promise<any[]> => {
+       |              ^^^^^^^^^^^^^^^^^^
+    11 |   return [];
+    12 | };
+    13 |
+
+ERROR in src/services/epicService.ts:14:14
+TS2451: Cannot redeclare block-scoped variable 'getServerStatus'.
+    12 | };
+    13 |
+  > 14 | export const getServerStatus = async () => {
+       |              ^^^^^^^^^^^^^^^
+    15 |   return { endpoints: { heroes: true, creatures: true, buildings: true, artifacts: true } };
+    16 | };
+    17 |
+
+ERROR in src/services/epicService.ts:18:14
+TS2451: Cannot redeclare block-scoped variable 'fetchEpicBuildings'.
+    16 | };
+    17 |
+  > 18 | export const fetchEpicBuildings = async (): Promise<any[]> => {
+       |              ^^^^^^^^^^^^^^^^^^
+    19 |   return [];
+    20 | };
+    21 |
+
+ERROR in src/services/epicService.ts:22:14
+TS2451: Cannot redeclare block-scoped variable 'fetchEpicArtifacts'.
+    20 | };
+    21 |
+  > 22 | export const fetchEpicArtifacts = async (): Promise<any[]> => {
+       |              ^^^^^^^^^^^^^^^^^^
+    23 |   return [];
+    24 | };
+    25 |
+
+ERROR in src/services/gameActionService.ts:21:27
+TS2554: Expected 3 arguments, but got 2.
+    19 |         return ApiService.attackTarget(params.attackerId, params.targetId);
+    20 |       case 'recruit':
+  > 21 |         return ApiService.recruitUnits(params.buildingId, params.data);
+       |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    22 |       default:
+    23 |         throw new Error(`Unknown quick action: ${action}`);
+    24 |     }
+

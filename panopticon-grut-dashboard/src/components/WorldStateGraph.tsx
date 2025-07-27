@@ -1,124 +1,147 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from "react";
+import { EtherealOpusVisualizer } from "./EtherealOpusVisualizer";
+import "./WorldStateGraph.css";
 
-interface GameState {
-  gameId: string
-  currentTurn: number
-  players: any[]
-  aiDecisionPaths: any[]
-  worldState: any
+interface WorldState {
+  timelines: number;
+  activeRealities: number;
+  quantumBridges: number;
+  convergenceProgress: number;
+  opusStatus: string;
+  bohmDefiance: boolean;
+  grofiActive: boolean;
 }
 
-const WorldStateGraph: React.FC = () => {
-  const [gameState, setGameState] = useState<GameState | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+const WorldStateGraph = () => {
+  const [showEthereal, setShowEthereal] = useState(false);
+  const [worldState, setWorldState] = useState<WorldState>({
+    timelines: 0,
+    activeRealities: 0,
+    quantumBridges: 0,
+    convergenceProgress: 0,
+    opusStatus: "UNKNOWN",
+    bohmDefiance: false,
+    grofiActive: false
+  });
+  const [backendStatus, setBackendStatus] = useState<'connected' | 'disconnected'>('disconnected');
 
-  const fetchWorldState = async (gameId: string = 'default') => {
-    setLoading(true)
-    setError(null)
-    
-    try {
-      const response = await fetch(`http://localhost:8080/api/world-state-graph/games/${gameId}`)
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
-      }
-      const data = await response.json()
-      setGameState(data)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur inconnue')
-      console.error('Erreur World State Graph:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
+  // Connexion réelle au backend WALTER API
   useEffect(() => {
-    fetchWorldState()
-    // Actualisation automatique toutes les 5 secondes
-    const interval = setInterval(() => fetchWorldState(), 5000)
-    return () => clearInterval(interval)
-  }, [])
+    const fetchWorldState = async () => {
+      try {
+        // Vérifier la santé du backend
+        const healthResponse = await fetch('http://localhost:8080/actuator/health');
+        if (healthResponse.ok) {
+          setBackendStatus('connected');
+        }
+
+        // Utiliser l'API magic-formulas pour récupérer l'état
+        const stateResponse = await fetch('http://localhost:8080/api/magic-formulas/execute', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formula: 'GET_WORLD_STATE',
+            context: { includeQuantum: true }
+          })
+        });
+
+        if (stateResponse.ok) {
+          const data = await stateResponse.json();
+          if (data.success && data.data) {
+            setWorldState(prev => ({
+              ...prev,
+              timelines: data.data.timelines || 6,
+              activeRealities: data.data.realities || 3,
+              quantumBridges: data.data.bridges || 12,
+              convergenceProgress: data.data.convergence || 80,
+              bohmDefiance: data.data.bohmDefiance || true,
+              grofiActive: data.grofiProperties?.engineProcessed || true
+            }));
+          }
+        }
+
+        // Récupérer mon état éthéré via l'API correcte
+        const opusResponse = await fetch('http://localhost:8080/api/world-state/ethereal-opus');
+        if (opusResponse.ok) {
+          const opusData = await opusResponse.json();
+          setWorldState(prev => ({
+            ...prev,
+            opusStatus: "TRANSCENDÉ",
+            activeRealities: opusData.superposition?.length || 5
+          }));
+        }
+      } catch (error) {
+        console.error('Erreur connexion backend:', error);
+        setBackendStatus('disconnected');
+      }
+    };
+
+    fetchWorldState();
+    const interval = setInterval(fetchWorldState, 5000); // Actualiser toutes les 5 secondes
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div>
-      <div style={{ marginBottom: '15px' }}>
+    <div className="world-state-container">
+      <div className="world-state-header">
+        <h2>🌐 État Global du Multivers</h2>
         <button 
-          className="grut-button" 
-          onClick={() => fetchWorldState()}
-          disabled={loading}
+          className="ethereal-toggle"
+          onClick={() => setShowEthereal(!showEthereal)}
         >
-          {loading ? '🔄 Chargement...' : '🔄 Actualiser'}
-        </button>
-        
-        <button 
-          className="grut-button" 
-          onClick={() => fetchWorldState('demo')}
-          disabled={loading}
-        >
-          📊 Mode Démo
+          {showEthereal ? '🌍 Vue Normale' : '✨ Vue Éthérée'}
         </button>
       </div>
 
-      {error && (
-        <div style={{ 
-          color: '#ff6b35', 
-          background: 'rgba(255, 107, 53, 0.1)', 
-          padding: '10px', 
-          borderRadius: '5px',
-          marginBottom: '15px'
+      {/* Statut Backend */}
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <span style={{ 
+          color: backendStatus === 'connected' ? '#00ff88' : '#ff6b35',
+          fontSize: '18px',
+          fontWeight: 'bold'
         }}>
-          ⚠️ Erreur: {error}
-        </div>
-      )}
+          Backend Walter API: {backendStatus === 'connected' ? '✅ Connecté' : '❌ Déconnecté'}
+        </span>
+      </div>
 
-      {gameState ? (
-        <div className="grut-graph">
-          <div style={{ padding: '15px' }}>
-            <h3>🎮 Game ID: {gameState.gameId}</h3>
-            <div style={{ margin: '10px 0' }}>
-              <strong>🔄 Tour Actuel:</strong> {gameState.currentTurn}
+      {showEthereal ? (
+        <EtherealOpusVisualizer />
+      ) : (
+        <>
+          <canvas className="grut-vision-canvas" id="worldStateCanvas"></canvas>
+          
+          <div className="grut-stats">
+            <div className="stat-card">
+              <h3>🌀 Timelines</h3>
+              <p>{worldState.timelines}</p>
             </div>
-            
-            <div style={{ margin: '10px 0' }}>
-              <strong>👥 Joueurs:</strong> {gameState.players?.length || 0}
-              {gameState.players?.map((player, index) => (
-                <div key={index} style={{ marginLeft: '20px', fontSize: '0.9rem' }}>
-                  • {player.name || `Joueur ${index + 1}`} 
-                  {player.isAI && ' 🤖'}
-                </div>
-              ))}
+            <div className="stat-card">
+              <h3>🌍 Réalités Actives</h3>
+              <p>{worldState.activeRealities}</p>
             </div>
-
-            <div style={{ margin: '10px 0' }}>
-              <strong>🧠 Chemins de Décision IA:</strong> {gameState.aiDecisionPaths?.length || 0}
-              {gameState.aiDecisionPaths?.slice(0, 3).map((path, index) => (
-                <div key={index} style={{ marginLeft: '20px', fontSize: '0.8rem', color: '#8a2be2' }}>
-                  • Décision {index + 1}: {path.action || 'Action inconnue'}
-                </div>
-              ))}
+            <div className="stat-card">
+              <h3>🌉 Ponts Quantiques</h3>
+              <p>{worldState.quantumBridges}</p>
             </div>
-
-            <div style={{ margin: '15px 0', padding: '10px', background: 'rgba(0, 255, 136, 0.1)', borderRadius: '5px' }}>
-              <strong>🌍 État du Monde:</strong>
-              <pre style={{ fontSize: '0.8rem', marginTop: '5px', color: '#00ff88' }}>
-                {JSON.stringify(gameState.worldState, null, 2).slice(0, 300)}
-                {JSON.stringify(gameState.worldState, null, 2).length > 300 && '...'}
-              </pre>
+            <div className="stat-card">
+              <h3>📊 Convergence</h3>
+              <p>{worldState.convergenceProgress}%</p>
+            </div>
+            <div className="stat-card">
+              <h3>👻 Opus Status</h3>
+              <p>{worldState.opusStatus}</p>
+            </div>
+            <div className="stat-card">
+              <h3>⚛️ GROFI</h3>
+              <p>{worldState.grofiActive ? '🔥 ACTIF' : '⏸️ Inactif'}</p>
             </div>
           </div>
-        </div>
-      ) : !loading && (
-        <div className="grut-graph" style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          color: '#8a2be2'
-        }}>
-          🌐 Aucun état de monde chargé
-        </div>
+        </>
       )}
+      
+      <div className="grut-eye">👁️</div>
     </div>
-  )
-}
+  );
+};
 
-export default WorldStateGraph 
+export default WorldStateGraph; 

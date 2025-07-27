@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ GRUT NAVIGATION HUB - Centre de Contrôle Omniscient</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a0f1f, #2a1a3a);
+            color: #ffcc00;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grut-header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 3px solid #744ba2;
+            position: relative;
+        }
+
+        .grut-title {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 0 20px #744ba2, 0 0 40px #9932cc;
+            animation: grutPulse 3s infinite;
+        }
+
+        @keyframes grutPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .grut-subtitle {
+            font-size: 1.2rem;
+            color: #9932cc;
+            margin-top: 10px;
+        }
+
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            flex: 1;
+        }
+
+        .portal-card {
+            background: rgba(116,75,162,0.1);
+            border: 2px solid #744ba2;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-card:hover {
+            background: rgba(116,75,162,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(116,75,162,0.5);
+        }
+
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent, rgba(116,75,162,0.3));
+            animation: portalRotate 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes portalRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .portal-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .portal-title {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .portal-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .portal-status {
+            margin-top: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: rgba(0,255,0,0.2);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+
+        .status-new {
+            background: rgba(255,215,0,0.2);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            animation: newPulse 1s infinite;
+        }
+
+        @keyframes newPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-beta {
+            background: rgba(255,165,0,0.2);
+            color: #ffa500;
+            border: 1px solid #ffa500;
+        }
+
+        .grut-footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.9);
+            border-top: 1px solid #744ba2;
+            color: #9932cc;
+        }
+
+        .api-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff0000;
+            animation: statusBlink 2s infinite;
+        }
+
+        .status-indicator.connected {
+            background: #00ff00;
+            animation: none;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header GRUT -->
+    <div class="grut-header">
+        <h1 class="grut-title">🏛️ GRUT NAVIGATION HUB</h1>
+        <p class="grut-subtitle">Toutes les Visions - Toutes les Dimensions - Tout est Connecté</p>
+        
+        <div class="api-status">
+            <span class="status-indicator" id="apiStatus"></span>
+            <span id="apiText">Connexion Backend...</span>
+        </div>
+    </div>
+
+    <!-- Grille de Navigation -->
+    <div class="navigation-grid">
+        
+        <!-- World State Graph - NOUVEAU -->
+        <a href="grut-world-state-visualization.html">
+            <div class="portal-card">
+                <div class="portal-icon">🌐</div>
+                <div class="portal-title">World State Graph</div>
+                <div class="portal-description">
+                    Visualisation interactive en temps réel du graphe d'état mondial.
+                    Nœuds connectés, flux temporels, états transcendants.
+                </div>
+                <div class="portal-status status-new">NOUVEAU</div>
+            </div>
+        </a>
+
+        <!-- Panopticon 6D -->
+        <a href="../../panopticon-grut-dashboard/index.html">
+            <div class="portal-card">
+                <div class="portal-icon">👁️</div>
+                <div class="portal-title">Panopticon 6D</div>
+                <div class="portal-description">
+                    Vision omnisciente complète. Architecture ontologique.
+                    Surveillance multidimensionnelle.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- Observateur Omniscient -->
+        <a href="../../dev/frontend/observateur-omniscient-grut.html">
+            <div class="portal-card">
+                <div class="portal-icon">🏛️</div>
+                <div class="portal-title">Observateur Omniscient</div>
+                <div class="portal-description">
+                    Vision complète avec brouillard visible. 
+                    Monde composé de mondes.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- Portail des Mondes -->
+        <a href="../../panopticon-grut-dashboard/grut-warcraft-portal.html">
+            <div class="portal-card">
+                <div class="portal-icon">🌍</div>
+                <div class="portal-title">Portail des Mondes</div>
+                <div class="portal-description">
+                    Kalimdor ⚔️ Azeroth. Navigation entre les royaumes.
+                    Connexions interdimensionnelles.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- Quantum Visualizer -->
+        <a href="../../quantum-visualizer/index.html">
+            <div class="portal-card">
+                <div class="portal-icon">⚛️</div>
+                <div class="portal-title">Quantum Visualizer</div>
+                <div class="portal-description">
+                    Visualisation des états quantiques. Superposition.
+                    Collapse de fonction d'onde.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- Histoire Heroes of Time -->
+        <a href="../../dev/frontend/histoire-heroes-of-time.html">
+            <div class="portal-card">
+                <div class="portal-icon">📚</div>
+                <div class="portal-title">Histoire Complete</div>
+                <div class="portal-description">
+                    Chroniques du projet. Bootstrap Paradox.
+                    Archives temporelles complètes.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- Vince Vega Map -->
+        <a href="../../frontend/vince-vega-map-demo-backend.html">
+            <div class="portal-card">
+                <div class="portal-icon">🔫</div>
+                <div class="portal-title">Vince Vega Interface</div>
+                <div class="portal-description">
+                    Interface temporelle simple. Map 10x8.
+                    Wormholes et détection causale.
+                </div>
+                <div class="portal-status status-active">ACTIF</div>
+            </div>
+        </a>
+
+        <!-- API Testing -->
+        <a href="grut-api-tester.html">
+            <div class="portal-card">
+                <div class="portal-icon">🔧</div>
+                <div class="portal-title">API Tester</div>
+                <div class="portal-description">
+                    Interface de test pour toutes les API GRUT.
+                    Monitoring et debugging en temps réel.
+                </div>
+                <div class="portal-status status-beta">BETA</div>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="grut-footer">
+        <p>"GRUT VOIT TOUT. GRUT COMPREND TOUT. GRUT TRANSCENDE TOUT."</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Navigation Hub v1.0 - Bootstrap Paradox Enabled</p>
+    </div>
+
+    <script>
+        // Test connexion backend
+        async function checkBackendStatus() {
+            const indicator = document.getElementById('apiStatus');
+            const text = document.getElementById('apiText');
+            
+            try {
+                const response = await fetch('http://localhost:8080/api/health');
+                if (response.ok) {
+                    indicator.classList.add('connected');
+                    text.textContent = 'Backend Connecté';
+                } else {
+                    text.textContent = 'Backend Erreur';
+                }
+            } catch (error) {
+                text.textContent = 'Backend Hors Ligne';
+            }
+        }
+
+        // Animation hover avancée
+        document.querySelectorAll('.portal-card').forEach(card => {
+            card.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                this.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(116,75,162,0.4), rgba(116,75,162,0.1))`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(116,75,162,0.1)';
+            });
+        });
+
+        // Initialisation
+        checkBackendStatus();
+        setInterval(checkBackendStatus, 5000);
+
+        // Log GRUT
+        console.log('%c🏛️ GRUT NAVIGATION HUB INITIALIZED', 'color: #9932cc; font-size: 20px; font-weight: bold;');
+        console.log('%cToutes les interfaces sont accessibles depuis ce hub central', 'color: #744ba2;');
+    </script>
+</body>
+</html> 

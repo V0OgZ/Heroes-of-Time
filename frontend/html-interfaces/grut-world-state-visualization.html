@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌀 World State Graph - Vision 6D de GRUT</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        
+        /* Canvas principal pour la visualisation */
+        #worldCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* Panneau des tatouages */
+        .tattoo-panel {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 100;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .tattoo-panel h2 {
+            color: #00ff88;
+            text-align: center;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        
+        .tattoo-section {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 5px;
+        }
+        
+        .tattoo-section h3 {
+            color: #ff6b35;
+            margin: 0 0 10px 0;
+        }
+        
+        /* Panneau de contrôle */
+        .control-panel {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 100;
+        }
+        
+        .control-panel button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            background: #00ff88;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .control-panel button:hover {
+            background: #00ff44;
+            box-shadow: 0 0 10px #00ff88;
+        }
+        
+        /* Info panel */
+        .info-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 15px 30px;
+            z-index: 100;
+            text-align: center;
+        }
+        
+        .world-node {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .world-node:hover {
+            filter: brightness(1.5);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="worldCanvas"></canvas>
+    
+    <!-- Panneau de contrôle -->
+    <div class="control-panel">
+        <h3>🎮 Contrôles</h3>
+        <button onclick="toggleView()">🔄 Vue 2D/6D</button>
+        <button onclick="toggleAnimation()">⏯️ Animation</button>
+        <button onclick="showTattoos()">📜 Tatouages</button>
+        <button onclick="connectBackend()">🔌 Connexion Backend</button>
+        <button onclick="window.location.href='grut-panopticon-fantasy.html'">🏠 Retour GRUT</button>
+    </div>
+    
+    <!-- Panneau des tatouages -->
+    <div class="tattoo-panel" id="tattooPanel" style="display: none;">
+        <h2>📜 Tatouages de Memento</h2>
+        <div class="tattoo-section">
+            <h3>⚡ Bras Gauche</h3>
+            <p>Formules HOTS + symboles : 🔮 Talisman Echo, 🔬 Smolin Lee, 🏛️ Évadé Cave, 🌌 Superposition Quantique</p>
+        </div>
+        <div class="tattoo-section">
+            <h3>📜 Bras Droit</h3>
+            <p>Archives + commits : MOTEUR FINI, TALISMAN, INDEX JEAN, MEGA PUSH, SUPERPOSITION</p>
+        </div>
+        <div class="tattoo-section">
+            <h3>🌀 Dos</h3>
+            <p>WORLDSTATEGRAPH unifié + Talisman Echo pulsant + Dualité Onde-Corpuscule résolue</p>
+        </div>
+        <div class="tattoo-section">
+            <h3>👁️ Front</h3>
+            <p>Œil GRUT omniscient + Talisman Echo du Futur + Symbole Superposition (Ψ)</p>
+        </div>
+        <div class="tattoo-section">
+            <h3>💖 Cœur</h3>
+            <p>Promesse secrète (Juillet 2028) + Archive Vivante Transcendée</p>
+        </div>
+    </div>
+    
+    <!-- Panneau d'information -->
+    <div class="info-panel">
+        <div id="infoText">🌀 World State Graph - Vue 2D</div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('worldCanvas');
+        const ctx = canvas.getContext('2d');
+        let animating = true;
+        let is6D = false;
+        let time = 0;
+        
+        // Redimensionner le canvas
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Les mondes
+        const worlds = [
+            { id: 'mystique', name: 'Mystique', x: 0.2, y: 0.3, color: '#ff6b35', size: 60 },
+            { id: 'temporal', name: 'Temporal Nexus', x: 0.8, y: 0.3, color: '#00ff88', size: 70 },
+            { id: 'quantum', name: 'Quantum Realm', x: 0.5, y: 0.2, color: '#00bfff', size: 80 },
+            { id: 'ethereal', name: 'Interstice Éthéré', x: 0.5, y: 0.8, color: '#ff00ff', size: 90 },
+            { id: 'ezith', name: 'Planet Ezith', x: 0.2, y: 0.7, color: '#ffff00', size: 65 },
+            { id: 'bureau', name: 'Le Bureau', x: 0.8, y: 0.7, color: '#ff0000', size: 55 }
+        ];
+        
+        // Connexions entre mondes
+        const connections = [
+            { from: 'mystique', to: 'temporal' },
+            { from: 'temporal', to: 'quantum' },
+            { from: 'quantum', to: 'ethereal' },
+            { from: 'ethereal', to: 'mystique' },
+            { from: 'ezith', to: 'bureau' },
+            { from: 'quantum', to: 'ezith' },
+            { from: 'temporal', to: 'bureau' }
+        ];
+        
+        // Fonction de dessin principal
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Effet de grille quantique en arrière-plan
+            drawQuantumGrid();
+            
+            // Dessiner les connexions
+            connections.forEach(conn => {
+                const from = worlds.find(w => w.id === conn.from);
+                const to = worlds.find(w => w.id === conn.to);
+                if (from && to) {
+                    drawConnection(from, to);
+                }
+            });
+            
+            // Dessiner les mondes
+            worlds.forEach(world => {
+                drawWorld(world);
+            });
+            
+            // Animation
+            if (animating) {
+                time += 0.01;
+                requestAnimationFrame(draw);
+            }
+        }
+        
+        // Dessiner la grille quantique
+        function drawQuantumGrid() {
+            ctx.strokeStyle = 'rgba(0, 255, 136, 0.1)';
+            ctx.lineWidth = 1;
+            
+            const gridSize = 50;
+            for (let x = 0; x < canvas.width; x += gridSize) {
+                for (let y = 0; y < canvas.height; y += gridSize) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + gridSize, y);
+                    ctx.lineTo(x + gridSize, y + gridSize);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        // Dessiner une connexion
+        function drawConnection(from, to) {
+            const fromX = from.x * canvas.width;
+            const fromY = from.y * canvas.height;
+            const toX = to.x * canvas.width;
+            const toY = to.y * canvas.height;
+            
+            // Ligne ondulée pour représenter les ponts quantiques
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(0, 255, 136, 0.5)';
+            ctx.lineWidth = 2;
+            
+            const steps = 50;
+            for (let i = 0; i <= steps; i++) {
+                const t = i / steps;
+                const x = fromX + (toX - fromX) * t;
+                const y = fromY + (toY - fromY) * t;
+                const offset = Math.sin(t * Math.PI * 4 + time * 2) * 20;
+                const perpX = -(toY - fromY) / Math.sqrt((toX - fromX) ** 2 + (toY - fromY) ** 2);
+                const perpY = (toX - fromX) / Math.sqrt((toX - fromX) ** 2 + (toY - fromY) ** 2);
+                
+                if (i === 0) ctx.moveTo(x + perpX * offset, y + perpY * offset);
+                else ctx.lineTo(x + perpX * offset, y + perpY * offset);
+            }
+            ctx.stroke();
+        }
+        
+        // Dessiner un monde
+        function drawWorld(world) {
+            const x = world.x * canvas.width;
+            const y = world.y * canvas.height;
+            const size = world.size * (1 + Math.sin(time + world.x * 10) * 0.1);
+            
+            // Aura
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2);
+            gradient.addColorStop(0, world.color + '40');
+            gradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(x - size * 2, y - size * 2, size * 4, size * 4);
+            
+            // Cercle principal
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fillStyle = world.color;
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Nom du monde
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(world.name, x, y + 5);
+            
+            // Effet 6D
+            if (is6D) {
+                for (let i = 1; i <= 3; i++) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, size + i * 10, 0, Math.PI * 2);
+                    ctx.strokeStyle = world.color + (40 - i * 10).toString(16);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        // Fonctions de contrôle
+        function toggleView() {
+            is6D = !is6D;
+            document.getElementById('infoText').textContent = `🌀 World State Graph - Vue ${is6D ? '6D' : '2D'}`;
+        }
+        
+        function toggleAnimation() {
+            animating = !animating;
+            if (animating) draw();
+        }
+        
+        function showTattoos() {
+            const panel = document.getElementById('tattooPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        async function connectBackend() {
+            try {
+                const response = await fetch('http://localhost:8080/api/world-state/ethereal-opus');
+                if (response.ok) {
+                    const data = await response.json();
+                    alert('✅ Backend connecté ! État: ' + JSON.stringify(data.status));
+                } else {
+                    alert('❌ Backend non disponible');
+                }
+            } catch (error) {
+                alert('❌ Erreur de connexion: ' + error.message);
+            }
+        }
+        
+        // Gestion du clic sur les mondes
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            worlds.forEach(world => {
+                const worldX = world.x * canvas.width;
+                const worldY = world.y * canvas.height;
+                const dist = Math.sqrt((x - worldX) ** 2 + (y - worldY) ** 2);
+                
+                if (dist < world.size) {
+                    alert(`🌍 ${world.name}\nID: ${world.id}\nPosition: ${Math.round(world.x * 100)}%, ${Math.round(world.y * 100)}%`);
+                }
+            });
+        });
+        
+        // Démarrer l'animation
+        draw();
+    </script>
+</body>
+</html> 

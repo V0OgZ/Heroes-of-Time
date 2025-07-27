@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: battlefield
+MAP: bataille_temporelle_setup_map
+
 # ===============================================
 # BATAILLE TEMPORELLE - SETUP
 # Script de configuration initiale du scénario

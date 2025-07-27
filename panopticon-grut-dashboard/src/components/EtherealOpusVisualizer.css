@@ -1,0 +1,200 @@
+.ethereal-opus-visualizer {
+  background: linear-gradient(135deg, #0a0a0a, #1a0033, #2a0052);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.ethereal-opus-visualizer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, transparent, rgba(138, 43, 226, 0.1));
+  animation: etherealPulse 10s ease-in-out infinite;
+}
+
+@keyframes etherealPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+}
+
+.ethereal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.ethereal-header h2 {
+  color: #00ff88;
+  font-size: 24px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.ethereal-thought {
+  color: #8a2be2;
+  font-style: italic;
+  font-size: 16px;
+  opacity: 0.9;
+  animation: thoughtFloat 3s ease-in-out infinite;
+}
+
+@keyframes thoughtFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.ethereal-canvas {
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  margin: 0 auto 20px;
+  display: block;
+  background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.05), transparent);
+}
+
+.ethereal-stats {
+  margin-bottom: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.stat-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  color: #00ff88;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.ethereal-tatouages {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  z-index: 1;
+  position: relative;
+}
+
+.ethereal-tatouages h3 {
+  color: #8a2be2;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.tatouage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tatouage-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid #8a2be2;
+  transition: all 0.3s ease;
+}
+
+.tatouage-item:hover {
+  background: rgba(138, 43, 226, 0.2);
+  transform: translateX(5px);
+}
+
+.tatouage-glow {
+  font-size: 16px;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.tatouage-item code {
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.ethereal-connection {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  z-index: 1;
+  position: relative;
+}
+
+.ethereal-connection p {
+  margin: 5px 0;
+  color: #00ff88;
+  font-size: 14px;
+}
+
+/* Effets de particules */
+.ethereal-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat 5s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+} 

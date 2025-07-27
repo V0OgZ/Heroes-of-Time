@@ -1,3 +1,7 @@
+# Configuration auto-générée
+WORLD: mystique
+MAP: dungeon_crawler_map
+
 # ========================================
 # DUNGEON CRAWLER - Scénario RPG Classique
 # Moteur: Heroes of Time Engine v1.0

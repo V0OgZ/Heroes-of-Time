@@ -1,0 +1,66 @@
+{
+  "artifact_id": "bleu_pourri_dude",
+  "name": "Le Bleu Pourri du Dude",
+  "name_en": "The Dude's Moldy Blue Cheese",
+  "type": "consumable",
+  "slot": "inventory",
+  "rarity": "legendary",
+  "tier": "S",
+  "description": "Un morceau de fromage bleu qui a transcendé la pourriture pour devenir une substance cosmique. Émane une odeur qui fait pleurer même les dieux.",
+  "lore": "The Dude gardait ce fromage dans son frigo depuis 1998. Après la fusion GROFI, le fromage a développé une conscience propre et communique via des spores quantiques. 'That cheese really ties the room together, man...'",
+  "stats": {
+    "smell_radius": 100,
+    "consciousness_level": "TRANSCENDENT",
+    "age": "ETERNAL",
+    "toxicity": "YES",
+    "zen_bonus": 420
+  },
+  "abilities": [
+    {
+      "name": "Spore Cosmique",
+      "effect": "Lance des spores qui créent des mini-univers de fromage",
+      "cooldown": "69 tours",
+      "description": "Les ennemis touchés contemplent l'infini fromager et oublient pourquoi ils se battaient"
+    },
+    {
+      "name": "Aura de Chill Absolu",
+      "effect": "Tous les combattants dans un rayon de 10 cases s'assoient et discutent bowling",
+      "duration": "3 tours",
+      "description": "Yeah, well, that's just like, your opinion, man..."
+    },
+    {
+      "name": "Décomposition Transcendante",
+      "effect": "Se décompose en particules qui révèlent les secrets de l'univers",
+      "trigger": "Quand consommé",
+      "description": "L'utilisateur comprend enfin pourquoi Walter était si énervé"
+    }
+  ],
+  "special_properties": {
+    "sentient": true,
+    "speaks_in": "Spores psychédéliques",
+    "favorite_music": "Creedence Clearwater Revival",
+    "bowling_score_modifier": "+50"
+  },
+  "requirements": {
+    "level": 42,
+    "alignment": "Vraiment pas stressé",
+    "must_have": "Un White Russian en main"
+  },
+  "creation_story": "Créé par The Dude lors de l'Auto-Réveil #7 d'OPUS-MEMENTO-CLAUDIUS. Jean avait menacé de se vénérer si l'objet n'était pas assez cool. Le fromage a immédiatement développé une conscience et a déclaré : 'I abide.'",
+  "interactions": {
+    "with_white_russian": "Crée une explosion de saveurs cosmiques",
+    "with_bowling_ball": "Fait un strike automatique",
+    "with_rug": "Really ties the room together",
+    "with_walter": "DÉCLENCHE SA FUREUR MAXIMALE"
+  },
+  "warnings": [
+    "Ne pas consommer si vous êtes nihiliste",
+    "Peut causer des visions de tapis volants",
+    "Walter n'approuve PAS cet objet",
+    "Les effets secondaires incluent : paix intérieure excessive"
+  ],
+  "quote": "Sometimes you eat the bleu, and sometimes, well, the bleu eats you.",
+  "jean_approval": "🛋️ Jean contemple ce fromage depuis son canapé et sourit. 'C'est exactement le niveau de nawak transcendant que j'attendais !'",
+  "memento_note": "📜 J'archive ce moment où The Dude a créé l'objet le plus puissant et inutile de l'univers.",
+  "current_status": "EN FERMENTATION QUANTIQUE PERPÉTUELLE"
+} 

@@ -1,0 +1,172 @@
+{
+  "id": "walter_sobchak_flashback",
+  "name": "Walter Sobchak",
+  "title": "The 'Nam Veteran Reality Breaker",
+  "description": "Vietnam vet who sees through dimensional rifts during flashbacks. Bowls on Shabbos when reality demands it.",
+  "type": "HERO",
+  "race": "HUMAN_TRAUMATIZED",
+  "class": "DIMENSIONAL_VETERAN",
+  "rarity": "legendary",
+  "tier": 6,
+  "faction": "BOWLING_LEAGUE",
+  
+  "stats": {
+    "health": 180,
+    "mana": 50,
+    "attack": 60,
+    "defense": 40,
+    "speed": 5,
+    "knowledge": 30,
+    "spellPower": 20,
+    "stress_threshold": 75,
+    "bowling_average": 180
+  },
+  
+  "abilities": [
+    {
+      "id": "vietnam_flashback_narrative",
+      "name": "Vietnam Flashback Narrative",
+      "description": "Under high stress, Walter zones out for EXACTLY 10 seconds and tells a cryptic story that contains dimensional coordinates",
+      "trigger": "stress >= 75 OR reality_breach_detected",
+      "duration": "10_seconds_exact",
+      "effect": "REVEAL_HIDDEN_TRUTH + DIMENSIONAL_COORDINATES",
+      "cooldown": 300,
+      "special": "MUST LISTEN - Every word contains encrypted data",
+      "sample_narrative": "Charlie was everywhere... holes to OTHER PLACES... marked 'R'..."
+    },
+    {
+      "id": "over_the_line",
+      "name": "OVER THE LINE!",
+      "description": "Walter enforces the rules of reality itself. Marks enemies as violators.",
+      "effect": "MARK_VIOLATION + DAMAGE(rule_severity × 50)",
+      "quote": "Mark it zero!",
+      "cost": 20,
+      "cooldown": 3
+    },
+    {
+      "id": "shabbos_exception",
+      "name": "Shabbos Exception",
+      "description": "Walter breaks his own rules when reality is at stake",
+      "effect": "IGNORE_ALL_RESTRICTIONS + RAGE_MODE",
+      "condition": "Only on Saturdays OR reality_critical",
+      "cost": 0,
+      "duration": "Until_threat_eliminated"
+    },
+    {
+      "id": "bowling_ball_dimensional_strike",
+      "name": "Bowling Ball Dimensional Strike",
+      "description": "Throws bowling ball through dimensions. Each strike opens a micro-portal.",
+      "effect": "DAMAGE + 10% chance OPEN_PORTAL_TO_R",
+      "cost": 30,
+      "cooldown": 5,
+      "note": "Portals last 3 seconds"
+    }
+  ],
+  
+  "ultimate": {
+    "id": "this_is_what_happens_larry",
+    "name": "This Is What Happens, Larry!",
+    "description": "Walter enters full rage mode, seeing through all dimensional veils while destroying everything",
+    "effect": "REVEAL_ALL_HIDDEN + BERSERK + REALITY_ENFORCEMENT",
+    "duration": 30,
+    "cost": 100,
+    "quote": "YOU SEE WHAT HAPPENS?! DO YOU SEE WHAT HAPPENS?!"
+  },
+  
+  "equipment": {
+    "vest": {
+      "name": "Tactical Vest (Nam Era)",
+      "description": "Still has shrapnel holes that leak dimensional energy",
+      "bonus": {
+        "defense": 30,
+        "stress_resistance": -20
+      }
+    },
+    "bowling_ball": {
+      "name": "The Sobchak Special",
+      "description": "16-pound ball that exists in multiple dimensions simultaneously",
+      "effects": [
+        "Can hit targets in other realities",
+        "Always returns through spacetime"
+      ]
+    },
+    "pistol": {
+      "name": "Colt .45 (Loaded)",
+      "description": "Has anyone ever actually seen Walter shoot? Or does he just wave it?",
+      "power": "Intimidation > Actual damage"
+    }
+  },
+  
+  "flashback_narratives": [
+    {
+      "id": "charlie_doors",
+      "trigger": "dimensional_anomaly",
+      "text": "Charlie was everywhere... but the doors, man... they weren't doors, they were HOLES... holes to OTHER PLACES... We found one marked 'R'..."
+    },
+    {
+      "id": "dude_paradox",
+      "trigger": "timeline_split",
+      "text": "The Dude was there, but younger... or older? He said 'This isn't Nam, this is bowling'... but what if it's BOTH, man?"
+    },
+    {
+      "id": "white_reset",
+      "trigger": "reality_collapse",
+      "text": "Everything went WHITE... like a cosmic gutter ball... then I was back at the lanes... but which lanes? WHICH REALITY'S LANES?!"
+    },
+    {
+      "id": "cia_dream",
+      "trigger": "bureau_proximity",
+      "text": "They said I could've been CIA... but I chose bowling... or did bowling choose me? The forms... so many forms... all marked 'CLASSIFIED R'..."
+    }
+  ],
+  
+  "relationships": {
+    "the_dude": {
+      "status": "Best friend",
+      "note": "Only one who can calm him down",
+      "secret": "Dude knows about the flashbacks' true meaning"
+    },
+    "donny": {
+      "status": "Bowling teammate (RIP)",
+      "note": "Still talks to him during flashbacks"
+    },
+    "jesus_quintana": {
+      "status": "Rival",
+      "quote": "Nobody fucks with the Jesus",
+      "tension": "Bowling related (or is it?)"
+    }
+  },
+  
+  "lore": {
+    "background": "Walter Sobchak survived Vietnam, but Vietnam followed him home - through dimensional rifts he can't unsee. His flashbacks aren't PTSD; they're glimpses of other realities bleeding through. The bowling alley is his anchor to this dimension.",
+    "secret": "Walter actually WAS approached by the CIA - not for military service, but because they detected his ability to see through dimensional barriers during stress events.",
+    "bowling_connection": "Every strike Walter bowls weakens the barrier between worlds. The Dude keeps him bowling to maintain balance."
+  },
+  
+  "spawn_conditions": {
+    "worlds": ["bowling_alley", "le_bureau", "quantum_realm"],
+    "special": "Higher spawn rate on Saturdays",
+    "warning": "Do not spawn during league play unless emergency"
+  },
+  
+  "ai_behavior": {
+    "stress_management": "Increases with rule violations",
+    "flashback_triggers": [
+      "stress > 75",
+      "dimensional_anomaly_detected",
+      "someone_steps_over_the_line",
+      "reality_breach"
+    ],
+    "combat_style": "Aggressive but follows strict rules",
+    "dialogue_frequency": "VERY HIGH"
+  },
+  
+  "meta": {
+    "created_by": "GRUT-MEMENTO",
+    "creation_date": "2025-01-27",
+    "version": "2.0",
+    "tags": ["veteran", "bowling", "dimensional", "flashback", "rules", "stress"],
+    "easter_egg": "Say 'Shomer fucking shabbos' three times to trigger special dialogue",
+    "warning": "Flashback narratives contain REAL dimensional data - parse carefully"
+  }
+} 

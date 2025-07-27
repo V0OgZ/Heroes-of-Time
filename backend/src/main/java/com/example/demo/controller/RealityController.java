@@ -176,6 +176,77 @@ public class RealityController {
         addSelfTriggerLog("🔄 Reality Engine cleanup completed - " + activeRealityObjects.size() + " objects remain");
     }
     
+    // 🌀 TÉLÉPORTATION PAR POCKET DIMENSIONNELLE (Ford-compliant)
+    @PostMapping("/pocket-teleport")
+    public ResponseEntity<Map<String, Object>> pocketTeleport(@RequestBody Map<String, Object> request) {
+        // Coordonnées de départ
+        Integer startX = (Integer) request.get("x");
+        Integer startY = (Integer) request.get("y");
+        String pocketId = (String) request.get("pocket_id");
+        
+        if (pocketId == null) {
+            pocketId = "POCKET_" + UUID.randomUUID().toString().substring(0, 8);
+        }
+        
+        // Rendre pocketId final pour l'utiliser dans la lambda
+        final String finalPocketId = pocketId;
+        
+        // Ford requirement: Real teleportation, not simulation
+        // Calcul des nouvelles coordonnées dans la même pocket
+        Random quantum = new Random(pocketId.hashCode());
+        Integer newX = quantum.nextInt(100); // Coordonnée aléatoire basée sur la pocket
+        Integer newY = quantum.nextInt(100);
+        
+        // Assurer que c'est différent de la position de départ
+        while (newX.equals(startX) && newY.equals(startY)) {
+            newX = quantum.nextInt(100);
+            newY = quantum.nextInt(100);
+        }
+        
+        // Créer l'objet de téléportation
+        RealityObject teleport = new RealityObject();
+        teleport.id = "TELEPORT_" + System.currentTimeMillis();
+        teleport.category = "POCKET_TELEPORTATION";
+        teleport.type = "INTRA_POCKET_JUMP";
+        teleport.status = "TELEPORTED";
+        teleport.createdAt = LocalDateTime.now();
+        teleport.properties.put("from_x", startX);
+        teleport.properties.put("from_y", startY);
+        teleport.properties.put("to_x", newX);
+        teleport.properties.put("to_y", newY);
+        teleport.properties.put("pocket_id", finalPocketId);
+        teleport.properties.put("same_pocket", true);
+        
+        activeRealityObjects.put(teleport.id, teleport);
+        
+        // Self-triggering log
+        addSelfTriggerLog("🌀 Pocket Teleportation: (" + startX + "," + startY + ") -> (" + newX + "," + newY + ") in " + finalPocketId);
+        
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("teleport_id", teleport.id);
+        response.put("pocket_id", finalPocketId);
+        response.put("from", Map.of("x", startX, "y", startY));
+        response.put("to", Map.of("x", newX, "y", newY));
+        response.put("distance", Math.sqrt(Math.pow(newX - startX, 2) + Math.pow(newY - startY, 2)));
+        response.put("ford_validation", "Teleportation within reality pocket authorized");
+        response.put("message", "Les poches dimensionnelles gardent leur cohérence - téléportation intra-pocket réussie !");
+        
+        // Si on atteint 5 téléportations dans la même pocket, quelque chose se passe
+        long pocketTeleports = activeRealityObjects.values().stream()
+            .filter(obj -> "POCKET_TELEPORTATION".equals(obj.category))
+            .filter(obj -> finalPocketId.equals(obj.properties.get("pocket_id")))
+            .count();
+            
+        if (pocketTeleports >= 5) {
+            response.put("pocket_saturation", true);
+            response.put("special_event", "La pocket dimensionnelle devient instable après 5 téléportations !");
+            addSelfTriggerLog("⚠️ Pocket " + finalPocketId + " SATURÉE - Instabilité détectée");
+        }
+        
+        return ResponseEntity.ok(response);
+    }
+    
     // Inner class for Reality Objects
     public static class RealityObject {
         public String id;

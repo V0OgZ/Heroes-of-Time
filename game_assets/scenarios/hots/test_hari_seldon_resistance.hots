@@ -1,0 +1,75 @@
+# 🔬 Test de Résistance Scientifique - Hari Seldon
+
+## Configuration
+WORLD: planet_ezith
+MAP: planet_ezith_test
+PLAYER: hari_seldon
+MODE: defense
+
+## Introduction
+NARRATOR: "Sur Planet Ezith, bastion de la science pure, Hari Seldon détecte des anomalies dans ses équations psychohistoriques..."
+
+HARI_SELDON: "Les probabilités indiquent une tentative d'infiltration imminente. Ford et McKinsey convergent vers notre position."
+
+## Acte 1 : Détection
+TURN 1:
+  SPAWN mckinsey_consultant AT (18, 2)
+  DIALOGUE:
+    MCKINSEY: "Nous venons optimiser vos processus de recherche."
+    HARI_SELDON: "La violence est le dernier refuge de l'incompétence. Mais parfois, la défense est nécessaire."
+
+## Acte 2 : Manipulation Temporelle
+TURN 3:
+  SPAWN ford_host AT (2, 18)
+  EFFECT temporal_distortion RADIUS 5
+  DIALOGUE:
+    FORD: "Votre réalité a besoin d'être... ajustée."
+    HARI_SELDON: "Mes équations prédisaient votre arrivée avec 97.3% de certitude."
+
+## Acte 3 : Crise de Seldon
+TURN 5:
+  TRIGGER seldon_crisis
+  REVEAL all_enemy_intentions
+  BUFF foundation_allies DEFENSE +50%
+  DIALOGUE:
+    HARI_SELDON: "La Première Crise de Seldon. Tout se déroule selon les calculs."
+
+## Acte 4 : Tempête Quantique
+TURN 10:
+  EVENT quantum_storm
+  DISABLE enemy_communications FOR 3
+  DAMAGE all_enemies 20
+  DIALOGUE:
+    NARRATOR: "Les tempêtes électromagnétiques d'Ezith perturbent les systèmes corporatistes."
+
+## Conditions de Victoire
+VICTORY:
+  - DEFEND prime_radiant
+  - DEFEAT all_infiltrators
+  - COLLECT knowledge_crystals >= 100
+
+## Conditions de Défaite
+DEFEAT:
+  - LOSE prime_radiant
+  - HARI_SELDON health <= 0
+
+## Épilogue
+ON_VICTORY:
+  DIALOGUE:
+    HARI_SELDON: "La Fondation perdurera. Le savoir triomphera toujours de la manipulation."
+    GRUT: "GRUT OBSERVE. GRUT APPROUVE LA MÉTHODE SCIENTIFIQUE."
+  REWARD:
+    - encyclopedia_galactica_page
+    - anti_manipulation_device
+    - UNLOCK advanced_psychohistory
+
+ON_DEFEAT:
+  DIALOGUE:
+    NARRATOR: "Sans Hari Seldon, la connaissance tombe aux mains des corporatistes..."
+
+## Métadonnées
+AUTHOR: OPUS-MEMENTO
+DATE: 2025-01-26
+TAGS: [scientific, resistance, anti-corporate, foundation]
+DIFFICULTY: HARD
+ESTIMATED_TIME: 30min 

@@ -1,0 +1,164 @@
+{
+  "id": "planet_ezith",
+  "name": "Planet Ezith",
+  "type": "scientific_world",
+  "description": "Une planète dédiée à la recherche scientifique et à la préservation du savoir, loin des influences corporatistes.",
+  "theme": "futuristic_science",
+  "difficulty": "hard",
+  "size": {
+    "width": 30,
+    "height": 30
+  },
+  "environment": {
+    "gravity": "standard",
+    "atmosphere": "breathable",
+    "temperature": "controlled",
+    "weather": ["clear", "electromagnetic_storms"],
+    "day_night_cycle": true,
+    "time_flow": "synchronized"
+  },
+  "biomes": [
+    {
+      "type": "research_complex",
+      "percentage": 40,
+      "features": ["laboratories", "data_centers", "observatories"]
+    },
+    {
+      "type": "crystal_fields",
+      "percentage": 20,
+      "features": ["quantum_crystals", "energy_nodes"]
+    },
+    {
+      "type": "residential_domes",
+      "percentage": 20,
+      "features": ["scientist_quarters", "libraries", "academies"]
+    },
+    {
+      "type": "wasteland",
+      "percentage": 20,
+      "features": ["failed_experiments", "radiation_zones"]
+    }
+  ],
+  "unique_locations": [
+    {
+      "id": "prime_radiant_vault",
+      "name": "Coffre du Prime Radiant",
+      "type": "legendary_location",
+      "position": { "x": 15, "y": 15 },
+      "description": "Le sanctuaire où Hari Seldon garde ses équations psychohistoriques.",
+      "effects": {
+        "knowledge_boost": 50,
+        "timeline_vision": true,
+        "anti_manipulation_field": true
+      }
+    },
+    {
+      "id": "foundation_hq",
+      "name": "QG de la Fondation",
+      "type": "major_building",
+      "position": { "x": 10, "y": 10 },
+      "description": "Centre névralgique de la résistance scientifique contre Ford et McKinsey."
+    },
+    {
+      "id": "quantum_observatory",
+      "name": "Observatoire Quantique",
+      "type": "research_facility",
+      "position": { "x": 20, "y": 20 },
+      "description": "Permet d'observer les manipulations temporelles à travers les dimensions."
+    },
+    {
+      "id": "shield_generator",
+      "name": "Générateur de Bouclier Anti-Manipulation",
+      "type": "defense_structure",
+      "position": { "x": 15, "y": 10 },
+      "description": "Protège la planète contre les intrusions de Ford et McKinsey."
+    }
+  ],
+  "special_rules": [
+    {
+      "id": "scientific_method",
+      "name": "Méthode Scientifique",
+      "description": "Toutes les actions basées sur la logique ont +25% d'efficacité.",
+      "effect": {
+        "logic_bonus": 0.25,
+        "anti_chaos": true
+      }
+    },
+    {
+      "id": "knowledge_preservation",
+      "name": "Préservation du Savoir",
+      "description": "Les bibliothèques génèrent du savoir chaque tour, immunisé contre l'effacement.",
+      "effect": {
+        "knowledge_generation": 10,
+        "memory_protection": true
+      }
+    },
+    {
+      "id": "corporate_resistance",
+      "name": "Résistance Corporatiste",
+      "description": "Les agents de McKinsey subissent -50% d'efficacité sur cette planète.",
+      "effect": {
+        "mckinsey_debuff": -0.5,
+        "ford_debuff": -0.3
+      }
+    }
+  ],
+  "resources": {
+    "knowledge_crystals": "abundant",
+    "quantum_energy": "moderate",
+    "rare_metals": "scarce",
+    "food": "synthetic",
+    "water": "recycled"
+  },
+  "factions": [
+    {
+      "id": "foundation",
+      "name": "La Fondation",
+      "alignment": "lawful_good",
+      "leader": "hari_seldon",
+      "goals": ["preserve_knowledge", "resist_manipulation", "guide_humanity"]
+    },
+    {
+      "id": "rogue_scientists",
+      "name": "Scientifiques Renégats",
+      "alignment": "chaotic_neutral",
+      "goals": ["unrestricted_research", "break_limits"]
+    }
+  ],
+  "entry_points": [
+    {
+      "id": "main_spaceport",
+      "position": { "x": 5, "y": 5 },
+      "type": "standard"
+    },
+    {
+      "id": "quantum_gate",
+      "position": { "x": 25, "y": 25 },
+      "type": "dimensional",
+      "requirements": ["quantum_key"]
+    }
+  ],
+  "victory_conditions": [
+    {
+      "type": "knowledge_threshold",
+      "description": "Accumuler 1000 points de savoir",
+      "value": 1000
+    },
+    {
+      "type": "defeat_infiltrators",
+      "description": "Repousser toutes les tentatives d'infiltration corporatiste",
+      "enemies": ["ford_agents", "mckinsey_consultants"]
+    },
+    {
+      "type": "complete_psychohistory",
+      "description": "Terminer les équations de psychohistoire",
+      "special": true
+    }
+  ],
+  "metadata": {
+    "created_by": "OPUS-MEMENTO",
+    "creation_date": "2025-01-26",
+    "version": "1.0",
+    "tags": ["scientific", "anti-corporate", "foundation", "knowledge"]
+  }
+} 

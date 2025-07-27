@@ -1,0 +1,162 @@
+/* Styles pour les notifications de pickup */
+
+.pickup-notification-container {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.pickup-notification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 25px;
+    border: 2px solid;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: slideInPickup 0.5s ease-out, fadeOutPickup 0.5s ease-out 2.5s forwards;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+@keyframes slideInPickup {
+    from {
+        transform: translateX(100px) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutPickup {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+.pickup-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 0 5px currentColor);
+    animation: iconBounce 0.5s ease-out;
+}
+
+@keyframes iconBounce {
+    0% { transform: scale(0) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+.pickup-text {
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles par rareté */
+.rarity-common {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.rarity-common .pickup-icon {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.rarity-rare {
+    border-color: #4a90e2;
+    color: #4a90e2;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(74, 144, 226, 0.1));
+}
+
+.rarity-rare .pickup-icon {
+    filter: drop-shadow(0 0 8px #4a90e2);
+}
+
+.rarity-epic {
+    border-color: #9932cc;
+    color: #9932cc;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(153, 50, 204, 0.2));
+}
+
+.rarity-epic .pickup-icon {
+    filter: drop-shadow(0 0 10px #9932cc);
+    animation: iconBounce 0.5s ease-out, epicGlow 2s infinite;
+}
+
+@keyframes epicGlow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.rarity-legendary {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 107, 107, 0.3));
+    animation: slideInPickup 0.5s ease-out, 
+               legendaryPulse 1s infinite,
+               fadeOutPickup 0.5s ease-out 2.5s forwards;
+}
+
+@keyframes legendaryPulse {
+    0%, 100% { 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(255, 107, 107, 0.5);
+    }
+    50% { 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                    0 0 50px rgba(255, 107, 107, 0.8);
+    }
+}
+
+.rarity-legendary .pickup-icon {
+    filter: drop-shadow(0 0 15px #ff6b6b);
+    animation: iconBounce 0.5s ease-out, legendaryRotate 2s linear infinite;
+}
+
+@keyframes legendaryRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Effets supplémentaires pour les gros drops */
+.pickup-notification.big-drop {
+    transform-origin: center;
+    animation: slideInPickup 0.5s ease-out, 
+               bigDropPulse 0.5s ease-out,
+               fadeOutPickup 0.5s ease-out 2.5s forwards;
+}
+
+@keyframes bigDropPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Mode compact pour beaucoup de notifications */
+@media (max-height: 600px) {
+    .pickup-notification-container {
+        bottom: 50px;
+    }
+    
+    .pickup-notification {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .pickup-icon {
+        font-size: 20px;
+    }
+} 

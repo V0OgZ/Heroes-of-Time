@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Heroes of Time - Interfaces HTML</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            font-family: 'Segoe UI', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            color: #00ff88;
+            text-shadow: 0 0 20px #00ff88;
+            margin-bottom: 40px;
+        }
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .interface-card {
+            background: rgba(0,255,136,0.1);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .interface-card:hover {
+            background: rgba(0,255,136,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+        }
+        .interface-card h3 {
+            color: #ff6b35;
+            margin: 0 0 10px 0;
+        }
+        .interface-card a {
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .status {
+            background: #00ff88;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Heroes of Time - Hub des Interfaces HTML</h1>
+        <p>Port unifié 8000 - Toutes les interfaces en un seul endroit</p>
+        
+        <div class="interface-grid">
+            <div class="interface-card">
+                <h3>🗺️ Interface Principale</h3>
+                <a href="vince-vega-map-demo-backend.html">Vince Vega Map</a>
+                <p>Map 10x8, wormholes, pistolet quantique</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>📊 Dashboard Central</h3>
+                <a href="dashboard.html">Dashboard Principal</a>
+                <p>Centre de contrôle Heroes of Time</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>🌐 Portail Complet</h3>
+                <a href="portail-100-html-interfaces.html">100 Interfaces</a>
+                <p>Accès à toutes les interfaces legacy</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>📖 Mode Histoire</h3>
+                <a href="story-mode.html">Story Mode</a>
+                <p>Aventures narratives</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>🔨 Forge Runique</h3>
+                <a href="forge-runique.html">Forge Magique</a>
+                <p>Création d'objets enchantés</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>🌀 Test Quantique</h3>
+                <a href="quantum-er-epr-test.html">ER=EPR Test</a>
+                <p>Principe de Susskind</p>
+                <span class="status">ACTIF</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>🔍 Vérification</h3>
+                <a href="verification-interfaces.html">État des Interfaces</a>
+                <p>Vérifier toutes les interfaces</p>
+                <span class="status">NOUVEAU</span>
+            </div>
+            
+            <div class="interface-card">
+                <h3>👁️ Panopticon GRUT</h3>
+                <a href="grut-panopticon-fantasy.html">Vision Omnisciente</a>
+                <p>L'Œil qui Voit Tout</p>
+                <span class="status">FANTASY</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
